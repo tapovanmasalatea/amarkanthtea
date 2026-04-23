@@ -1,11 +1,13 @@
-import React from 'react';
+import reel1 from '../assets/reel1.mp4';
+import reel2 from '../assets/reel2.mp4';
+import reel3 from '../assets/reel3.mp4';
 
 const BrandReels = () => {
   // Path for your reels: /src/assets/reel1.mp4, /src/assets/reel2.mp4, etc.
   const reels = [
-    { id: 1, video: "/src/assets/reel1.mp4" },
-    { id: 2, video: "/src/assets/reel2.mp4" },
-    { id: 3, video: "/src/assets/reel3.mp4" }
+    { id: 1, video: reel1 },
+    { id: 2, video: reel2 },
+    { id: 3, video: reel3 }
   ];
 
   return (

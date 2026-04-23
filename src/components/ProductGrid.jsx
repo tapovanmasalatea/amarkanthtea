@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import amarkanthImg from '../assets/amarkanth.png';
+import tapovanImg from '../assets/tapovan.png';
+import mostlovedImg from '../assets/mostloved.png';
 
 const products = [
   {
@@ -6,7 +9,7 @@ const products = [
     name: "Amarkanth Premium Tea",
     subtitle: "Premium CTC Tea",
     description: "Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience.",
-    image: "/src/assets/amarkanth.png",
+    image: amarkanthImg,
     price: 800,
     badge: "Bestseller",
     color: "#d50505", // Brand Red
@@ -18,7 +21,7 @@ const products = [
     name: "Tapovan Premium Tea",
     subtitle: "Premium Chai",
     description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing mountain-fresh taste.",
-    image: "/src/assets/tapovan.png",
+    image: tapovanImg,
     price: 800,
     badge: "Special Edition",
     color: "#f15800", // Tapovan Orange
@@ -231,7 +234,7 @@ const ProductGrid = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         .product-grid-section {
           padding: 5px 0 40px 0;
-          background-image: url('/src/assets/mostloved.png');
+          background-image: url('${mostlovedImg}');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;

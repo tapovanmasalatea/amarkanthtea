@@ -1,11 +1,12 @@
 import React from 'react';
+import nextgenImg from '../assets/nextgen.png';
 
 const PromotionBanner = () => {
   return (
     <section className="promo-banner-section">
       <div className="container-full">
         <div className="promo-banner-wrapper">
-          <img src="/src/assets/nextgen.png" alt="Amarkanth Next Gen" className="promo-img" />
+          <img src={nextgenImg} alt="Amarkanth Next Gen" className="promo-img" />
         </div>
       </div>
 

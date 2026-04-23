@@ -2,6 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import factoryImg from '../assets/factory.png';
 import logoImg from '../assets/logo.png';
+import diff1 from '../assets/diff1.png';
+import diff2 from '../assets/diff2.png';
+import diff3 from '../assets/diff3.png';
+import diff4 from '../assets/diff4.png';
+import diff5 from '../assets/diff5.png';
+import diff6 from '../assets/diff6.png';
 
 const About = () => {
   return (
@@ -86,12 +92,12 @@ const About = () => {
           
           <div className="diff-visual-grid">
             {[
-              { title: "Garden Fresh", subtitle: "Directly sourced from premium Assam gardens.", img: "/src/assets/diff1.png" },
-              { title: "Master Blending", subtitle: "Expert blenders craft each consistent batch.", img: "/src/assets/diff2.png" },
-              { title: "Trusted Heritage", subtitle: "Decades of trust across central India.", img: "/src/assets/diff3.png" },
-              { title: "Triple Certified", subtitle: "FSSAI, FDA and BRC Food certified.", img: "/src/assets/diff4.png" },
-              { title: "Best Value", subtitle: "More cups per gram, premium quality.", img: "/src/assets/diff5.png" },
-              { title: "Sealed Freshness", subtitle: "Packaging locks in aroma for 365 days.", img: "/src/assets/diff6.png" }
+              { title: "Garden Fresh", subtitle: "Directly sourced from premium Assam gardens.", img: diff1 },
+              { title: "Master Blending", subtitle: "Expert blenders craft each consistent batch.", img: diff2 },
+              { title: "Trusted Heritage", subtitle: "Decades of trust across central India.", img: diff3 },
+              { title: "Triple Certified", subtitle: "FSSAI, FDA and BRC Food certified.", img: diff4 },
+              { title: "Best Value", subtitle: "More cups per gram, premium quality.", img: diff5 },
+              { title: "Sealed Freshness", subtitle: "Packaging locks in aroma for 365 days.", img: diff6 }
             ].map((d, i) => (
               <motion.div 
                 key={i} 

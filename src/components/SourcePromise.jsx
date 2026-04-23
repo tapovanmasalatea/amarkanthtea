@@ -1,5 +1,6 @@
 import React from 'react';
 import { Leaf, Award, Box } from 'lucide-react';
+import whyImg from '../assets/Why.png';
 
 const SourcePromise = () => {
   const points = [
@@ -64,7 +65,7 @@ const SourcePromise = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         .source-promise {
           padding: 60px 0;
-          background-image: url('/src/assets/Why.png');
+          background-image: url('${whyImg}');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;

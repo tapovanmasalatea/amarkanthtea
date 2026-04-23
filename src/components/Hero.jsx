@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import banner1 from '../assets/banner1.png';
+import banner2 from '../assets/banner2.png';
+
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const images = [
-    '/src/assets/banner1.png',
-    '/src/assets/banner2.png'
-  ];
+  const images = [banner1, banner2];
 
   useEffect(() => {
     const timer = setInterval(() => {
