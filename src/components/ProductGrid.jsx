@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import amarkanthImg from '../assets/amarkanth.png';
 import tapovanImg from '../assets/tapovan.png';
 import mostlovedImg from '../assets/mostloved.png';
@@ -11,7 +11,7 @@ const products = [
     subtitle: "Premium CTC Tea",
     description: "Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience.",
     image: amarkanthImg,
-    price: 800,
+    price: 740, // Updated to match product page default
     badge: "Bestseller",
     color: "#d50505", // Brand Red
     lightBg: "#fff0f0", // Very light shade of Amarkanth red
@@ -24,7 +24,7 @@ const products = [
     subtitle: "Premium Chai",
     description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing mountain-fresh taste.",
     image: tapovanImg,
-    price: 800,
+    price: 740, // Updated to match product page default
     badge: "Special Edition",
     color: "#f15800", // Tapovan Orange
     lightBg: "#fff8f0", // Very light shade of Tapovan orange
@@ -34,6 +34,20 @@ const products = [
 ];
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleBuyNow = () => {
+    navigate('/checkout', {
+      state: {
+        name: product.name,
+        variant: "1kg Box", // Default variant
+        price: product.price,
+        quantity: 1,
+        image: product.image
+      }
+    });
+  };
+
   return (
     <div className="modern-card" style={{ '--brand-color': product.color }}>
       {/* Top Half: Visuals */}
@@ -67,7 +81,7 @@ const ProductCard = ({ product }) => {
           <Link to={product.link || "#"} className="modern-add-btn" style={{ textAlign: 'center', textDecoration: 'none', display: 'block' }}>
             VIEW DETAILS
           </Link>
-          <button className="modern-add-btn">
+          <button className="modern-add-btn" onClick={handleBuyNow}>
             BUY NOW
           </button>
         </div>

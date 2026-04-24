@@ -1,25 +1,29 @@
+import React, { useState } from 'react';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import amarkanthImg from '../assets/amarkanth.png';
+import tapovanImg from '../assets/tapovan.png';
 
 const Shop = () => {
   const [filter, setFilter] = useState('all');
+  const navigate = useNavigate();
 
   const products = [
     {
       id: 1,
       name: "Amarkanth Premium CTC Tea With Cardamom",
       category: "ctc",
-      price: "₹800",
+      price: 740,
       image: amarkanthImg,
-      tag: "",
+      tag: "Bestseller",
       link: "/product/amarkanth-premium-ctc"
     },
     {
       id: 2,
       name: "Tapovan Premium Tea",
       category: "ctc",
-      price: "₹800",
+      price: 740,
       image: tapovanImg,
       tag: "Mountain Fresh",
       link: "/product/tapovan-premium-tea"
@@ -28,19 +32,31 @@ const Shop = () => {
       id: 3,
       name: "Morning Ritual Blend",
       category: "ctc",
-      price: "₹420",
-      image: "/amarkanth_bold_tea.png",
+      price: 420,
+      image: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=800",
       tag: "Everyday Strength"
     },
     {
       id: 4,
       name: "Wellness Spiced Green",
       category: "wellness",
-      price: "₹650",
-      image: "/tapovan_wellness_tea.png",
+      price: 650,
+      image: "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=80&w=800",
       tag: "Pure Detox"
     }
   ];
+
+  const handleBuyNow = (p) => {
+    navigate('/checkout', {
+      state: {
+        name: p.name,
+        variant: "1kg Box",
+        price: p.price,
+        quantity: 1,
+        image: p.image
+      }
+    });
+  };
 
   const filteredProducts = filter === 'all' 
     ? products 
@@ -76,14 +92,14 @@ const Shop = () => {
                 <div className="p-img-container">
                   <img src={p.image} alt={p.name} />
                   <div className="p-overlay">
-                    <button className="add-cart-btn"><ShoppingBag size={18} /> Buy Now</button>
+                    <button className="add-cart-btn" onClick={() => handleBuyNow(p)}><ShoppingBag size={18} /> Buy Now</button>
                   </div>
                 </div>
                 <div className="p-details">
                   <p className="p-tag">{p.tag}</p>
                   <h3>{p.name}</h3>
                   <div className="p-footer">
-                    <span className="p-price">{p.price}</span>
+                    <span className="p-price">₹{p.price}</span>
                     <Link to={p.link || "#"} className="p-view">Details <ArrowRight size={14} /></Link>
                   </div>
                 </div>
