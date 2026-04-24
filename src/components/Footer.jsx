@@ -21,30 +21,22 @@ const Footer = () => {
           <div className="footer-links">
             <div className="link-col">
               <h4>Collections</h4>
-              <Link to="/shop">Amarkanth CTC</Link>
-              <Link to="/shop">Tapovan Masala</Link>
-              <Link to="/shop">Wellness Blends</Link>
-              <Link to="/shop">Gifting</Link>
+              <Link to="/product/amarkanth-premium-ctc">Amarkanth CTC</Link>
+              <Link to="/product/tapovan-premium-tea">Tapovan Premium</Link>
+              <Link to="/shop">Shop All</Link>
             </div>
             <div className="link-col">
-              <h4>Philosophy</h4>
-              <Link to="/about">The Source</Link>
-              <Link to="/">The Ritual</Link>
-              <Link to="/about">Our Story</Link>
-              <Link to="/about">Sustainability</Link>
+              <h4>Brand</h4>
+              <Link to="/about">Our Legacy</Link>
+              <Link to="/distributor">Distributors</Link>
+              <Link to="/contact">Connect</Link>
             </div>
             <div className="link-col">
-              <h4>Support</h4>
-              <Link to="/contact">Contact Us</Link>
-              <Link to="/contact">Shipping</Link>
-              <Link to="/contact">Returns</Link>
-              <Link to="/contact">FAQ</Link>
-            </div>
-            <div className="link-col">
-              <h4>Partner</h4>
-              <Link to="/distributor">Become a Distributor</Link>
-              <Link to="/distributor">Wholesale Login</Link>
-              <Link to="/contact">Corporate Gifting</Link>
+              <h4>Legal & Support</h4>
+              <Link to="/privacy-policy">Privacy Policy</Link>
+              <Link to="/terms-conditions">Terms & Conditions</Link>
+              <Link to="/refund-policy">Refund Policy</Link>
+              <Link to="/shipping-policy">Shipping Policy</Link>
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ import AmarkanthPremiumCTC from './pages/AmarkanthPremiumCTC';
 import TapovanPremiumTea from './pages/TapovanPremiumTea';
 import OrderPage from './pages/OrderPage';
 import DistributorPage from './pages/DistributorPage';
+import { PrivacyPolicy, TermsConditions, RefundPolicy, ShippingPolicy } from './pages/LegalPages';
 import ScrollToTop from './components/ScrollToTop';
 
 // Intersection Observer for reveals
@@ -45,6 +46,10 @@ function AppContent() {
         <Route path="/product/tapovan-premium-tea" element={<TapovanPremiumTea />} />
         <Route path="/checkout" element={<OrderPage />} />
         <Route path="/distributor" element={<DistributorPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/shipping-policy" element={<ShippingPolicy />} />
       </Routes>
       <Footer />
     </div>
