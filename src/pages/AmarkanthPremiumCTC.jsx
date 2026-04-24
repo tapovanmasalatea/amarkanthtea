@@ -480,11 +480,13 @@ const AmarkanthPremiumCTC = () => {
         .italic { font-style: italic; }
 
         .product-page {
-          padding-top: 140px; /* Increased to avoid navbar overlap */
+          padding-top: 140px;
           background: #fff;
           color: #333;
           font-family: 'Inter', sans-serif;
           min-height: 100vh;
+          width: 100%;
+          overflow-x: hidden; /* Critical for preventing horizontal slide */
         }
 
         .product-hero { padding: 40px 0; }
@@ -778,6 +780,10 @@ const AmarkanthPremiumCTC = () => {
            .loved-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px 10px 0; }
            .gallery-item { border-radius: 12px; }
 
+           .product-info {
+             overflow-x: hidden; /* Contain the negative margin carousels */
+             width: 100%;
+           }
            .trust-icons-v2 {
              display: flex;
              overflow-x: auto;
