@@ -208,8 +208,8 @@ const TapovanPremiumTea = () => {
                 <p className="mrp-subtext-v3">MRP Inclusive of all taxes</p>
               </div>
 
-              {/* Offers Carousel Mobile */}
-              <div className="offers-carousel-v2">
+              {/* Offers Mobile - Stacked */}
+              <div className="offers-stack-mobile">
                 {/* Offer Bar */}
                 <div className="promo-bar-v2 tapovan-promo">
                   <Ticket size={20} className="text-tapovan-orange" />
@@ -222,7 +222,7 @@ const TapovanPremiumTea = () => {
                   <div className="upsell-content">
                     <img src={tapovanPackImg} alt="Kit" className="kit-thumb" />
                     <div className="kit-info">
-                      <h4>Tapovan Mountain Fresh Kit</h4>
+                      <h4>Purity Testing Kit</h4>
                       <p>₹99</p>
                     </div>
                     <button className="btn-add-upsell tapovan-btn-outline">Add to cart</button>
@@ -611,9 +611,9 @@ const TapovanPremiumTea = () => {
         .variant-card-v2.active .v-header-v2 { background: var(--tapovan-orange); color: white; }
 
         .action-footer-row { display: flex; gap: 20px; margin-bottom: 50px; }
-        .qty-picker-v2 { display: flex; align-items: center; gap: 20px; background: #f5f5f5; padding: 10px 20px; border-radius: 10px; }
-        .qty-picker-v2 button { background: none; border: none; cursor: pointer; color: #444; }
-        .qty-picker-v2 span { font-weight: 800; font-size: 1.2rem; min-width: 25px; text-align: center; }
+        .qty-picker-v2 { display: flex; align-items: center; gap: 12px; background: #f5f5f5; padding: 6px 12px; border-radius: 6px; }
+        .qty-picker-v2 button { background: none; border: none; cursor: pointer; color: #444; padding: 4px; display: flex; align-items: center; }
+        .qty-picker-v2 span { font-weight: 800; font-size: 1rem; min-width: 20px; text-align: center; }
         .btn-buy-now-v2 { 
           flex: 1; 
           background: var(--brand-gold); 
@@ -799,25 +799,26 @@ const TapovanPremiumTea = () => {
            }
            .trust-v2-item p { font-size: 0.8rem; }
 
-           .offers-carousel-v2 {
+           .offers-stack-mobile {
              display: flex;
-             gap: 15px;
-             overflow-x: auto;
-             margin: 0 -20px 30px;
-             padding: 10px 20px;
-             scrollbar-width: none;
+             flex-direction: column;
+             gap: 12px;
+             margin-bottom: 30px;
            }
-           .offers-carousel-v2::-webkit-scrollbar { display: none; }
            .promo-bar-v2, .upsell-card { 
-             flex: 0 0 85%; 
+             width: 100%;
              margin-bottom: 0; 
-             height: 100px;
+             height: auto;
+             padding: 15px;
              display: flex;
              align-items: center;
-             border-radius: 15px;
+             border-radius: 12px;
            }
-           .promo-bar-v2 { border: 1px dashed var(--tapovan-orange); }
-           .upsell-card { border: 1px solid #ffe0b2; }
+           .promo-bar-v2.tapovan-promo { border: 1px dashed var(--tapovan-orange); }
+           .upsell-card.tapovan-upsell { border: 1px solid #ffe0b2; }
+           .kit-thumb { width: 50px; height: 50px; }
+           .kit-info h4 { font-size: 0.9rem; }
+           .btn-add-upsell { padding: 6px 12px; font-size: 0.75rem; }
         }
       `}} />
     </div>

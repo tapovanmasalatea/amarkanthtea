@@ -207,29 +207,28 @@ const AmarkanthPremiumCTC = () => {
                    <span className="discount-pill-v3">{variants[variant].discount} OFF</span>
                 </div>
                 <p className="mrp-subtext-v3">MRP Inclusive of all taxes</p>
-              </div>
-
-              {/* Offers Carousel Mobile */}
-              <div className="offers-carousel-v2">
+                      {/* Offers Mobile - Stacked */}
+              <div className="offers-stack-mobile">
                 {/* Offer Bar */}
                 <div className="promo-bar-v2">
                   <Ticket size={20} className="text-brand-red" />
                   <p>Buy now and Get a <strong>Scratch Card</strong> & win a <strong>Thailand Trip!</strong></p>
                 </div>
 
-                {/* Upsell Kit Box */}
+                {/* Upsell Card */}
                 <div className="upsell-card">
                   <div className="test-badge">TEST. TRUST.</div>
                   <div className="upsell-content">
                     <img src={amarkanthPackImg} alt="Kit" className="kit-thumb" />
                     <div className="kit-info">
-                      <h4>Amarkanth Purity Testing Kit</h4>
+                      <h4>Purity Testing Kit</h4>
                       <p>₹99</p>
                     </div>
                     <button className="btn-add-upsell">Add to cart</button>
                   </div>
                 </div>
               </div>
+         </div>
 
               <div className="variant-selector-v2">
                 <p className="variant-title">Select Variant</p>
@@ -612,9 +611,9 @@ const AmarkanthPremiumCTC = () => {
         .variant-card-v2.active .v-header-v2 { background: var(--brand-red); color: white; }
 
         .action-footer-row { display: flex; gap: 20px; margin-bottom: 50px; }
-        .qty-picker-v2 { display: flex; align-items: center; gap: 20px; background: #f5f5f5; padding: 10px 20px; border-radius: 10px; }
-        .qty-picker-v2 button { background: none; border: none; cursor: pointer; color: #444; }
-        .qty-picker-v2 span { font-weight: 800; font-size: 1.2rem; min-width: 25px; text-align: center; }
+        .qty-picker-v2 { display: flex; align-items: center; gap: 12px; background: #f5f5f5; padding: 6px 12px; border-radius: 6px; }
+        .qty-picker-v2 button { background: none; border: none; cursor: pointer; color: #444; padding: 4px; display: flex; align-items: center; }
+        .qty-picker-v2 span { font-weight: 800; font-size: 1rem; min-width: 20px; text-align: center; }
         .btn-buy-now-v2 { 
           flex: 1; 
           background: var(--brand-gold); 
@@ -754,7 +753,30 @@ const AmarkanthPremiumCTC = () => {
              width: 100%;
            }
            .current-price { font-size: 2.2rem; }
-           .btn-buy-now-v2 { width: 100%; padding: 20px; font-size: 1.2rem; border-radius: 12px; }
+           .action-footer-row { flex-direction: column; gap: 12px; }
+           .btn-buy-now-v2 { width: 100%; padding: 18px; font-size: 1.2rem; border-radius: 12px; }
+           .qty-picker-v2 { width: fit-content; margin: 0 auto; }
+
+           .offers-stack-mobile {
+             display: flex;
+             flex-direction: column;
+             gap: 12px;
+             margin-bottom: 30px;
+           }
+           .promo-bar-v2, .upsell-card { 
+             width: 100%;
+             margin-bottom: 0; 
+             height: auto;
+             padding: 15px;
+             display: flex;
+             align-items: center;
+             border-radius: 12px;
+           }
+           .promo-bar-v2 { border: 1px dashed #4caf50; }
+           .upsell-card { border: 1px solid #e0f2f1; }
+           .kit-thumb { width: 50px; height: 50px; }
+           .kit-info h4 { font-size: 0.9rem; }
+           .btn-add-upsell { padding: 6px 12px; font-size: 0.75rem; }
 
            /* New Price Row UX */
            .price-main-row-v3 { margin-bottom: 25px; }
@@ -776,7 +798,6 @@ const AmarkanthPremiumCTC = () => {
            .millions-title { font-size: 3.2rem; }
            .loved-by-script { font-size: 2.2rem; }
            .product-main-img { height: 280px; }
-           .action-footer-row { flex-direction: column; gap: 15px; }
            .loved-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px 10px 0; }
            .gallery-item { border-radius: 12px; }
 
@@ -798,26 +819,6 @@ const AmarkanthPremiumCTC = () => {
              text-align: center;
            }
            .trust-v2-item p { font-size: 0.8rem; }
-
-           .offers-carousel-v2 {
-             display: flex;
-             gap: 15px;
-             overflow-x: auto;
-             margin: 0 -20px 30px;
-             padding: 10px 20px;
-             scrollbar-width: none;
-           }
-           .offers-carousel-v2::-webkit-scrollbar { display: none; }
-           .promo-bar-v2, .upsell-card { 
-             flex: 0 0 85%; 
-             margin-bottom: 0; 
-             height: 100px;
-             display: flex;
-             align-items: center;
-             border-radius: 15px;
-           }
-           .promo-bar-v2 { border: 1px dashed #4caf50; }
-           .upsell-card { border: 1px solid #e0f2f1; }
         }
       `}} />
     </div>
