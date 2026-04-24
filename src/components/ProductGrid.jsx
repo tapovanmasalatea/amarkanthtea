@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import amarkanthImg from '../assets/amarkanth.png';
 import tapovanImg from '../assets/tapovan.png';
 import mostlovedImg from '../assets/mostloved.png';
@@ -6,7 +7,7 @@ import mostlovedImg from '../assets/mostloved.png';
 const products = [
   {
     id: 1,
-    name: "Amarkanth Premium Tea",
+    name: "Amarkanth Premium CTC Tea With Cardamom",
     subtitle: "Premium CTC Tea",
     description: "Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience.",
     image: amarkanthImg,
@@ -14,7 +15,8 @@ const products = [
     badge: "Bestseller",
     color: "#d50505", // Brand Red
     lightBg: "#fff0f0", // Very light shade of Amarkanth red
-    rating: "4.9"
+    rating: "4.9",
+    link: "/product/amarkanth-premium-ctc"
   },
   {
     id: 2,
@@ -26,7 +28,8 @@ const products = [
     badge: "Special Edition",
     color: "#f15800", // Tapovan Orange
     lightBg: "#fff8f0", // Very light shade of Tapovan orange
-    rating: "4.8"
+    rating: "4.8",
+    link: "/product/tapovan-premium-tea"
   }
 ];
 
@@ -61,8 +64,11 @@ const ProductCard = ({ product }) => {
         </div>
 
         <div className="selection-section">
+          <Link to={product.link || "#"} className="modern-add-btn" style={{ textAlign: 'center', textDecoration: 'none', display: 'block' }}>
+            VIEW DETAILS
+          </Link>
           <button className="modern-add-btn">
-            ADD TO CART
+            BUY NOW
           </button>
         </div>
       </div>

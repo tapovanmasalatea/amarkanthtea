@@ -6,6 +6,9 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import AmarkanthPremiumCTC from './pages/AmarkanthPremiumCTC';
+import TapovanPremiumTea from './pages/TapovanPremiumTea';
+import OrderPage from './pages/OrderPage';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -45,6 +48,9 @@ function AppContent() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/product/amarkanth-premium-ctc" element={<AmarkanthPremiumCTC />} />
+        <Route path="/product/tapovan-premium-tea" element={<TapovanPremiumTea />} />
+        <Route path="/checkout" element={<OrderPage />} />
       </Routes>
       <Footer />
     </div>

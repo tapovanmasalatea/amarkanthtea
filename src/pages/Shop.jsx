@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import amarkanthImg from '../assets/amarkanth.png';
 
 const Shop = () => {
   const [filter, setFilter] = useState('all');
@@ -8,19 +8,21 @@ const Shop = () => {
   const products = [
     {
       id: 1,
-      name: "Amarkanth Signature CTC",
+      name: "Amarkanth Premium CTC Tea With Cardamom",
       category: "ctc",
-      price: "₹450",
-      image: "/amarkanth_bold_tea.png",
-      tag: "Bold & Commanding"
+      price: "₹800",
+      image: amarkanthImg,
+      tag: "",
+      link: "/product/amarkanth-premium-ctc"
     },
     {
       id: 2,
-      name: "Tapovan Masala Chai",
-      category: "masala",
-      price: "₹550",
-      image: "/tapovan_wellness_tea.png",
-      tag: "Calm & Sacred"
+      name: "Tapovan Premium Tea",
+      category: "ctc",
+      price: "₹800",
+      image: tapovanImg,
+      tag: "Mountain Fresh",
+      link: "/product/tapovan-premium-tea"
     },
     {
       id: 3,
@@ -74,7 +76,7 @@ const Shop = () => {
                 <div className="p-img-container">
                   <img src={p.image} alt={p.name} />
                   <div className="p-overlay">
-                    <button className="add-cart-btn"><ShoppingBag size={18} /> Add to Ritual</button>
+                    <button className="add-cart-btn"><ShoppingBag size={18} /> Buy Now</button>
                   </div>
                 </div>
                 <div className="p-details">
@@ -82,7 +84,7 @@ const Shop = () => {
                   <h3>{p.name}</h3>
                   <div className="p-footer">
                     <span className="p-price">{p.price}</span>
-                    <button className="p-view">Details <ArrowRight size={14} /></button>
+                    <Link to={p.link || "#"} className="p-view">Details <ArrowRight size={14} /></Link>
                   </div>
                 </div>
               </motion.div>
