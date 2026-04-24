@@ -13,11 +13,6 @@ const Footer = () => {
         </div>
 
         <div className="footer-grid">
-          <div className="footer-brand">
-            <h2 className="footer-text-logo">AMARKANTH <br />& TAPOVAN</h2>
-            <p className="footer-tagline">Not Just Tea. A Ritual.</p>
-          </div>
-          
           <div className="footer-links">
             <div className="link-col">
               <h4>Collections</h4>
@@ -86,12 +81,11 @@ const Footer = () => {
         }
 
         .footer-grid {
-          display: grid;
-          grid-template-columns: 1fr 2fr;
-          gap: 100px;
           margin-bottom: 80px;
           border-top: 1px solid rgba(255,255,255,0.1);
           padding-top: 80px;
+          display: flex;
+          justify-content: center;
         }
 
         .footer-text-logo {
@@ -169,16 +163,20 @@ const Footer = () => {
 
         @media (max-width: 968px) {
           .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 60px;
-            text-align: center;
+            padding-top: 40px;
           }
           .footer-links {
-            grid-template-columns: 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            text-align: left;
           }
           .footer-main-logo {
             height: 80px;
+          }
+          .footer-bottom {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
           }
         }
       `}} />
