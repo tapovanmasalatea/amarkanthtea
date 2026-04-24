@@ -53,8 +53,8 @@ const AmarkanthPremiumCTC = () => {
   const productImages = [
     amarkanthImg,
     amarkanthPackImg,
-    "/amarkanth_tea_brewing_detail_1777048056343.png",
-    "/amarkanth_dry_leaves_detail_1777048081753.png"
+    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=80&w=800"
   ];
   
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
@@ -510,10 +510,12 @@ const AmarkanthPremiumCTC = () => {
         }
 
         .product-main-img {
-          width: 85%;
+          max-width: 100%;
           height: 450px;
           object-fit: contain;
           filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+          display: block;
+          margin: 0 auto;
         }
 
         .thumbnail-gallery { display: flex; gap: 15px; justify-content: center; }
@@ -729,8 +731,27 @@ const AmarkanthPremiumCTC = () => {
            .v-old-v2, .v-off-v2 { font-size: 0.7rem; }
            .v-per-unit-v2 { font-size: 0.7rem; }
 
+           .product-main-img { 
+             height: 300px; 
+             width: auto;
+             max-width: 100%;
+             margin: 0 auto;
+           }
+           .main-image-wrapper { 
+             padding: 20px; 
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             overflow: hidden;
+           }
+           .product-main-name { 
+             font-size: 1.8rem; 
+             line-height: 1.2;
+             overflow-wrap: break-word;
+             white-space: normal;
+             width: 100%;
+           }
            .current-price { font-size: 2.2rem; }
-           .product-main-name { font-size: 1.8rem; }
            .btn-buy-now-v2 { width: 100%; padding: 20px; font-size: 1.2rem; border-radius: 12px; }
 
            /* New Price Row UX */
