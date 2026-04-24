@@ -718,7 +718,7 @@ const AmarkanthPremiumCTC = () => {
            .current-price { font-size: 2.2rem; }
            .product-main-name { font-size: 1.8rem; }
            .loved-gallery { grid-template-columns: repeat(2, 1fr); }
-           .trust-icons-v2 { grid-template-columns: 1fr; gap: 30px; }
+           .btn-buy-now-v2 { width: 100%; padding: 15px; font-size: 1.1rem; }
            .features-grid { grid-template-columns: 1fr; }
            .reviews-grid-v2 { grid-template-columns: 1fr; }
            .form-grid { grid-template-columns: 1fr; }
@@ -729,7 +729,21 @@ const AmarkanthPremiumCTC = () => {
            .loved-by-script { font-size: 2.5rem; }
            .product-main-img { height: 300px; }
            .action-footer-row { flex-direction: column; }
-           .btn-buy-now-v2 { width: 100%; padding: 15px; font-size: 1.1rem; }
+
+           .trust-icons-v2 {
+             display: flex;
+             overflow-x: auto;
+             gap: 20px;
+             margin: 40px -20px 0;
+             padding: 40px 20px 0;
+             scrollbar-width: none;
+           }
+           .trust-icons-v2::-webkit-scrollbar { display: none; }
+           .trust-v2-item { 
+             flex: 0 0 150px; 
+             text-align: center;
+           }
+           .trust-v2-item p { font-size: 0.8rem; }
 
            .offers-carousel-v2 {
              display: flex;
