@@ -717,18 +717,23 @@ const AmarkanthPremiumCTC = () => {
 
            .current-price { font-size: 2.2rem; }
            .product-main-name { font-size: 1.8rem; }
-           .loved-gallery { grid-template-columns: repeat(2, 1fr); }
-           .btn-buy-now-v2 { width: 100%; padding: 15px; font-size: 1.1rem; }
-           .features-grid { grid-template-columns: 1fr; }
-           .reviews-grid-v2 { grid-template-columns: 1fr; }
+           .btn-buy-now-v2 { width: 100%; padding: 18px; font-size: 1.2rem; border-radius: 15px; }
+           .features-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+           .feature-card { padding: 25px 15px; }
+           .feature-card h3 { font-size: 1rem; }
+           .feature-card p { font-size: 0.8rem; }
+           .f-icon { width: 45px; height: 45px; margin-bottom: 15px; }
+           .reviews-grid-v2 { grid-template-columns: 1fr; gap: 20px; }
            .form-grid { grid-template-columns: 1fr; }
            .form-group.full-width { grid-column: span 1; }
-           .reviews-header-main { flex-direction: column; align-items: flex-start; gap: 20px; }
-           .big-rating { font-size: 3rem; }
-           .millions-title { font-size: 3rem; }
-           .loved-by-script { font-size: 2.5rem; }
-           .product-main-img { height: 300px; }
-           .action-footer-row { flex-direction: column; }
+           .reviews-header-main { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+           .big-rating { font-size: 3.5rem; }
+           .millions-title { font-size: 3.2rem; }
+           .loved-by-script { font-size: 2.2rem; }
+           .product-main-img { height: 280px; }
+           .action-footer-row { flex-direction: column; gap: 15px; }
+           .loved-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px 10px 0; }
+           .gallery-item { border-radius: 12px; }
 
            .trust-icons-v2 {
              display: flex;
