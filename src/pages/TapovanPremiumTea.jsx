@@ -199,12 +199,13 @@ const TapovanPremiumTea = () => {
               </div>
               <p className="product-info-tagline">Mountain Fresh Quality Tea</p>
 
-              <div className="price-main-row">
-                <div className="price-box">
-                   <span className="current-price">₹{variants[variant].price}</span>
-                   <span className="old-price-strikethrough">₹{variants[variant].oldPrice}</span>
+              <div className="price-main-row-v3">
+                <div className="price-box-v3">
+                   <span className="current-price-v3">₹{variants[variant].price}</span>
+                   <span className="old-price-v3">₹{variants[variant].oldPrice}</span>
+                   <span className="discount-pill-v3">{variants[variant].discount} OFF</span>
                 </div>
-                <span className="mrp-subtext">MRP (Incl. of all taxes)</span>
+                <p className="mrp-subtext-v3">MRP Inclusive of all taxes</p>
               </div>
 
               {/* Offers Carousel Mobile */}
@@ -609,8 +610,22 @@ const TapovanPremiumTea = () => {
         .qty-picker-v2 { display: flex; align-items: center; gap: 20px; background: #f5f5f5; padding: 10px 20px; border-radius: 10px; }
         .qty-picker-v2 button { background: none; border: none; cursor: pointer; color: #444; }
         .qty-picker-v2 span { font-weight: 800; font-size: 1.2rem; min-width: 25px; text-align: center; }
-        .btn-buy-now-v2 { flex: 1; background: var(--brand-gold); color: #000; border: none; border-radius: 50px; font-weight: 900; font-size: 1.3rem; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2); }
-        .btn-buy-now-v2:hover { background: #ffca28; transform: translateY(-3px); }
+        .btn-buy-now-v2 { 
+          flex: 1; 
+          background: var(--brand-gold); 
+          color: #000; 
+          border: none; 
+          border-radius: 50px; 
+          font-weight: 900; 
+          font-size: 1.3rem; 
+          cursor: pointer; 
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+          box-shadow: 0 10px 25px rgba(255, 193, 7, 0.3); 
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        .btn-buy-now-v2:hover { background: #ffca28; transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 193, 7, 0.4); }
+        .btn-buy-now-v2:active { transform: scale(0.95); }
 
         .trust-icons-v2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; }
         .trust-v2-item { text-align: center; }
@@ -716,7 +731,15 @@ const TapovanPremiumTea = () => {
 
            .current-price { font-size: 2.2rem; }
            .product-main-name { font-size: 1.8rem; }
-           .btn-buy-now-v2 { width: 100%; padding: 18px; font-size: 1.2rem; border-radius: 15px; }
+           .btn-buy-now-v2 { width: 100%; padding: 20px; font-size: 1.2rem; border-radius: 12px; }
+
+           /* New Price Row UX */
+           .price-main-row-v3 { margin-bottom: 25px; }
+           .price-box-v3 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+           .current-price-v3 { font-size: 2.8rem; font-weight: 900; color: #111; }
+           .old-price-v3 { font-size: 1.4rem; color: #aaa; text-decoration: line-through; }
+           .discount-pill-v3 { background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; font-weight: 800; }
+           .mrp-subtext-v3 { font-size: 0.8rem; color: #888; margin-top: 5px; font-weight: 500; }
            .features-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
            .feature-card { padding: 25px 15px; }
            .feature-card h3 { font-size: 1rem; }
