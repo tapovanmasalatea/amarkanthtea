@@ -40,6 +40,12 @@ const Footer = () => {
               <Link to="/contact">Returns</Link>
               <Link to="/contact">FAQ</Link>
             </div>
+            <div className="link-col">
+              <h4>Partner</h4>
+              <Link to="/distributor">Become a Distributor</Link>
+              <Link to="/distributor">Wholesale Login</Link>
+              <Link to="/contact">Corporate Gifting</Link>
+            </div>
           </div>
         </div>
 

@@ -9,15 +9,8 @@ import Contact from './pages/Contact';
 import AmarkanthPremiumCTC from './pages/AmarkanthPremiumCTC';
 import TapovanPremiumTea from './pages/TapovanPremiumTea';
 import OrderPage from './pages/OrderPage';
-
-// Scroll to top on route change
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
+import DistributorPage from './pages/DistributorPage';
+import ScrollToTop from './components/ScrollToTop';
 
 // Intersection Observer for reveals
 const useReveal = () => {
@@ -51,6 +44,7 @@ function AppContent() {
         <Route path="/product/amarkanth-premium-ctc" element={<AmarkanthPremiumCTC />} />
         <Route path="/product/tapovan-premium-tea" element={<TapovanPremiumTea />} />
         <Route path="/checkout" element={<OrderPage />} />
+        <Route path="/distributor" element={<DistributorPage />} />
       </Routes>
       <Footer />
     </div>

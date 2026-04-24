@@ -70,6 +70,7 @@ const Navbar = () => {
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
           <Link to="/shop" className={location.pathname === '/shop' ? 'active' : ''}>Collection</Link>
           <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Our Legacy</Link>
+          <Link to="/distributor" className={location.pathname === '/distributor' ? 'active' : ''}>Distributors</Link>
           <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Connect</Link>
         </div>
         <div className="menu-footer">
