@@ -478,12 +478,11 @@ const TapovanPremiumTea = () => {
         .italic { font-style: italic; }
 
         .product-page {
-          padding-top: 100px;
+          padding-top: 140px; /* Increased to avoid navbar overlap */
           background: #fff;
           color: #333;
           font-family: 'Inter', sans-serif;
-          overflow-x: hidden;
-          width: 100%;
+          min-height: 100vh;
         }
 
         .product-hero { padding: 40px 0; }
@@ -698,7 +697,7 @@ const TapovanPremiumTea = () => {
         }
 
         @media (max-width: 768px) {
-           .product-page { padding-top: 80px; }
+           .product-page { padding-top: 100px; }
            .thumbnail-gallery { 
              justify-content: flex-start; 
              overflow-x: auto; 
