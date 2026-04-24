@@ -483,6 +483,8 @@ const AmarkanthPremiumCTC = () => {
           background: #fff;
           color: #333;
           font-family: 'Inter', sans-serif;
+          overflow-x: hidden;
+          width: 100%;
         }
 
         .product-hero { padding: 40px 0; }
@@ -531,8 +533,8 @@ const AmarkanthPremiumCTC = () => {
         .thumb-item img { width: 100%; height: 100%; object-fit: cover; }
 
         .rating-row { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #666; margin-bottom: 5px; }
-        .product-main-name { font-size: 2.2rem; font-weight: 900; color: #111; margin-bottom: 5px; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
-        .product-info-tagline { font-size: 1.2rem; font-weight: 600; color: var(--brand-red); margin-bottom: 25px; font-family: 'Inter', sans-serif; }
+        .product-main-name { font-size: 2.2rem; font-weight: 900; color: #111; margin-bottom: 5px; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 1px; overflow-wrap: break-word; }
+        .product-info-tagline { font-size: 1.2rem; font-weight: 600; color: var(--brand-red); margin-bottom: 25px; font-family: 'Inter', sans-serif; overflow-wrap: break-word; }
 
         .price-main-row { margin-bottom: 25px; }
         .current-price { font-size: 3.5rem; font-weight: 900; color: #111; margin-right: 15px; }
@@ -632,8 +634,8 @@ const AmarkanthPremiumCTC = () => {
         .faq-answer { overflow: hidden; color: #666; line-height: 1.7; padding-bottom: 25px; }
 
         .loved-by-section { padding: 100px 0; background: #fdf8f0; text-align: center; overflow: hidden; }
-        .millions-title { font-size: 6rem; font-weight: 900; color: #1a1a1a; letter-spacing: -3px; line-height: 1; }
-        .loved-by-script { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--brand-red); }
+        .millions-title { font-size: 6rem; font-weight: 900; color: #1a1a1a; letter-spacing: -3px; line-height: 1; overflow-wrap: break-word; }
+        .loved-by-script { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--brand-red); overflow-wrap: break-word; }
         .loved-gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 40px 20px 0; }
         .gallery-item { aspect-ratio: 1; border-radius: 20px; overflow: hidden; }
         .gallery-item:nth-child(even) { transform: translateY(30px); }
