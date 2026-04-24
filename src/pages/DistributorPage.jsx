@@ -406,6 +406,7 @@ const DistributorPage = () => {
           color: #333;
           font-family: 'Inter', sans-serif;
           overflow-x: hidden;
+          --dist-red: #d50505;
         }
 
         .dist-container {
@@ -416,8 +417,8 @@ const DistributorPage = () => {
 
         .dist-tag {
           display: inline-block;
-          background: #fdf2f2;
-          color: #c41e3a;
+          background: #fff5f5;
+          color: var(--dist-red);
           padding: 8px 16px;
           border-radius: 50px;
           font-weight: 700;
@@ -458,7 +459,7 @@ const DistributorPage = () => {
         }
 
         .btn-primary-dist {
-          background: #c41e3a;
+          background: var(--dist-red);
           color: #fff;
           border: none;
           padding: 18px 35px;
@@ -472,7 +473,7 @@ const DistributorPage = () => {
           transition: 0.3s;
         }
 
-        .btn-primary-dist:hover { background: #a01830; transform: translateY(-3px); }
+        .btn-primary-dist:hover { background: #b00404; transform: translateY(-3px); }
 
         .btn-secondary-dist {
           background: none;
@@ -485,7 +486,7 @@ const DistributorPage = () => {
           transition: 0.3s;
         }
 
-        .btn-secondary-dist:hover { border-color: #c41e3a; color: #c41e3a; }
+        .btn-secondary-dist:hover { border-color: var(--dist-red); color: var(--dist-red); }
 
         .stats-section {
           padding: 60px 0;
@@ -504,7 +505,7 @@ const DistributorPage = () => {
         }
 
         .stat-icon {
-          color: #c41e3a;
+          color: var(--dist-red);
           margin-bottom: 10px;
           display: flex;
           justify-content: center;
@@ -540,7 +541,7 @@ const DistributorPage = () => {
         .title-accent {
           font-family: 'Dancing Script', cursive;
           font-size: 2.5rem;
-          color: #c41e3a;
+          color: var(--dist-red);
           margin-bottom: 25px;
         }
 
@@ -565,8 +566,8 @@ const DistributorPage = () => {
         .benefit-icon {
           width: 50px;
           height: 50px;
-          background: #fdf2f2;
-          color: #c41e3a;
+          background: #fff5f5;
+          color: var(--dist-red);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -596,8 +597,8 @@ const DistributorPage = () => {
         }
 
         .tier-card.popular {
-          border: 2px solid #c41e3a;
-          box-shadow: 0 25px 50px rgba(196, 30, 58, 0.1);
+          border: 2px solid var(--dist-red);
+          box-shadow: 0 25px 50px rgba(213, 5, 5, 0.1);
           transform: scale(1.05);
           z-index: 2;
         }
@@ -607,7 +608,7 @@ const DistributorPage = () => {
           top: -15px;
           left: 50%;
           transform: translateX(-50%);
-          background: #c41e3a;
+          background: var(--dist-red);
           color: #fff;
           padding: 6px 15px;
           border-radius: 50px;
@@ -617,7 +618,7 @@ const DistributorPage = () => {
         }
 
         .tier-name { font-size: 2rem; font-weight: 900; margin-bottom: 5px; font-family: 'Outfit', sans-serif; }
-        .tier-moq { font-size: 1rem; color: #c41e3a; font-weight: 700; margin-bottom: 30px; }
+        .tier-moq { font-size: 1rem; color: var(--dist-red); font-weight: 700; margin-bottom: 30px; }
 
         .tier-list { list-style: none; padding: 0; margin: 0 0 40px; flex: 1; }
         .tier-list li {
@@ -629,7 +630,7 @@ const DistributorPage = () => {
           font-size: 0.95rem;
           line-height: 1.4;
         }
-        .tier-list li svg { color: #c41e3a; flex-shrink: 0; margin-top: 2px; }
+        .tier-list li svg { color: var(--dist-red); flex-shrink: 0; margin-top: 2px; }
 
         .tier-btn {
           width: 100%;
@@ -645,13 +646,13 @@ const DistributorPage = () => {
         }
 
         .btn-outline { background: none; border: 2px solid #eee; }
-        .btn-outline:hover { border-color: #c41e3a; color: #c41e3a; }
+        .btn-outline:hover { border-color: var(--dist-red); color: var(--dist-red); }
         
-        .btn-gold { background: #c41e3a; color: #fff; border: none; }
-        .btn-gold:hover { background: #a01830; }
+        .btn-gold { background: var(--dist-red); color: #fff; border: none; }
+        .btn-gold:hover { background: #b00404; }
 
         .channels-section { padding: 80px 0; background: #fff; border-bottom: 1px solid #f0f0f0; }
-        .small-label { font-size: 0.8rem; font-weight: 800; color: #c41e3a; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .small-label { font-size: 0.8rem; font-weight: 800; color: var(--dist-red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
         .channels-grid { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; margin-top: 40px; opacity: 0.6; filter: grayscale(1); }
         .channel-box { display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .channel-logo { height: 35px; width: auto; }
@@ -676,7 +677,7 @@ const DistributorPage = () => {
           margin-bottom: -20px;
           transition: 0.3s;
         }
-        .step-item:hover .step-num { color: #fdf2f2; transform: translateY(-5px); }
+        .step-item:hover .step-num { color: #fff5f5; transform: translateY(-5px); }
         .step-info h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: #111; }
         .step-info p { font-size: 0.9rem; color: #666; line-height: 1.5; }
 
@@ -696,7 +697,7 @@ const DistributorPage = () => {
 
         .contact-links { display: flex; flex-direction: column; gap: 30px; }
         .contact-item { display: flex; align-items: center; gap: 20px; }
-        .contact-item .icon { width: 50px; height: 50px; background: #fdf2f2; color: #c41e3a; padding: 12px; border-radius: 12px; }
+        .contact-item .icon { width: 50px; height: 50px; background: #fff5f5; color: var(--dist-red); padding: 12px; border-radius: 12px; }
         .contact-item span { font-size: 0.8rem; font-weight: 800; color: #aaa; text-transform: uppercase; }
         .contact-item p { font-size: 1.1rem; font-weight: 700; color: #333; margin: 0; }
 
@@ -715,7 +716,7 @@ const DistributorPage = () => {
           transition: 0.3s;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-          border-color: #c41e3a;
+          border-color: var(--dist-red);
           outline: none;
           background: #fff;
         }
@@ -725,7 +726,7 @@ const DistributorPage = () => {
         .form-consent label { font-size: 0.9rem; color: #666; line-height: 1.5; }
 
         .btn-submit-dist {
-          background: #c41e3a;
+          background: var(--dist-red);
           color: #fff;
           border: none;
           padding: 20px;
@@ -739,7 +740,7 @@ const DistributorPage = () => {
           cursor: pointer;
           transition: 0.3s;
         }
-        .btn-submit-dist:hover { background: #a01830; transform: translateY(-3px); }
+        .btn-submit-dist:hover { background: #b00404; transform: translateY(-3px); }
 
         .faq-section { padding: 120px 0; background: #fff; }
         .faq-list { max-width: 800px; margin: 60px auto 0; }
