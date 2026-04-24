@@ -681,25 +681,35 @@ const AmarkanthPremiumCTC = () => {
         .btn-load-more:hover { border-color: var(--brand-red); color: var(--brand-red); }
 
         @media (max-width: 1100px) {
-          .hero-grid { grid-template-columns: 1fr; }
+          .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+          .product-visual-area { position: relative; top: 0; }
+          .main-image-wrapper { padding: 20px; }
+          .product-main-img { height: 350px; }
           .trust-icons-v2 { grid-template-columns: repeat(2, 1fr); }
           .features-grid { grid-template-columns: repeat(2, 1fr); }
-          .trust-row-v3 { grid-template-columns: repeat(2, 1fr); }
           .millions-title { font-size: 4rem; }
           .reviews-grid-v2 { grid-template-columns: repeat(2, 1fr); }
+          .loved-gallery { grid-template-columns: repeat(3, 1fr); }
         }
 
         @media (max-width: 768px) {
+           .product-page { padding-top: 80px; }
            .variant-grid-v2 { grid-template-columns: 1fr; }
-           .current-price { font-size: 2.5rem; }
+           .current-price { font-size: 2.2rem; }
+           .product-main-name { font-size: 1.8rem; }
            .loved-gallery { grid-template-columns: repeat(2, 1fr); }
-           .trust-icons-v2 { grid-template-columns: 1fr; }
+           .trust-icons-v2 { grid-template-columns: 1fr; gap: 30px; }
            .features-grid { grid-template-columns: 1fr; }
-           .trust-row-v3 { grid-template-columns: 1fr; }
            .reviews-grid-v2 { grid-template-columns: 1fr; }
            .form-grid { grid-template-columns: 1fr; }
            .form-group.full-width { grid-column: span 1; }
-           .reviews-header-main { flex-direction: column; align-items: flex-start; gap: 30px; }
+           .reviews-header-main { flex-direction: column; align-items: flex-start; gap: 20px; }
+           .big-rating { font-size: 3rem; }
+           .millions-title { font-size: 3rem; }
+           .loved-by-script { font-size: 2.5rem; }
+           .product-main-img { height: 300px; }
+           .action-footer-row { flex-direction: column; }
+           .btn-buy-now-v2 { width: 100%; padding: 15px; font-size: 1.1rem; }
         }
       `}} />
     </div>
