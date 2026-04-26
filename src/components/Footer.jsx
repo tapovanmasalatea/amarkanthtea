@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import footerImg from '../assets/footer.png';
-import logoImg from '../assets/logo.png';
+import footerImg from '../assets/footer.webp';
+import logoImg from '../assets/logo.webp';
 
 const Footer = () => {
   return (

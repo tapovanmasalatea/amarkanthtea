@@ -1,6 +1,6 @@
 import React from 'react';
 import { Leaf, Award, Box } from 'lucide-react';
-import whyImg from '../assets/Why.png';
+import whyImg from '../assets/Why.webp';
 
 const SourcePromise = () => {
   const points = [

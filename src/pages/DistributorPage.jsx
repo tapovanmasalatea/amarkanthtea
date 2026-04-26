@@ -18,7 +18,7 @@ import {
   Award,
   Users
 } from 'lucide-react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 
 const DistributorPage = () => {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -123,7 +123,7 @@ const DistributorPage = () => {
     { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
     { name: "Blinkit", logo: "https://upload.wikimedia.org/wikipedia/commons/3/30/Blinkit_logo.svg" },
     { name: "Zepto", logo: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zepto_Logo.svg" },
-    { name: "Flipkart", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.png" }
+    { name: "Flipkart", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.webp" }
   ];
 
   return (

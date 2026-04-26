@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import factoryImg from '../assets/factory.png';
-import logoImg from '../assets/logo.png';
-import diff1 from '../assets/diff1.png';
-import diff2 from '../assets/diff2.png';
-import diff3 from '../assets/diff3.png';
-import diff4 from '../assets/diff4.png';
-import diff5 from '../assets/diff5.png';
-import diff6 from '../assets/diff6.png';
+import factoryImg from '../assets/factory.webp';
+import logoImg from '../assets/logo.webp';
+import diff1 from '../assets/diff1.webp';
+import diff2 from '../assets/diff2.webp';
+import diff3 from '../assets/diff3.webp';
+import diff4 from '../assets/diff4.webp';
+import diff5 from '../assets/diff5.webp';
+import diff6 from '../assets/diff6.webp';
 
 const About = () => {
   return (

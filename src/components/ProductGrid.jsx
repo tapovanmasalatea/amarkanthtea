@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import amarkanthImg from '../assets/amarkanth.png';
-import tapovanImg from '../assets/tapovan.png';
-import mostlovedImg from '../assets/mostloved.png';
+import amarkanthImg from '../assets/amarkanth.webp';
+import tapovanImg from '../assets/tapovan.webp';
+import mostlovedImg from '../assets/mostloved.webp';
 
 const products = [
   {
@@ -57,8 +57,8 @@ const ProductCard = ({ product }) => {
         </div>
         
         <div className="image-wrapper">
-          <img src={product.image} alt={product.name} className="product-image" onError={(e) => {
-            e.target.src = 'https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=800';
+          <img src={product.image} alt={product.name} className="product-image" loading="lazy" onError={(e) => {
+            e.target.src = 'https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=800';
           }} />
         </div>
 

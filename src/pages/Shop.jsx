@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import amarkanthImg from '../assets/amarkanth.png';
-import tapovanImg from '../assets/tapovan.png';
+import amarkanthImg from '../assets/amarkanth.webp';
+import tapovanImg from '../assets/tapovan.webp';
 
 const Shop = () => {
   const [filter, setFilter] = useState('all');
@@ -33,7 +33,7 @@ const Shop = () => {
       name: "Morning Ritual Blend",
       category: "ctc",
       price: 420,
-      image: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=800",
       tag: "Everyday Strength"
     },
     {
@@ -41,7 +41,7 @@ const Shop = () => {
       name: "Wellness Spiced Green",
       category: "wellness",
       price: 650,
-      image: "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=60&w=800",
       tag: "Pure Detox"
     }
   ];
@@ -90,7 +90,7 @@ const Shop = () => {
                 className="product-card"
               >
                 <div className="p-img-container">
-                  <img src={p.image} alt={p.name} />
+                  <img src={p.image} alt={p.name} loading="lazy" />
                   <div className="p-overlay">
                     <button className="add-cart-btn" onClick={() => handleBuyNow(p)}><ShoppingBag size={18} /> Buy Now</button>
                   </div>

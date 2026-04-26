@@ -11,7 +11,7 @@ const OrderPage = () => {
     variant: "1kg Box",
     price: 740,
     quantity: 1,
-    image: "/amarkanth.png" // Fallback
+    image: "/amarkanth.webp" // Fallback
   };
 
   const [formData, setFormData] = useState({

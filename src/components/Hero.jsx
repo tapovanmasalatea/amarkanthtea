@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import banner1 from '../assets/banner1.png';
-import banner2 from '../assets/banner2.png';
+import banner1 from '../assets/banner1.webp';
+import banner2 from '../assets/banner2.webp';
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,8 +30,10 @@ const Hero = () => {
               src={img} 
               alt={`Amarkanth Banner ${i + 1}`} 
               className="carousel-img"
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchpriority={i === 0 ? "high" : "low"}
               onError={(e) => {
-                e.target.src = 'https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=2000';
+                e.target.src = 'https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=2000';
               }}
             />
           </motion.div>

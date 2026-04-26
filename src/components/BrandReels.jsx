@@ -28,11 +28,13 @@ const BrandReels = () => {
                   muted 
                   loop 
                   playsInline
+                  preload="none"
+                  poster="https://images.unsplash.com/photo-1544787210-2211d44b5657?auto=format&fit=crop&q=60&w=800"
                   className="reel-video"
                   onError={(e) => {
                     // Placeholder if video is not yet added
                     e.target.style.backgroundColor = '#2c3e50';
-                    e.target.poster = "https://images.unsplash.com/photo-1544787210-2211d44b5057?auto=format&fit=crop&q=80&w=800";
+                    e.target.poster = "https://images.unsplash.com/photo-1544787210-2211d44b5057?auto=format&fit=crop&q=60&w=800";
                   }}
                 />
               </div>

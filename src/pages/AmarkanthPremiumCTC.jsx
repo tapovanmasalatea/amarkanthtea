@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ShieldCheck, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
-import amarkanthImg from '../assets/amarkanth.png';
-import amarkanthPackImg from '../assets/amarkanth_pack.png';
-import tapovanImg from '../assets/tapovan.png';
-import tapovanPackImg from '../assets/tapovan_pack.png';
-import logoImg from '../assets/logo.png';
+import amarkanthImg from '../assets/amarkanth.webp';
+import amarkanthPackImg from '../assets/amarkanth_pack.webp';
+import tapovanImg from '../assets/tapovan.webp';
+import tapovanPackImg from '../assets/tapovan_pack.webp';
+import logoImg from '../assets/logo.webp';
 import { Link, useNavigate } from 'react-router-dom';
 
 const FAQItem = ({ question, answer }) => {
@@ -53,8 +53,8 @@ const AmarkanthPremiumCTC = () => {
   const productImages = [
     amarkanthImg,
     amarkanthPackImg,
-    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=80&w=800"
+    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=800",
+    "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=60&w=800"
   ];
   
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
@@ -90,16 +90,16 @@ const AmarkanthPremiumCTC = () => {
   ];
 
   const galleryImages = [
-    "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576091160550-2173bdd99602?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576091160550-2173bdd99602?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=60&w=500&auto=format&fit=crop"
   ];
 
   const faqs = [
@@ -128,7 +128,7 @@ const AmarkanthPremiumCTC = () => {
       tagline: "True Tea Lover",
       rating: 5,
       comment: "The most authentic kadak chai I've had in years. The color and aroma are just perfect for my morning ritual.",
-      image: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=80&w=300&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=60&w=300&auto=format&fit=crop",
       date: "2 days ago"
     },
     {
@@ -137,7 +137,7 @@ const AmarkanthPremiumCTC = () => {
       tagline: "Verified Buyer",
       rating: 4,
       comment: "Love the cardamom hint. It's subtle but makes a huge difference. Packaging is very premium too.",
-      image: "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=80&w=300&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=60&w=300&auto=format&fit=crop",
       date: "1 week ago"
     },
     {
@@ -146,7 +146,7 @@ const AmarkanthPremiumCTC = () => {
       tagline: "Energy Seeker",
       rating: 5,
       comment: "Strong, bold and exactly what I need to start my day. Best value for money in the premium segment.",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=300&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=60&w=300&auto=format&fit=crop",
       date: "3 weeks ago"
     }
   ];
@@ -171,6 +171,8 @@ const AmarkanthPremiumCTC = () => {
                   src={selectedImage} 
                   alt="Amarkanth Premium CTC Tea" 
                   className="product-main-img"
+                  loading="eager"
+                  fetchpriority="high"
                 />
               </div>
               
@@ -181,7 +183,7 @@ const AmarkanthPremiumCTC = () => {
                     className={`thumb-item ${selectedImage === img ? 'active' : ''}`}
                     onClick={() => setSelectedImage(img)}
                   >
-                    <img src={img} alt={`View ${idx + 1}`} />
+                    <img src={img} alt={`View ${idx + 1}`} loading="lazy" />
                   </div>
                 ))}
               </div>
@@ -347,7 +349,7 @@ const AmarkanthPremiumCTC = () => {
                 transition={{ delay: (i % 5) * 0.1 }}
                 className="gallery-item"
               >
-                <img src={src} alt={`User ${i + 1}`} />
+                <img src={src} alt={`User ${i + 1}`} loading="lazy" />
               </motion.div>
             ))}
           </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ShieldCheck, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Mountain, Wind, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
-import amarkanthImg from '../assets/amarkanth.png';
-import tapovanImg from '../assets/tapovan.png';
-import tapovanPackImg from '../assets/tapovan_pack.png';
-import logoImg from '../assets/logo.png';
+import amarkanthImg from '../assets/amarkanth.webp';
+import tapovanImg from '../assets/tapovan.webp';
+import tapovanPackImg from '../assets/tapovan_pack.webp';
+import logoImg from '../assets/logo.webp';
 import { Link, useNavigate } from 'react-router-dom';
 
 const FAQItem = ({ question, answer }) => {
@@ -52,8 +52,8 @@ const TapovanPremiumTea = () => {
   const productImages = [
     tapovanImg,
     tapovanPackImg,
-    "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1515442261904-68d009088658?auto=format&fit=crop&q=80&w=800"
+    "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=60&w=800",
+    "https://images.unsplash.com/photo-1515442261904-68d009088658?auto=format&fit=crop&q=60&w=800"
   ];
   
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
@@ -89,16 +89,16 @@ const TapovanPremiumTea = () => {
   ];
 
   const galleryImages = [
-    "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576091160550-2173bdd99602?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=500&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1576091160550-2173bdd99602?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=60&w=500&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=60&w=500&auto=format&fit=crop"
   ];
 
   const faqs = [
@@ -127,7 +127,7 @@ const TapovanPremiumTea = () => {
       tagline: "Highland Enthusiast",
       rating: 5,
       comment: "This tea is incredibly refreshing. I love the crisp mountain flavor that Tapovan brings. The slider pack is a genius addition!",
-      image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=300&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=60&w=300&auto=format&fit=crop",
       date: "3 days ago"
     },
     {
@@ -136,7 +136,7 @@ const TapovanPremiumTea = () => {
       tagline: "Verified Buyer",
       rating: 5,
       comment: "Best premium tea in this price range. You can actually taste the quality of high-grown leaves. Very smooth.",
-      image: "https://images.unsplash.com/photo-1544022613-e87dd75a784a?q=80&w=300&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1544022613-e87dd75a784a?q=60&w=300&auto=format&fit=crop",
       date: "10 days ago"
     },
     {
@@ -145,7 +145,7 @@ const TapovanPremiumTea = () => {
       tagline: "Daily Ritual",
       rating: 4,
       comment: "Refreshing and light but still strong enough for my taste. Perfect for those who enjoy a clean tea experience.",
-      image: "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=80&w=300&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=60&w=300&auto=format&fit=crop",
       date: "2 weeks ago"
     }
   ];

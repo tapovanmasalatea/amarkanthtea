@@ -1,5 +1,5 @@
 import React from 'react';
-import cupImg from '../assets/philosophy_cup.png';
+import cupImg from '../assets/philosophy_cup.webp';
 
 const Philosophy = () => {
   return (

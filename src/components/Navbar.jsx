@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,10 +68,18 @@ const Navbar = () => {
         <div className="menu-content">
           <div className="menu-label">Navigation</div>
           <Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link>
-          <Link to="/shop" className={location.pathname === '/shop' ? 'active' : ''}>Collection</Link>
-          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Our Legacy</Link>
-          <Link to="/distributor" className={location.pathname === '/distributor' ? 'active' : ''}>Distributors</Link>
-          <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Connect</Link>
+          
+          <div className="menu-item-with-sub">
+            <Link to="/shop" className={location.pathname === '/shop' ? 'active' : ''}>Collection</Link>
+            <div className="sub-links">
+              <Link to="/product/tapovan-premium-tea" className="sub-link">Tapovan Tea</Link>
+              <Link to="/product/amarkanth-premium-ctc" className="sub-link">Amarkanth Tea</Link>
+            </div>
+          </div>
+
+          <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About Us</Link>
+          <Link to="/distributor" className={location.pathname === '/distributor' ? 'active' : ''}>Apply for Distributiorship</Link>
+          <Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact Us</Link>
         </div>
         <div className="menu-footer">
           <div className="footer-line"></div>
@@ -260,19 +268,44 @@ const Navbar = () => {
 
         .menu-content a {
           font-weight: 700;
-          font-size: 3.5rem;
+          font-size: 2.2rem; /* Reduced from 3.5rem */
           color: var(--text-main);
           text-decoration: none;
           transition: all 0.4s ease;
-          opacity: 0.4;
-          line-height: 1.1;
-          letter-spacing: -0.04em;
+          opacity: 0.5;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+          font-family: 'Inter', sans-serif;
         }
 
         .menu-content a:hover, .menu-content a.active {
           opacity: 1;
-          transform: translateX(20px);
+          transform: translateX(10px);
           color: var(--primary-red);
+        }
+
+        .sub-links {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 10px;
+          margin-left: 20px;
+          padding-left: 20px;
+          border-left: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .sub-link {
+          font-size: 1.1rem !important; /* Smaller size for sub-links */
+          font-weight: 500 !important;
+          opacity: 0.6 !important;
+          transform: none !important;
+          letter-spacing: 0 !important;
+        }
+
+        .sub-link:hover {
+          opacity: 1 !important;
+          color: var(--primary-red) !important;
+          transform: translateX(5px) !important;
         }
 
         .menu-footer {

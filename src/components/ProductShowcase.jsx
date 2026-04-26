@@ -6,7 +6,7 @@ const ProductShowcase = () => {
     <section id="collections" className="product-showcase">
       <div className="product-block reveal">
         <div className="product-image">
-          <img src="/amarkanth_bold_tea.png" alt="Amarkanth CTC Tea" />
+          <img src="/amarkanth_bold_tea.webp" alt="Amarkanth CTC Tea" />
         </div>
         <div className="product-info">
           <p className="product-type">CTC Milk Tea</p>
@@ -37,7 +37,7 @@ const ProductShowcase = () => {
 
       <div className="product-block reverse reveal">
         <div className="product-image">
-          <img src="/tapovan_wellness_tea.png" alt="Tapovan Masala Tea" />
+          <img src="/tapovan_wellness_tea.webp" alt="Tapovan Masala Tea" />
         </div>
         <div className="product-info">
           <p className="product-type">Masala & Wellness Tea</p>
