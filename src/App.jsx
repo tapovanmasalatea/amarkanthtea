@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import logoImg from './assets/logo.webp';
 
 // Lazy Load Pages
 const Home = lazy(() => import('./pages/Home'));
@@ -22,7 +23,13 @@ const ShippingPolicy = lazy(() => import('./pages/LegalPages').then(module => ({
 
 const PageLoader = () => (
   <div className="page-loader">
-    <div className="loader-dot"></div>
+    <div className="brew-container">
+      <div className="logo-loader-container">
+        <img src={logoImg} alt="Amarkanth Group" className="pulsing-logo" />
+        <div className="loader-ring"></div>
+      </div>
+      <p className="loading-text">Brewing your experience...</p>
+    </div>
   </div>
 );
 
@@ -75,18 +82,66 @@ function AppContent() {
           align-items: center;
           justify-content: center;
           background: #fff;
+          z-index: 9999;
         }
-        .loader-dot {
-          width: 40px;
-          height: 40px;
-          background: #d50505;
+        .brew-container {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+        .tea-cup {
+          width: 120px;
+          height: 120px;
+        }
+        
+        .logo-loader-container {
+          position: relative;
+          width: 150px;
+          height: 150px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .pulsing-logo {
+          width: 100px;
+          height: auto;
+          z-index: 2;
+          animation: logoPulse 2s infinite ease-in-out;
+        }
+
+        .loader-ring {
+          position: absolute;
+          width: 130px;
+          height: 130px;
+          border: 2px solid transparent;
+          border-top-color: #d50505;
           border-radius: 50%;
-          animation: pulse 1.5s ease-in-out infinite;
+          animation: rotate 1.5s infinite linear;
         }
-        @keyframes pulse {
-          0% { transform: scale(0.8); opacity: 0.5; }
-          50% { transform: scale(1.2); opacity: 1; }
-          100% { transform: scale(0.8); opacity: 0.5; }
+
+        .loading-text {
+          font-family: 'Outfit', sans-serif;
+          font-weight: 700;
+          color: #111;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+          margin-top: 10px;
+          opacity: 0.8;
+        }
+
+        @keyframes logoPulse {
+          0% { transform: scale(0.95); opacity: 0.8; }
+          50% { transform: scale(1.05); opacity: 1; }
+          100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        @keyframes rotate {
+          0% { transform: rotate(0); }
+          100% { transform: rotate(360deg); }
         }
       `}} />
     </div>
