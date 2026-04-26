@@ -12,6 +12,13 @@ import diff6 from '../assets/diff6.webp';
 const About = () => {
   return (
     <div className="about-page">
+      {/* 0. Page Header (Left Side) */}
+      <section className="about-header-section">
+        <div className="container">
+          <h1 className="about-side-title">About Us</h1>
+        </div>
+      </section>
+
       {/* 1. Factory Visual (Hero) */}
       <section className="factory-visual first-visual">
         <div className="container">
@@ -21,7 +28,6 @@ const About = () => {
 
       {/* 2. Heritage Section (Dark Theme) */}
       <section className="heritage-section">
-        <div className="side-label">About Us</div>
         <div className="container">
           <div className="heritage-grid">
             <div className="heritage-content">
@@ -118,19 +124,23 @@ const About = () => {
         </div>
       </section>
 
-      {/* 4. Join the Family (Red Theme) */}
+      {/* 4. Join the Family (WhatsApp Connect) */}
       <section className="join-section">
         <div className="container">
           <div className="join-content">
-            <h2 className="join-title">Join the <span className="gold-italic">Amarkanth</span><br />Tea Family</h2>
-            <p className="join-desc">Get exclusive updates on new blends, seasonal offers, and the stories behind your favourite cup. Be the first to know when we launch something extraordinary.</p>
+            <h2 className="join-title">Connect with <span className="white-italic">Amarkanth</span><br />Tea on WhatsApp</h2>
+            <p className="join-desc">Have questions about our blends or looking for business partnerships? Reach out to us directly on WhatsApp for quick support and direct inquiries.</p>
             
-            <form className="subscribe-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email address" />
-              <button type="submit">SUBSCRIBE</button>
-            </form>
+            <a 
+              href="https://wa.me/917879111227?text=Hello,%20I'm%20interested%20in%20Amarkanth%20Tea!" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="whatsapp-btn"
+            >
+              CONNECT ON WHATSAPP
+            </a>
             
-            <p className="no-spam">No spam, ever. Just great chai stories and offers. Unsubscribe anytime.</p>
+            <p className="no-spam">Available Mon-Sat | 10 AM - 7 PM</p>
           </div>
         </div>
       </section>
@@ -140,9 +150,26 @@ const About = () => {
           background-color: #0c0c0c;
         }
 
+        /* Page Header */
+        .about-header-section {
+          padding: 140px 0 20px;
+          background: #0c0c0c;
+        }
+
+        .about-side-title {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          letter-spacing: 6px;
+          font-weight: 800;
+          color: var(--primary-red);
+          opacity: 0.8;
+          text-align: left;
+          margin-bottom: 0;
+        }
+
         /* Factory Visual (Top) */
         .factory-visual.first-visual {
-          padding: 140px 0 40px;
+          padding: 20px 0 40px;
           background: #0c0c0c;
         }
 
@@ -157,24 +184,9 @@ const About = () => {
         /* Heritage Section */
         .heritage-section {
           position: relative;
-          padding: 80px 0 120px;
+          padding: 40px 0 120px;
           color: white;
           background: #0c0c0c;
-        }
-
-        .side-label {
-          position: absolute;
-          left: 60px;
-          top: 150px;
-          transform: rotate(-90deg) translateX(-100%);
-          transform-origin: left center;
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 6px;
-          font-weight: 800;
-          color: #d4af37;
-          opacity: 0.6;
-          white-space: nowrap;
         }
 
         .heritage-grid {
@@ -191,8 +203,14 @@ const About = () => {
           margin-bottom: 50px;
         }
 
-        .gold-italic {
-          color: #d4af37;
+        .white-italic {
+          color: white;
+          font-style: italic;
+          font-weight: 400;
+        }
+
+        .red-italic {
+          color: var(--primary-red);
           font-style: italic;
           font-weight: 400;
         }
@@ -207,14 +225,14 @@ const About = () => {
         .quote-box {
           background: #151515;
           padding: 40px;
-          border-left: 4px solid #d4af37;
+          border-left: 4px solid var(--primary-red);
           margin: 40px 0;
         }
 
         .quote-box blockquote {
           font-size: 1.8rem;
           font-style: italic;
-          color: #d4af37;
+          color: var(--primary-red);
           margin-bottom: 10px;
         }
 
@@ -240,7 +258,7 @@ const About = () => {
         }
 
         .time-label {
-          color: #d4af37;
+          color: var(--primary-red);
           font-weight: 800;
           font-size: 0.8rem;
           text-transform: uppercase;
@@ -392,48 +410,31 @@ const About = () => {
           line-height: 1.6;
         }
 
-        .subscribe-form {
-          display: flex;
-          max-width: 600px;
-          margin: 0 auto 30px;
-          background: rgba(0,0,0,0.1);
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        .subscribe-form input {
-          flex: 1;
-          background: transparent;
-          border: none;
-          padding: 20px 30px;
-          color: white;
-          font-size: 1rem;
-          outline: none;
-        }
-
-        .subscribe-form input::placeholder {
-          color: rgba(255,255,255,0.5);
-        }
-
-        .subscribe-form button {
-          background: #d4af37;
-          color: #000;
-          border: none;
-          padding: 0 40px;
+        .whatsapp-btn {
+          display: inline-block;
+          background: #25D366; /* WhatsApp Green */
+          color: #fff;
+          padding: 20px 50px;
+          border-radius: 50px;
           font-weight: 800;
+          font-size: 1rem;
           letter-spacing: 1px;
-          cursor: pointer;
-          transition: background 0.3s ease;
+          text-decoration: none;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+          margin-bottom: 30px;
         }
 
-        .subscribe-form button:hover {
-          background: #c19b2e;
+        .whatsapp-btn:hover {
+          background: #128C7E;
+          transform: translateY(-5px) scale(1.05);
+          box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
         }
 
         .no-spam {
           font-size: 0.85rem;
-          opacity: 0.6;
+          opacity: 0.7;
+          font-weight: 600;
         }
 
         @media (max-width: 1024px) {
@@ -443,9 +444,19 @@ const About = () => {
         }
 
         @media (max-width: 768px) {
+          .about-header-section {
+            padding: 100px 0 20px;
+          }
+          .about-side-title {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+          }
+          .heritage-section {
+            padding: 20px 0 80px;
+          }
           .diff-grid { grid-template-columns: 1fr; }
-          .heritage-title { font-size: 2.5rem; }
-          .join-title { font-size: 2.5rem; }
+          .heritage-title { font-size: 2.2rem; }
+          .join-title { font-size: 2.2rem; }
           .subscribe-form { flex-direction: column; background: transparent; border: none; }
           .subscribe-form input { background: rgba(255,255,255,0.1); margin-bottom: 15px; border-radius: 8px; }
           .subscribe-form button { padding: 20px; border-radius: 8px; }

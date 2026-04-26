@@ -6,37 +6,19 @@ import logoImg from '../assets/logo.webp';
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-overlay"></div>
       <div className="container footer-relative">
         <div className="footer-logo-center">
           <img src={logoImg} alt="Amarkanth Logo" className="footer-main-logo" />
         </div>
 
-        <div className="footer-grid">
-          <div className="footer-links">
-            <div className="link-col">
-              <h4>Collections</h4>
-              <Link to="/product/amarkanth-premium-ctc">Amarkanth CTC</Link>
-              <Link to="/product/tapovan-premium-tea">Tapovan Premium</Link>
-              <Link to="/shop">Shop All</Link>
-            </div>
-            <div className="link-col">
-              <h4>Brand</h4>
-              <Link to="/about">Our Legacy</Link>
-              <Link to="/distributor">Distributors</Link>
-              <Link to="/contact">Connect</Link>
-            </div>
-            <div className="link-col">
-              <h4>Legal & Support</h4>
-              <Link to="/privacy-policy">Privacy Policy</Link>
-              <Link to="/terms-conditions">Terms & Conditions</Link>
-              <Link to="/refund-policy">Refund Policy</Link>
-              <Link to="/shipping-policy">Shipping Policy</Link>
-            </div>
-          </div>
+        <div className="footer-nav-horizontal">
+          <Link to="/about">About Us</Link>
+          <Link to="/shop">Collection</Link>
+          <Link to="/distributor">Distributiorship</Link>
+          <Link to="/contact">Contact Us</Link>
         </div>
 
-        <div className="footer-bottom">
+        <div className="footer-bottom-bar">
           <div className="copyright">© 2024 Amarkanth Group. All rights reserved.</div>
           <div className="social-links">
             <a href="https://www.instagram.com/amarkanth_tea/" target="_blank" rel="noreferrer">Instagram</a>
@@ -48,132 +30,99 @@ const Footer = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         .footer {
           position: relative;
-          padding: 120px 0 60px;
+          padding: 120px 0 80px; /* Increased padding for full design view */
           background-image: url('${footerImg}');
           background-size: cover;
           background-position: center;
-          color: white;
+          color: #000000;
           overflow: hidden;
-        }
-
-        .footer-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
-          z-index: 1;
+          min-height: 500px; /* Ensure full background is visible */
+          display: flex;
+          align-items: center;
         }
 
         .footer-relative {
           position: relative;
           z-index: 2;
+          width: 100%;
         }
 
         .footer-logo-center {
           display: flex;
           justify-content: center;
-          margin-bottom: 80px;
+          margin-bottom: 30px;
         }
 
         .footer-main-logo {
           height: 120px;
           width: auto;
-          opacity: 1;
+          filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
         }
 
-        .footer-grid {
-          margin-bottom: 80px;
-          border-top: 1px solid rgba(255,255,255,0.1);
-          padding-top: 80px;
+        .footer-nav-horizontal {
           display: flex;
           justify-content: center;
-        }
-
-        .footer-text-logo {
-          font-size: 2.2rem;
-          margin-bottom: 20px;
-          letter-spacing: 2px;
-          color: #d50505;
-          line-height: 1.1;
-        }
-
-        .footer-tagline {
-          font-family: 'Playfair Display', serif;
-          font-style: italic;
-          opacity: 0.7;
-          font-size: 1.1rem;
-        }
-
-        .footer-links {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
           gap: 40px;
+          margin-bottom: 60px;
         }
 
-        .link-col h4 {
-          text-transform: uppercase;
-          font-size: 0.8rem;
-          letter-spacing: 3px;
-          margin-bottom: 30px;
-          color: white;
-          font-weight: 800;
-        }
-
-        .link-col {
-          display: flex;
-          flex-direction: column;
-          gap: 15px;
-        }
-
-        .link-col a {
-          color: rgba(255,255,255,0.6);
-          font-size: 0.95rem;
-          transition: 0.3s ease;
+        .footer-nav-horizontal a {
           text-decoration: none;
+          color: #000000;
+          font-weight: 800;
+          font-size: 0.95rem;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          transition: 0.3s ease;
         }
 
-        .link-col a:hover {
+        .footer-nav-horizontal a:hover {
           color: #d50505;
-          transform: translateX(5px);
         }
 
-        .footer-bottom {
-          padding-top: 50px;
-          border-top: 1px solid rgba(255,255,255,0.1);
+        .footer-bottom-bar {
           display: flex;
           justify-content: space-between;
           align-items: center;
           font-size: 0.85rem;
-          color: rgba(255,255,255,0.4);
+          color: #000000;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-top: 1px solid rgba(0,0,0,0.1);
+          padding-top: 40px;
         }
 
         .social-links {
           display: flex;
-          gap: 30px;
+          gap: 40px;
         }
 
         .social-links a {
           text-decoration: none;
-          color: inherit;
+          color: #000;
           transition: 0.3s ease;
         }
 
         .social-links a:hover {
-          color: white;
+          color: #d50505;
         }
 
-        @media (max-width: 968px) {
-          .footer-grid {
-            padding-top: 40px;
-          }
-          .footer-links {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            text-align: left;
+        @media (max-width: 768px) {
+          .footer {
+            padding: 80px 0;
+            min-height: auto;
           }
           .footer-main-logo {
             height: 80px;
           }
-          .footer-bottom {
+          .footer-nav-horizontal {
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+          }
+          .footer-bottom-bar {
             flex-direction: column;
             gap: 20px;
             text-align: center;
