@@ -119,12 +119,50 @@ const DistributorPage = () => {
     { q: "What happens if there is a quality issue?", a: "We have a full replacement policy for any verified quality concern — no questions asked. Every batch carries a lot number traceable to source garden and processing date." }
   ];
 
-  const channels = [
-    { name: "Amazon", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" },
-    { name: "Blinkit", logo: "https://upload.wikimedia.org/wikipedia/commons/3/30/Blinkit_logo.svg" },
-    { name: "Zepto", logo: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Zepto_Logo.svg" },
-    { name: "Flipkart", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Flipkart_logo.webp" }
-  ];
+  const [selectedTier, setSelectedTier] = useState("Select approximate volume");
+  const [formData, setFormData] = useState({
+    name: '',
+    business: '',
+    phone: '',
+    email: '',
+    location: '',
+    state: 'Select state',
+    type: 'Select your business type',
+    interest: 'Both Amarkanth & Tapovan',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const scrollToForm = (tierValue) => {
+    if (tierValue) {
+      setSelectedTier(tierValue);
+    }
+    const formElement = document.getElementById('apply-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const message = `*Distributor Inquiry - Amarkanth Group*%0A%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Business:* ${formData.business || 'N/A'}%0A` +
+      `*Phone:* ${formData.phone}%0A` +
+      `*Location:* ${formData.location}, ${formData.state}%0A` +
+      `*Type:* ${formData.type}%0A` +
+      `*Interest:* ${formData.interest}%0A` +
+      `*Volume:* ${selectedTier}%0A` +
+      `*Message:* ${formData.message || 'N/A'}`;
+
+    const whatsappUrl = `https://wa.me/917879111227?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  };
 
   return (
     <div className="distributor-page">
@@ -143,8 +181,8 @@ const DistributorPage = () => {
               one bold, one mindful — and capture a market hungry for quality.
             </p>
             <div className="hero-btns">
-              <button className="btn-primary-dist">Apply Now <ArrowRight size={20} /></button>
-              <button className="btn-secondary-dist">View Partner Tiers</button>
+              <button className="btn-primary-dist" onClick={() => scrollToForm()}>Apply Now <ArrowRight size={20} /></button>
+              <button className="btn-secondary-dist" onClick={() => scrollToForm()}>View Partner Tiers</button>
             </div>
           </motion.div>
         </div>
@@ -208,27 +246,16 @@ const DistributorPage = () => {
                     <li key={j}><ChevronRight size={16} /> {feat}</li>
                   ))}
                 </ul>
-                <button className={`tier-btn ${tier.popular ? 'btn-gold' : 'btn-outline'}`}>
+                <button 
+                  className={`tier-btn ${tier.popular ? 'btn-gold' : 'btn-outline'}`}
+                  onClick={() => scrollToForm(
+                    tier.name === "Starter" ? "25kg - 100kg" : 
+                    tier.name === "Gold" ? "100kg - 500kg" : 
+                    "Above 500kg"
+                  )}
+                >
                   {tier.cta} <ArrowRight size={18} />
                 </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sales Channels */}
-      <section className="channels-section">
-        <div className="dist-container">
-          <div className="section-header centered">
-            <p className="small-label">Our Retail & Digital Reach</p>
-            <h2 className="section-title">Trusted by Market Leaders</h2>
-          </div>
-          <div className="channels-grid">
-            {channels.map((ch, i) => (
-              <div key={i} className="channel-box">
-                <img src={ch.logo} alt={ch.name} className="channel-logo" />
-                <span>{ch.name}</span>
               </div>
             ))}
           </div>
@@ -277,51 +304,88 @@ const DistributorPage = () => {
                   <MessageCircle className="icon" />
                   <div>
                     <span>WhatsApp</span>
-                    <p>+91 98XXX XXXXX</p>
+                    <p>+91 78791 11227</p>
                   </div>
                 </div>
                 <div className="contact-item">
                   <Mail className="icon" />
                   <div>
                     <span>Email</span>
-                    <p>partners@amarkanth.in</p>
+                    <p>ptc.anjad@gmail.com</p>
                   </div>
                 </div>
                 <div className="contact-item">
-                  <Globe className="icon" />
+                  <MapPin className="icon" />
                   <div>
                     <span>Based In</span>
-                    <p>Indore, Madhya Pradesh</p>
+                    <p>Anjad, Madhya Pradesh</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <form className="dist-form">
+            <form className="dist-form" onSubmit={handleSubmit}>
               <div className="form-grid">
                 <div className="form-group">
                   <label>Full Name *</label>
-                  <input type="text" placeholder="Your full name" required />
+                  <input 
+                    type="text" 
+                    name="name"
+                    placeholder="Your full name" 
+                    required 
+                    value={formData.name}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Business Name</label>
-                  <input type="text" placeholder="Your company / store name" />
+                  <input 
+                    type="text" 
+                    name="business"
+                    placeholder="Your company / store name" 
+                    value={formData.business}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Phone / WhatsApp *</label>
-                  <input type="tel" placeholder="+91 XXXXX XXXXX" required />
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    placeholder="+91 XXXXX XXXXX" 
+                    required 
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>Email Address</label>
-                  <input type="email" placeholder="you@business.com" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="you@business.com" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>City / Location *</label>
-                  <input type="text" placeholder="e.g. Bhopal, Delhi, Surat" required />
+                  <input 
+                    type="text" 
+                    name="location"
+                    placeholder="e.g. Bhopal, Delhi, Surat" 
+                    required 
+                    value={formData.location}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="form-group">
                   <label>State</label>
-                  <select>
+                  <select 
+                    name="state"
+                    value={formData.state}
+                    onChange={handleInputChange}
+                  >
                     <option>Select state</option>
                     <option>Madhya Pradesh</option>
                     <option>Maharashtra</option>
@@ -331,7 +395,12 @@ const DistributorPage = () => {
                 </div>
                 <div className="form-group">
                   <label>Business Type *</label>
-                  <select required>
+                  <select 
+                    name="type"
+                    required
+                    value={formData.type}
+                    onChange={handleInputChange}
+                  >
                     <option>Select your business type</option>
                     <option>Retailer / Supermarket</option>
                     <option>Wholesale Distributor</option>
@@ -340,7 +409,11 @@ const DistributorPage = () => {
                 </div>
                 <div className="form-group">
                   <label>Interested In</label>
-                  <select>
+                  <select 
+                    name="interest"
+                    value={formData.interest}
+                    onChange={handleInputChange}
+                  >
                     <option>Both Amarkanth & Tapovan</option>
                     <option>Amarkanth (Bold)</option>
                     <option>Tapovan (Mindful)</option>
@@ -348,16 +421,26 @@ const DistributorPage = () => {
                 </div>
                 <div className="form-group full-width">
                   <label>Estimated Monthly Volume *</label>
-                  <select required>
+                  <select 
+                    required 
+                    value={selectedTier}
+                    onChange={(e) => setSelectedTier(e.target.value)}
+                  >
                     <option>Select approximate volume</option>
-                    <option>25kg - 100kg</option>
-                    <option>100kg - 500kg</option>
-                    <option>Above 500kg</option>
+                    <option value="25kg - 100kg">25kg - 100kg</option>
+                    <option value="100kg - 500kg">100kg - 500kg</option>
+                    <option value="Above 500kg">Above 500kg</option>
                   </select>
                 </div>
                 <div className="form-group full-width">
                   <label>Tell Us About Your Business</label>
-                  <textarea placeholder="Brief description of your business, your current tea brands if any..." rows="4"></textarea>
+                  <textarea 
+                    name="message"
+                    placeholder="Brief description of your business, your current tea brands if any..." 
+                    rows="4"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                  ></textarea>
                 </div>
               </div>
               
@@ -429,7 +512,7 @@ const DistributorPage = () => {
         }
 
         .dist-hero {
-          padding: 100px 0;
+          padding: 60px 0;
           background: linear-gradient(to bottom, #fff, #fff9f9);
           text-align: center;
         }
@@ -525,9 +608,9 @@ const DistributorPage = () => {
           text-transform: uppercase;
         }
 
-        .why-partner { padding: 120px 0; }
+        .why-partner { padding: 60px 0; }
 
-        .section-header { margin-bottom: 80px; }
+        .section-header { margin-bottom: 40px; }
         .section-header.centered { text-align: center; }
 
         .section-title {
@@ -540,21 +623,21 @@ const DistributorPage = () => {
 
         .title-accent {
           font-family: 'Dancing Script', cursive;
-          font-size: 2.5rem;
+          font-size: 2rem;
           color: var(--dist-red);
-          margin-bottom: 25px;
+          margin-bottom: 20px;
         }
 
-        .section-desc { font-size: 1.2rem; color: #666; max-width: 600px; line-height: 1.6; }
+        .section-desc { font-size: 1.1rem; color: #666; max-width: 600px; line-height: 1.6; }
 
         .benefits-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 40px;
+          gap: 30px;
         }
 
         .benefit-card {
-          padding: 40px;
+          padding: 30px;
           background: #fdfdfd;
           border: 1px solid #f0f0f0;
           border-radius: 20px;
@@ -572,13 +655,13 @@ const DistributorPage = () => {
           align-items: center;
           justify-content: center;
           border-radius: 12px;
-          margin-bottom: 25px;
+          margin-bottom: 20px;
         }
 
-        .benefit-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 15px; color: #111; }
-        .benefit-card p { font-size: 1rem; color: #666; line-height: 1.6; }
+        .benefit-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: #111; }
+        .benefit-card p { font-size: 0.95rem; color: #666; line-height: 1.6; }
 
-        .tiers-section { padding: 120px 0; background: #fdf8f0; }
+        .tiers-section { padding: 80px 0; background: #fdf8f0; }
 
         .tiers-grid {
           display: grid;
@@ -651,44 +734,37 @@ const DistributorPage = () => {
         .btn-gold { background: var(--dist-red); color: #fff; border: none; }
         .btn-gold:hover { background: #b00404; }
 
-        .channels-section { padding: 80px 0; background: #fff; border-bottom: 1px solid #f0f0f0; }
-        .small-label { font-size: 0.8rem; font-weight: 800; color: var(--dist-red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .channels-grid { display: flex; justify-content: center; align-items: center; gap: 60px; flex-wrap: wrap; margin-top: 40px; opacity: 0.6; filter: grayscale(1); }
-        .channel-box { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .channel-logo { height: 35px; width: auto; }
-        .channel-box span { font-size: 0.75rem; font-weight: 700; color: #888; }
-
-        .how-it-works { padding: 120px 0; background: #fff; }
+        .how-it-works { padding: 80px 0; background: #fff; }
 
         .steps-container {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           gap: 20px;
-          margin-top: 60px;
+          margin-top: 40px;
           position: relative;
         }
 
         .step-item { position: relative; }
         .step-num { 
-          font-size: 3rem; 
+          font-size: 2.5rem; 
           font-weight: 900; 
           color: #f0f0f0; 
           font-family: 'Outfit', sans-serif;
-          margin-bottom: -20px;
+          margin-bottom: -15px;
           transition: 0.3s;
         }
         .step-item:hover .step-num { color: #fff5f5; transform: translateY(-5px); }
-        .step-info h4 { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: #111; }
-        .step-info p { font-size: 0.9rem; color: #666; line-height: 1.5; }
+        .step-info h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 8px; color: #111; }
+        .step-info p { font-size: 0.85rem; color: #666; line-height: 1.5; }
 
-        .application-section { padding: 120px 0; background: #fafafa; }
+        .application-section { padding: 80px 0; background: #fafafa; }
         .form-wrapper {
           display: grid;
           grid-template-columns: 1fr 1.5fr;
-          gap: 80px;
+          gap: 60px;
           background: #fff;
           border-radius: 40px;
-          padding: 80px;
+          padding: 60px;
           box-shadow: 0 40px 100px rgba(0,0,0,0.05);
         }
 

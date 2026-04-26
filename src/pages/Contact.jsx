@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    location: '',
+    type: 'Select Type',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const message = `*Website Inquiry - Amarkanth Group*%0A%0A` +
+      `*Name:* ${formData.name}%0A` +
+      `*Phone:* ${formData.phone}%0A` +
+      `*Email:* ${formData.email || 'N/A'}%0A` +
+      `*Location:* ${formData.location}%0A` +
+      `*Interest:* ${formData.type}%0A` +
+      `*Message:* ${formData.message}`;
+
+    const whatsappUrl = `https://wa.me/917879111227?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="contact-page">
       <header className="page-header">
@@ -52,43 +80,82 @@ const Contact = () => {
             </div>
 
             <div className="contact-form-container reveal active">
-              <h3 className="form-title">Distributor Inquiry</h3>
-              <form className="contact-form">
+              <h3 className="form-title">Send Message</h3>
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
                     <label>Full Name</label>
-                    <input type="text" placeholder="Your name" />
+                    <input 
+                      type="text" 
+                      name="name"
+                      placeholder="Your name" 
+                      required 
+                      value={formData.name}
+                      onChange={handleInputChange}
+                    />
                   </div>
                   <div className="form-group">
                     <label>Phone Number</label>
-                    <input type="tel" placeholder="+91 00000 00000" />
+                    <input 
+                      type="tel" 
+                      name="phone"
+                      placeholder="+91 00000 00000" 
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                    />
                   </div>
                 </div>
                 <div className="form-group">
                   <label>Email Address</label>
-                  <input type="email" placeholder="email@example.com" />
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="email@example.com" 
+                    value={formData.email}
+                    onChange={handleInputChange}
+                  />
                 </div>
                 <div className="form-row">
                   <div className="form-group">
                     <label>City / Location</label>
-                    <input type="text" placeholder="e.g. Indore, M.P." />
+                    <input 
+                      type="text" 
+                      name="location"
+                      placeholder="e.g. Indore, M.P." 
+                      required
+                      value={formData.location}
+                      onChange={handleInputChange}
+                    />
                   </div>
                   <div className="form-group">
-                    <label>Business Type</label>
-                    <select>
+                    <label>Interest</label>
+                    <select 
+                      name="type"
+                      value={formData.type}
+                      onChange={handleInputChange}
+                    >
                       <option>Select Type</option>
                       <option>Distributor</option>
                       <option>Wholesaler</option>
                       <option>Retailer / Café</option>
+                      <option>General Inquiry</option>
                     </select>
                   </div>
                 </div>
                 <div className="form-group">
                   <label>Your Message</label>
-                  <textarea rows="4" placeholder="Tell us about your business..."></textarea>
+                  <textarea 
+                    name="message"
+                    rows="4" 
+                    placeholder="How can we help you?"
+                    required
+                    value={formData.message}
+                    onChange={handleInputChange}
+                  ></textarea>
                 </div>
                 <button type="submit" className="btn-primary" style={{width: '100%', display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '10px'}}>
-                  Send Inquiry <Send size={18} />
+                  Send via WhatsApp <Send size={18} />
                 </button>
               </form>
             </div>
@@ -276,10 +343,23 @@ const Contact = () => {
         @media (max-width: 968px) {
           .contact-grid {
             grid-template-columns: 1fr;
-            gap: 60px;
+            gap: 40px;
           }
           .contact-form-container {
-            padding: 30px;
+            padding: 30px 20px;
+          }
+          .form-row {
+            flex-direction: column;
+            gap: 25px;
+          }
+          .contact-info h2 {
+            font-size: 2rem;
+          }
+          .contact-info p {
+            margin-bottom: 30px;
+          }
+          .info-items {
+            gap: 30px;
           }
         }
       `}} />

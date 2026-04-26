@@ -14,35 +14,27 @@ const Shop = () => {
       id: 1,
       name: "Amarkanth Premium CTC Tea With Cardamom",
       category: "ctc",
+      description: "Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience.",
       price: 740,
       image: amarkanthImg,
-      tag: "Bestseller",
+      badge: "Bestseller",
+      color: "#d50505",
+      lightBg: "#fff0f0",
+      rating: "4.9",
       link: "/product/amarkanth-premium-ctc"
     },
     {
       id: 2,
       name: "Tapovan Premium Tea",
       category: "ctc",
+      description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing mountain-fresh taste.",
       price: 740,
       image: tapovanImg,
-      tag: "Mountain Fresh",
+      badge: "Special Edition",
+      color: "#f15800",
+      lightBg: "#fff8f0",
+      rating: "4.8",
       link: "/product/tapovan-premium-tea"
-    },
-    {
-      id: 3,
-      name: "Morning Ritual Blend",
-      category: "ctc",
-      price: 420,
-      image: "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=800",
-      tag: "Everyday Strength"
-    },
-    {
-      id: 4,
-      name: "Wellness Spiced Green",
-      category: "wellness",
-      price: 650,
-      image: "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=60&w=800",
-      tag: "Pure Detox"
     }
   ];
 
@@ -72,8 +64,6 @@ const Shop = () => {
           <div className="shop-filters">
             <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>All Blends</button>
             <button className={filter === 'ctc' ? 'active' : ''} onClick={() => setFilter('ctc')}>CTC Milk Tea</button>
-            <button className={filter === 'masala' ? 'active' : ''} onClick={() => setFilter('masala')}>Masala</button>
-            <button className={filter === 'wellness' ? 'active' : ''} onClick={() => setFilter('wellness')}>Wellness</button>
           </div>
         </div>
       </header>
@@ -87,20 +77,41 @@ const Shop = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 key={p.id} 
-                className="product-card"
+                className="modern-card"
+                style={{ '--brand-color': p.color }}
               >
-                <div className="p-img-container">
-                  <img src={p.image} alt={p.name} loading="lazy" />
-                  <div className="p-overlay">
-                    <button className="add-cart-btn" onClick={() => handleBuyNow(p)}><ShoppingBag size={18} /> Buy Now</button>
+                {/* Top Half: Visuals */}
+                <div className="card-top" style={{ backgroundColor: p.lightBg }}>
+                  <div className="ribbon-badge">
+                    <span>{p.badge}</span>
+                  </div>
+                  
+                  <div className="image-wrapper">
+                    <img src={p.image} alt={p.name} className="product-image" loading="lazy" />
+                  </div>
+
+                  <div className="rating-pill">
+                    <span className="star-icon">★</span>
+                    <span className="rating-val">{p.rating} | 1 KG PACK</span>
                   </div>
                 </div>
-                <div className="p-details">
-                  <p className="p-tag">{p.tag}</p>
-                  <h3>{p.name}</h3>
-                  <div className="p-footer">
-                    <span className="p-price">₹{p.price}</span>
-                    <Link to={p.link || "#"} className="p-view">Details <ArrowRight size={14} /></Link>
+
+                {/* Bottom Half: Info & Actions */}
+                <div className="card-bottom" style={{ backgroundColor: p.color }}>
+                  <div className="info-section">
+                    <h3 className="modern-product-name">{p.name}</h3>
+                    <p className="product-desc-short">{p.description}</p>
+                    <p className="modern-price">₹{p.price}</p>
+                    <p className="tax-label">MRP Inclusive of all taxes</p>
+                  </div>
+
+                  <div className="selection-section">
+                    <Link to={p.link || "#"} className="modern-add-btn" style={{ textAlign: 'center', textDecoration: 'none', display: 'block' }}>
+                      VIEW DETAILS
+                    </Link>
+                    <button className="modern-add-btn" onClick={() => handleBuyNow(p)}>
+                      BUY NOW
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -126,7 +137,7 @@ const Shop = () => {
           background: none;
           border: none;
           padding: 10px 0;
-          font-family: 'Outfit', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -142,123 +153,169 @@ const Shop = () => {
           border-bottom-color: var(--primary-red);
         }
 
-        .shop-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 40px;
+        .shop-grid-section {
           padding-bottom: 100px;
         }
 
-        .product-card {
-          background: var(--white);
-          border-radius: 4px;
+        .shop-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+          gap: 40px;
+        }
+
+        /* Modern Card Styles (Shared with Home) */
+        .modern-card {
+          border-radius: 20px;
           overflow: hidden;
-          transition: var(--transition-smooth);
-        }
-
-        .product-card:hover {
-          transform: translateY(-10px);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-        }
-
-        .p-img-container {
-          position: relative;
-          height: 350px;
-          overflow: hidden;
-        }
-
-        .p-img-container img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .p-overlay {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          padding: 20px;
-          background: linear-gradient(transparent, rgba(0,0,0,0.6));
           display: flex;
+          flex-direction: column;
+          height: 100%;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+          border: 1px solid rgba(0,0,0,0.05);
+          background: white;
+        }
+
+        .modern-card:hover {
+          transform: translateY(-8px);
+        }
+
+        .card-top {
+          position: relative;
+          padding: 40px 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           justify-content: center;
-          transform: translateY(100%);
-          transition: var(--transition-smooth);
+          height: 380px;
         }
 
-        .product-card:hover .p-overlay {
-          transform: translateY(0);
+        .ribbon-badge {
+          position: absolute;
+          top: 0;
+          left: 20px;
+          background: var(--brand-color);
+          color: white;
+          padding: 8px 20px 12px 20px;
+          font-size: 0.75rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+          z-index: 10;
         }
 
-        .add-cart-btn {
-          background: var(--white);
-          color: var(--text-main);
-          border: none;
-          padding: 12px 25px;
-          border-radius: 2px;
-          font-weight: 700;
+        .image-wrapper {
+          width: 100%;
+          height: 250px;
           display: flex;
           align-items: center;
-          gap: 10px;
-          font-size: 0.8rem;
-          cursor: pointer;
-          text-transform: uppercase;
+          justify-content: center;
+          margin-bottom: 20px;
         }
 
-        .p-details {
+        .product-image {
+          max-width: 90%;
+          max-height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
+        }
+
+        .rating-pill {
+          background: white;
+          padding: 6px 15px;
+          border-radius: 50px;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: #333;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .star-icon {
+          color: #ffb400;
+          font-size: 1rem;
+        }
+
+        .card-bottom {
           padding: 30px;
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          color: white;
         }
 
-        .p-tag {
-          font-size: 0.7rem;
+        .info-section {
+          margin-bottom: 25px;
+        }
+
+        .modern-product-name {
+          font-size: 1.6rem;
+          font-weight: 800;
+          margin-bottom: 12px;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+        }
+
+        .product-desc-short {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 20px;
+          opacity: 0.9;
+          font-weight: 400;
+        }
+
+        .modern-price {
+          font-size: 1.8rem;
+          font-weight: 800;
+          margin-bottom: 5px;
+        }
+
+        .tax-label {
+          font-size: 0.75rem;
+          opacity: 0.8;
+          font-weight: 500;
+        }
+
+        .selection-section {
+          margin-top: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .modern-add-btn {
+          background: white;
+          color: var(--brand-color);
+          border: none;
+          padding: 16px;
+          border-radius: 12px;
+          font-weight: 800;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
           text-transform: uppercase;
           letter-spacing: 1px;
-          color: var(--primary-red);
-          font-weight: 700;
-          margin-bottom: 10px;
         }
 
-        .p-details h3 {
-          font-size: 1.4rem;
-          margin-bottom: 20px;
-          font-family: 'Outfit', sans-serif;
+        .modern-add-btn:hover {
+          background: #f8f8f8;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        .p-footer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding-top: 20px;
-          border-top: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .p-price {
-          font-family: 'Playfair Display', serif;
-          font-weight: 700;
-          font-size: 1.2rem;
-        }
-
-        .p-view {
-          background: none;
-          border: none;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-weight: 600;
-          font-size: 0.8rem;
-          text-transform: uppercase;
-          color: var(--text-muted);
-          cursor: pointer;
-        }
-
-        .p-view:hover {
-          color: var(--primary-red);
-        }
-
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+          .modern-product-name { font-size: 1.4rem; }
+          .card-top { height: 320px; }
+          .image-wrapper { height: 200px; }
+          .shop-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
           .shop-filters {
-            flex-wrap: wrap;
             gap: 15px;
+            flex-wrap: wrap;
           }
         }
       `}} />
