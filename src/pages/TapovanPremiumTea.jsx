@@ -3,7 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ShieldCheck, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Mountain, Wind, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
 import amarkanthImg from '../assets/amarkanth.webp';
 import tapovan from '../assets/tapovan.webp';
-import tapovan1 from '../assets/tapovan_pack.webp';
+import tapovan1 from '../assets/tapovan1.webp';
+import tapovan2 from '../assets/tapovan2.webp';
+import tapovan3 from '../assets/tapovan3.webp';
+import tpLoved1 from '../assets/tp_loved1.webp';
+import tpLoved2 from '../assets/tp_loved2.webp';
+import tpLoved3 from '../assets/tp_loved3.webp';
+import tpLoved4 from '../assets/tp_loved4.webp';
 import logoImg from '../assets/logo.webp';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -52,8 +58,8 @@ const TapovanPremiumTea = () => {
   const productImages = [
     tapovan,
     tapovan1,
-    "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=60&w=800",
-    "https://images.unsplash.com/photo-1515442261904-68d009088658?auto=format&fit=crop&q=60&w=800"
+    tapovan2,
+    tapovan3
   ];
   
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
@@ -89,8 +95,10 @@ const TapovanPremiumTea = () => {
   ];
 
   const galleryImages = [
-    "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=60&w=500&auto=format&fit=crop"
+    tpLoved1,
+    tpLoved2,
+    tpLoved3,
+    tpLoved4
   ];
 
   const faqs = [
@@ -208,16 +216,15 @@ const TapovanPremiumTea = () => {
                   <p>Buy now and Get a <strong>Scratch Card</strong> & win a <strong>Thailand Trip!</strong></p>
                 </div>
 
-                {/* Upsell Card */}
-                <div className="upsell-card tapovan-upsell">
-                  <div className="test-badge tapovan-badge">TEST. TRUST.</div>
+                {/* Upsell Card - Free Amarkanth Tester */}
+                <div className="upsell-card amarkanth-upsell">
+                  <div className="test-badge amarkanth-badge">LIMITED OFFER</div>
                   <div className="upsell-content">
-                    <img src={tapovanPackImg} alt="Kit" className="kit-thumb" />
+                    <img src={amarkanthImg} alt="Amarkanth Tester" className="kit-thumb" />
                     <div className="kit-info">
-                      <h4>Purity Testing Kit</h4>
-                      <p>₹99</p>
+                      <h4>Get FREE Amarkanth Tea Tester</h4>
+                      <p>Worth ₹50</p>
                     </div>
-                    <button className="btn-add-upsell tapovan-btn-outline">Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -538,29 +545,27 @@ const TapovanPremiumTea = () => {
           display: flex;
           align-items: center;
           gap: 12px;
-          margin-bottom: 20px;
+          margin-bottom: 30px;
           border: 1px dashed var(--tapovan-orange);
         }
         .offers-stack-mobile { margin-top: 15px; }
         .promo-bar-v2 p { margin: 0; font-size: 1.05rem; color: #e65100; }
         .promo-bar-v2 strong { color: #bf360c; }
 
-        .upsell-card {
-           background: #fff9f0;
+        .upsell-card.amarkanth-upsell {
+           background: #fff5f5;
            border-radius: 15px;
-           padding: 20px;
-           margin-bottom: 40px;
+           padding: 25px;
+           margin-bottom: 30px;
            position: relative;
-           border: 1px solid #ffe0b2;
+           border: 2px solid var(--brand-red);
         }
-        .test-badge { position: absolute; top: -10px; left: 20px; background: var(--tapovan-orange); color: white; padding: 4px 10px; font-size: 0.7rem; font-weight: 800; border-radius: 4px; }
+        .amarkanth-badge { position: absolute; top: -12px; left: 20px; background: var(--brand-red); color: white; padding: 4px 12px; font-size: 0.75rem; font-weight: 800; border-radius: 6px; }
         .upsell-content { display: flex; align-items: center; gap: 20px; }
         .kit-thumb { width: 80px; height: 80px; object-fit: contain; background: white; border-radius: 10px; }
         .kit-info { flex: 1; }
         .kit-info h4 { font-size: 1.1rem; margin-bottom: 5px; color: #333; }
         .kit-info p { font-weight: 800; font-size: 1.2rem; margin: 0; }
-        .btn-add-upsell { background: #fff; border: 1.5px solid var(--tapovan-orange); color: var(--tapovan-orange); padding: 8px 20px; border-radius: 30px; font-weight: 800; cursor: pointer; transition: 0.3s; }
-        .btn-add-upsell:hover { background: var(--tapovan-orange); color: #fff; }
 
         .variant-selector-v2 { margin-bottom: 40px; }
         .variant-title { font-weight: 800; margin-bottom: 15px; color: #222; }
@@ -784,8 +789,8 @@ const TapovanPremiumTea = () => {
            .kit-info h4 { font-size: 0.9rem; }
            .btn-add-upsell { padding: 6px 12px; font-size: 0.75rem; }
            .action-footer-row { flex-direction: column; gap: 15px; }
-           .loved-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px 10px 0; }
-           .gallery-item { border-radius: 12px; }
+           .loved-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 20px 10px 0; }
+           .gallery-item { border-radius: 12px; aspect-ratio: 1/1; }
 
            .product-info {
              overflow-x: hidden; /* Contain the negative margin carousels */
@@ -809,7 +814,7 @@ const TapovanPremiumTea = () => {
            .offers-stack-mobile {
              display: flex;
              flex-direction: column;
-             gap: 12px;
+             gap: 25px;
              margin-bottom: 30px;
            }
            .promo-bar-v2, .upsell-card { 
@@ -821,11 +826,11 @@ const TapovanPremiumTea = () => {
              align-items: center;
              border-radius: 12px;
            }
-           .promo-bar-v2.tapovan-promo { border: 1px dashed var(--tapovan-orange); }
-           .upsell-card.tapovan-upsell { border: 1px solid #ffe0b2; }
+           .promo-bar-v2.tapovan-promo { border: 1.5px dashed var(--tapovan-orange); }
+           .upsell-card.amarkanth-upsell { border: 2.5px solid var(--brand-red); background: #fff5f5; }
+           .amarkanth-badge { background: var(--brand-red); }
            .kit-thumb { width: 50px; height: 50px; }
            .kit-info h4 { font-size: 0.9rem; }
-           .btn-add-upsell { padding: 6px 12px; font-size: 0.75rem; }
         }
       `}} />
     </div>

@@ -793,8 +793,8 @@ const AmarkanthPremiumCTC = () => {
            .millions-title { font-size: 3.2rem; }
            .loved-by-script { font-size: 2.2rem; }
            .product-main-img { height: 280px; }
-           .loved-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px 10px 0; }
-           .gallery-item { border-radius: 12px; }
+           .loved-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 20px 10px 0; }
+           .gallery-item { border-radius: 12px; aspect-ratio: 1/1; }
 
            .product-info {
              overflow-x: hidden; /* Contain the negative margin carousels */

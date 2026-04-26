@@ -84,10 +84,7 @@ const Navbar = () => {
         <div className="menu-footer">
           <div className="footer-line"></div>
           <p>© 2024 AMARKANTH GROUP</p>
-          <div className="social-links-minimal">
-            <span>Instagram</span>
-            <span>LinkedIn</span>
-          </div>
+
         </div>
       </div>
 

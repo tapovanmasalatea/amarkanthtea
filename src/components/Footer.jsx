@@ -18,6 +18,13 @@ const Footer = () => {
           <Link to="/contact">Contact Us</Link>
         </div>
 
+        <div className="footer-legal-links">
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/refund-policy">Return & Refund</Link>
+          <Link to="/shipping-policy">Shipping Policy</Link>
+          <Link to="/terms-conditions">Terms of Service</Link>
+        </div>
+
         <div className="footer-bottom-bar">
           <div className="copyright">© 2024 Amarkanth Group. All rights reserved.</div>
           <div className="social-links">
@@ -77,6 +84,27 @@ const Footer = () => {
         }
 
         .footer-nav-horizontal a:hover {
+          color: #d50505;
+        }
+
+        .footer-legal-links {
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          margin-bottom: 40px;
+        }
+
+        .footer-legal-links a {
+          text-decoration: none;
+          color: rgba(0,0,0,0.6);
+          font-weight: 600;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          transition: 0.3s ease;
+        }
+
+        .footer-legal-links a:hover {
           color: #d50505;
         }
 

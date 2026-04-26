@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Truck, CreditCard, ChevronRight, MapPin, Phone, Mail, User, ArrowLeft, ShoppingBag } from 'lucide-react';
+import { ShieldCheck, Truck, CreditCard, ChevronRight, MapPin, Phone, Mail, User, ArrowLeft, ShoppingBag, Ticket, Sparkles } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const OrderPage = () => {
@@ -37,9 +37,12 @@ const OrderPage = () => {
           <button onClick={() => navigate(-1)} className="btn-back">
             <ArrowLeft size={20} /> Back
           </button>
-          <h1>Secure Checkout</h1>
-          <div className="security-badge">
-            <ShieldCheck size={18} /> 256-bit SSL Encryption
+          <div className="header-center">
+             <h1>Checkout</h1>
+             <p className="secure-text">Secure Transaction</p>
+          </div>
+          <div className="security-badge-v2">
+            <ShieldCheck size={18} /> <span className="hide-mobile">Secure</span>
           </div>
         </header>
 
@@ -54,7 +57,7 @@ const OrderPage = () => {
               <div className="input-group single-col">
                 <div className="input-field">
                   <Phone size={18} className="input-icon" />
-                  <input type="tel" placeholder="Mobile Number" />
+                  <input type="tel" placeholder="Mobile Number for delivery updates" />
                 </div>
               </div>
             </section>
@@ -75,7 +78,7 @@ const OrderPage = () => {
                 </div>
                 <div className="input-field full-width">
                   <MapPin size={18} className="input-icon" />
-                  <input type="text" placeholder="Flat, House no., Building, Company, Apartment" />
+                  <input type="text" placeholder="Flat, House no., Building" />
                 </div>
                 <div className="input-field full-width">
                   <input type="text" placeholder="Area, Street, Sector, Village" />
@@ -98,7 +101,7 @@ const OrderPage = () => {
                 <h2>Payment Method</h2>
               </div>
               <div className="payment-options">
-                <label className={`payment-card ${formData.paymentMethod === 'cod' ? 'active' : ''}`}>
+                <label className={`payment-card-v2 ${formData.paymentMethod === 'cod' ? 'active' : ''}`}>
                   <input 
                     type="radio" 
                     name="payment" 
@@ -107,16 +110,16 @@ const OrderPage = () => {
                     onChange={() => setFormData({...formData, paymentMethod: 'cod'})}
                   />
                   <div className="payment-info">
-                    <Truck size={24} />
+                    <div className="icon-box"><Truck size={24} /></div>
                     <div className="text">
                       <strong>Cash on Delivery</strong>
                       <span>Pay when you receive the package</span>
                     </div>
                   </div>
-                  <div className="radio-circle"></div>
+                  <div className="radio-check"></div>
                 </label>
                 
-                <label className={`payment-card ${formData.paymentMethod === 'online' ? 'active' : ''}`}>
+                <label className={`payment-card-v2 ${formData.paymentMethod === 'online' ? 'active' : ''}`}>
                   <input 
                     type="radio" 
                     name="payment" 
@@ -125,71 +128,107 @@ const OrderPage = () => {
                     onChange={() => setFormData({...formData, paymentMethod: 'online'})}
                   />
                   <div className="payment-info">
-                    <CreditCard size={24} />
+                    <div className="icon-box"><CreditCard size={24} /></div>
                     <div className="text">
                       <strong>Online Payment</strong>
-                      <span>UPI, Credit Card, Debit Card, Net Banking</span>
+                      <span>UPI, Credit Card, Debit Card</span>
                     </div>
                   </div>
-                  <div className="radio-circle"></div>
+                  <div className="radio-check"></div>
                 </label>
               </div>
             </section>
 
-            <button className="btn-place-order">
-              PLACE ORDER • ₹{total} <ChevronRight size={20} />
-            </button>
+            <div className="mobile-only-price-row">
+               <div className="m-price-col">
+                  <span>Grand Total</span>
+                  <strong>₹{total}</strong>
+               </div>
+               <button className="btn-place-order-v2" onClick={() => alert('Order Placed!')}>
+                 PLACE ORDER <ChevronRight size={20} />
+               </button>
+            </div>
+
+            <div className="mobile-trust-badges-bottom hide-desktop">
+               <div className="t-badge"><ShieldCheck size={16} /> 100% Secure Payment</div>
+               <div className="t-badge"><Truck size={16} /> Fast Delivery Across India</div>
+            </div>
           </div>
 
           {/* Right Column: Order Summary */}
           <aside className="order-summary-area">
             <div className="summary-sticky">
-              <div className="summary-card">
-                <h3>Order Summary</h3>
-                <p className="brand-tagline-checkout">Crafted with Passion, Served with Pride</p>
-                <div className="product-item-checkout">
-                  <div className="p-img">
-                    <img src={productData.image} alt={productData.name} />
-                    <span className="p-qty-badge">{productData.quantity}</span>
+              <div className="summary-card-v2">
+                <div className="summary-header">
+                   <h3>Order Summary</h3>
+                   <span className="item-count">{productData.quantity + 2} Items</span>
+                </div>
+                
+                <div className="checkout-items-list">
+                  {/* Primary Product */}
+                  <div className="product-item-checkout-v2">
+                    <div className="p-img-v2">
+                      <img src={productData.image} alt={productData.name} />
+                      <span className="p-qty-badge-v2">{productData.quantity}</span>
+                    </div>
+                    <div className="p-info-v2">
+                      <h4>{productData.name}</h4>
+                      <p>{productData.variant}</p>
+                    </div>
+                    <div className="p-price-v2">₹{subtotal}</div>
                   </div>
-                  <div className="p-info">
-                    <h4>{productData.name}</h4>
-                    <p>{productData.variant}</p>
+
+                  {/* Default Gift 1: Tester */}
+                  <div className="product-item-checkout-v2 gift-item">
+                    <div className="p-img-v2">
+                      <div className="gift-placeholder">
+                        <Sparkles size={24} color="#d50505" />
+                      </div>
+                      <span className="p-qty-badge-v2">1</span>
+                    </div>
+                    <div className="p-info-v2">
+                      <h4>Free Tea Tester Pack</h4>
+                      <p className="gift-tag">Complimentary Gift</p>
+                    </div>
+                    <div className="p-price-v2 text-free">FREE</div>
                   </div>
-                  <div className="p-price">₹{subtotal}</div>
+
+                  {/* Default Gift 2: Scratch Card */}
+                  <div className="product-item-checkout-v2 gift-item">
+                    <div className="p-img-v2">
+                      <div className="gift-placeholder">
+                        <Ticket size={24} color="#d50505" />
+                      </div>
+                      <span className="p-qty-badge-v2">1</span>
+                    </div>
+                    <div className="p-info-v2">
+                      <h4>Thailand Trip Scratch Card</h4>
+                      <p className="gift-tag">Limited Time Offer</p>
+                    </div>
+                    <div className="p-price-v2 text-free">FREE</div>
+                  </div>
                 </div>
 
-                <div className="discount-code-row">
-                  <input type="text" placeholder="Discount Code" />
-                  <button>Apply</button>
-                </div>
-
-                <div className="summary-details">
-                  <div className="line-item">
+                <div className="summary-details-v2">
+                  <div className="line-item-v2">
                     <span>Subtotal</span>
                     <span>₹{subtotal}</span>
                   </div>
-                  <div className="line-item">
+                  <div className="line-item-v2">
                     <span>Shipping</span>
                     <span className={shipping === 0 ? "text-green" : ""}>
                       {shipping === 0 ? "FREE" : `₹${shipping}`}
                     </span>
                   </div>
-                  <div className="line-item total">
-                    <span>Total</span>
+                  <div className="line-item-v2 total-v2">
+                    <span>Amount Payable</span>
                     <span>₹{total}</span>
                   </div>
                 </div>
-              </div>
 
-              <div className="trust-footer-checkout">
-                <div className="trust-item">
-                  <ShieldCheck size={20} />
-                  <p>100% Secure Transaction</p>
-                </div>
-                <div className="trust-item">
-                  <Truck size={20} />
-                  <p>Estimated Delivery: 3-5 Business Days</p>
+                <div className="checkout-trust-badges">
+                   <div className="t-badge"><ShieldCheck size={16} /> Secure Payment</div>
+                   <div className="t-badge"><Truck size={16} /> Fast Delivery</div>
                 </div>
               </div>
             </div>
@@ -198,358 +237,309 @@ const OrderPage = () => {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
+        :root {
+          --brand-red: #d50505;
+          --brand-gold: #ffc107;
+          --bg-gray: #f8f9fa;
+        }
+
         .order-page {
-          padding: 140px 0 100px;
-          background: #fdfdfd;
+          padding: 120px 0 20px;
+          background: var(--bg-gray);
           min-height: 100vh;
           font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
         }
 
         .checkout-header {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 60px;
+          margin-bottom: 40px;
+          padding: 20px 0;
           border-bottom: 1px solid #eee;
-          padding-bottom: 30px;
         }
 
+        .header-center { text-align: center; }
+        .header-center h1 { font-size: 1.8rem; font-weight: 900; margin: 0; color: #111; }
+        .secure-text { font-size: 0.75rem; color: #2e7d32; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
         .btn-back {
-          background: none;
-          border: none;
+          background: white;
+          border: 1px solid #eee;
+          padding: 10px 18px;
+          border-radius: 50px;
           display: flex;
           align-items: center;
           gap: 8px;
           font-weight: 700;
           cursor: pointer;
-          color: #666;
+          color: #444;
           transition: 0.3s;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .btn-back:hover { color: #000; }
-
-        .checkout-header h1 {
-          font-size: 2rem;
-          font-weight: 900;
-          font-family: 'Outfit', sans-serif;
-          margin: 0;
-        }
-
-        .security-badge {
+        .security-badge-v2 {
+          background: white;
+          padding: 10px 15px;
+          border-radius: 50px;
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 0.85rem;
           color: #2e7d32;
-          background: #e8f5e9;
-          padding: 8px 15px;
-          border-radius: 50px;
           font-weight: 700;
+          font-size: 0.85rem;
+          border: 1px solid #e8f5e9;
         }
 
         .checkout-grid {
           display: grid;
           grid-template-columns: 1.2fr 0.8fr;
-          gap: 60px;
+          gap: 40px;
           align-items: flex-start;
         }
 
         .form-section {
           background: white;
-          padding: 40px;
-          border-radius: 20px;
-          border: 1px solid #f0f0f0;
-          margin-bottom: 30px;
+          padding: 35px;
+          border-radius: 24px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+          margin-bottom: 25px;
+          border: 1px solid rgba(0,0,0,0.02);
         }
 
         .section-title-row {
           display: flex;
           align-items: center;
           gap: 15px;
-          margin-bottom: 30px;
+          margin-bottom: 25px;
         }
 
         .section-number {
-          width: 30px;
-          height: 30px;
-          background: #111;
+          width: 28px;
+          height: 28px;
+          background: var(--brand-red);
           color: white;
-          border-radius: 50%;
+          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-weight: 800;
-          font-size: 0.9rem;
+          font-weight: 900;
+          font-size: 0.85rem;
         }
 
-        .section-title-row h2 {
-          font-size: 1.4rem;
-          margin: 0;
-          font-weight: 800;
-        }
+        .section-title-row h2 { font-size: 1.25rem; font-weight: 800; margin: 0; color: #111; }
 
-        .input-group, .input-grid {
-          display: grid;
-          gap: 20px;
-        }
-
-        .input-group { grid-template-columns: repeat(2, 1fr); }
-        .input-group.single-col { grid-template-columns: 1fr; }
-        .input-grid { grid-template-columns: repeat(2, 1fr); }
+        .input-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .full-width { grid-column: span 2; }
 
-        .input-field {
-          position: relative;
-        }
-
-        .input-icon {
-          position: absolute;
-          left: 15px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: #bbb;
-        }
-
+        .input-field { position: relative; }
+        .input-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #aaa; }
+        
         .input-field input {
           width: 100%;
-          padding: 15px 15px 15px 45px;
-          border-radius: 12px;
-          border: 1.5px solid #eee;
-          font-family: inherit;
+          padding: 14px 14px 14px 48px;
+          border-radius: 14px;
+          border: 1.5px solid #f0f0f0;
+          background: #fafafa;
           font-size: 1rem;
           transition: 0.3s;
         }
 
         .input-field input:focus {
-          border-color: #111;
-          outline: none;
-        }
-
-        .payment-options {
-          display: grid;
-          gap: 15px;
-        }
-
-        .payment-card {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 25px;
-          border-radius: 15px;
-          border: 2px solid #eee;
-          cursor: pointer;
-          transition: 0.3s;
-          position: relative;
-        }
-
-        .payment-card.active {
-          border-color: #111;
-          background: #fafafa;
-        }
-
-        .payment-card input { display: none; }
-
-        .payment-info {
-          display: flex;
-          gap: 20px;
-          align-items: center;
-        }
-
-        .payment-info .text strong { display: block; font-size: 1.1rem; margin-bottom: 3px; }
-        .payment-info .text span { font-size: 0.85rem; color: #777; }
-
-        .radio-circle {
-          width: 20px;
-          height: 20px;
-          border: 2px solid #ddd;
-          border-radius: 50%;
-          position: relative;
-        }
-
-        .payment-card.active .radio-circle {
-          border-color: #111;
-        }
-
-        .payment-card.active .radio-circle::after {
-          content: '';
-          position: absolute;
-          width: 10px;
-          height: 10px;
-          background: #111;
-          border-radius: 50%;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
-
-        .btn-place-order {
-          width: 100%;
-          background: #d50505;
-          color: white;
-          border: none;
-          padding: 25px;
-          border-radius: 50px;
-          font-size: 1.2rem;
-          font-weight: 900;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 15px;
-          cursor: pointer;
-          transition: 0.3s;
-          box-shadow: 0 20px 40px rgba(213, 5, 5, 0.2);
-          margin-top: 20px;
-        }
-
-        .btn-place-order:hover {
-          background: #8b0000;
-          transform: translateY(-5px);
-        }
-
-        /* Summary Column */
-        .summary-sticky {
-          position: sticky;
-          top: 140px;
-        }
-
-        .summary-card {
           background: white;
-          padding: 40px;
-          border-radius: 20px;
-          border: 1px solid #f0f0f0;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+          border-color: var(--brand-red);
+          outline: none;
+          box-shadow: 0 0 0 4px rgba(213, 5, 5, 0.05);
         }
 
-        .summary-card h3 {
-          font-size: 1.4rem;
-          margin-bottom: 5px;
-          font-weight: 800;
+        .payment-options { display: grid; gap: 12px; }
+        
+        .payment-card-v2 {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          border-radius: 18px;
+          border: 2px solid #f0f0f0;
+          cursor: pointer;
+          transition: 0.3s;
+          background: white;
         }
 
-        .brand-tagline-checkout {
-          font-size: 0.85rem;
-          color: #d50505;
-          font-weight: 700;
-          margin-bottom: 30px;
-          font-style: italic;
-          letter-spacing: 0.5px;
+        .payment-card-v2.active {
+          border-color: var(--brand-red);
+          background: #fffafa;
         }
 
-        .product-item-checkout {
+        .payment-card-v2 input { display: none; }
+        .payment-info { display: flex; gap: 15px; align-items: center; }
+        .icon-box { 
+          width: 45px; height: 45px; background: #f5f5f5; border-radius: 12px; 
+          display: flex; align-items: center; justify-content: center; color: #444;
+        }
+        .active .icon-box { background: var(--brand-red); color: white; }
+
+        .payment-info .text strong { display: block; font-size: 1rem; margin-bottom: 2px; }
+        .payment-info .text span { font-size: 0.8rem; color: #777; }
+
+        .radio-check {
+          width: 22px; height: 22px; border: 2.5px solid #ddd; border-radius: 50%; position: relative;
+        }
+        .active .radio-check { border-color: var(--brand-red); }
+        .active .radio-check::after {
+          content: ''; position: absolute; width: 10px; height: 10px; 
+          background: var(--brand-red); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        }
+
+        /* Summary Card V2 */
+        .summary-sticky { position: sticky; top: 120px; }
+        .summary-card-v2 {
+          background: white;
+          padding: 30px;
+          border-radius: 24px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+          border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .summary-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 25px;
+          border-bottom: 1.5px solid #f8f8f8;
+          padding-bottom: 15px;
+        }
+        .summary-header h3 { font-size: 1.2rem; font-weight: 800; margin: 0; }
+        .item-count { background: #eee; padding: 4px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+
+        .checkout-items-list { display: grid; gap: 20px; margin-bottom: 25px; }
+        
+        .product-item-checkout-v2 {
           display: flex;
           align-items: center;
+          gap: 15px;
+        }
+
+        .p-img-v2 {
+          width: 65px; height: 65px; background: #f9f9f9; border-radius: 12px;
+          display: flex; align-items: center; justify-content: center; position: relative;
+        }
+        .p-img-v2 img { width: 80%; height: 80%; object-fit: contain; }
+        .p-qty-badge-v2 {
+          position: absolute; top: -8px; right: -8px; background: #111; color: white;
+          width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center;
+          justify-content: center; font-size: 0.7rem; font-weight: 800;
+        }
+
+        .p-info-v2 { flex: 1; }
+        .p-info-v2 h4 { font-size: 0.95rem; font-weight: 700; margin: 0 0 2px; color: #111; line-height: 1.3; }
+        .p-info-v2 p { font-size: 0.8rem; color: #888; margin: 0; }
+        .p-price-v2 { font-weight: 800; color: #111; font-size: 0.95rem; text-align: right; min-width: 70px; }
+
+        .gift-item { padding: 12px; background: #fffafa; border-radius: 14px; border: 1px dashed #ffdada; }
+        .gift-placeholder { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+        .gift-tag { color: var(--brand-red) !important; font-weight: 700 !important; font-size: 0.7rem !important; text-transform: uppercase; }
+        .text-free { color: #2e7d32; font-weight: 900; }
+
+        .summary-details-v2 {
+          background: #fdfdfd;
+          padding: 20px;
+          border-radius: 16px;
+          display: grid;
+          gap: 12px;
+          margin-bottom: 25px;
+        }
+
+        .line-item-v2 { display: flex; justify-content: space-between; font-weight: 600; color: #666; font-size: 0.9rem; }
+        .total-v2 { 
+          border-top: 1.5px solid #eee; padding-top: 15px; margin-top: 5px; 
+          font-size: 1.3rem; color: #111; font-weight: 900; 
+        }
+
+        .mobile-trust-badges-bottom {
+          display: none;
+          margin-top: 20px;
+          padding: 20px;
+          background: white;
+          border-top: 1px solid #eee;
+          justify-content: center;
+          gap: 30px;
+          opacity: 0.7;
+        }
+
+        @media (min-width: 1024px) {
+          .hide-desktop { display: none; }
+        }
+
+        .checkout-trust-badges {
+          display: flex;
+          justify-content: center;
           gap: 20px;
-          margin-bottom: 30px;
-          padding-bottom: 30px;
-          border-bottom: 1px solid #eee;
+          opacity: 0.6;
         }
+        .t-badge { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
 
-        .p-img {
-          width: 80px;
-          height: 80px;
-          background: #f9f9f9;
-          border-radius: 12px;
-          padding: 10px;
-          position: relative;
-        }
-
-        .p-img img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-
-        .p-qty-badge {
-          position: absolute;
-          top: -10px;
-          right: -10px;
-          background: #666;
+        .btn-place-order-v2 {
+          background: var(--brand-red);
           color: white;
-          width: 22px;
-          height: 22px;
-          border-radius: 50%;
+          border: none;
+          padding: 18px 30px;
+          border-radius: 14px;
+          font-weight: 900;
+          font-size: 1.1rem;
+          cursor: pointer;
+          width: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 0.75rem;
-          font-weight: 800;
-        }
-
-        .p-info h4 { margin: 0 0 5px; font-size: 1.1rem; }
-        .p-info p { margin: 0; color: #888; font-size: 0.9rem; }
-        .p-price { margin-left: auto; font-weight: 800; font-size: 1.1rem; }
-
-        .discount-code-row {
-          display: flex;
           gap: 10px;
-          margin-bottom: 30px;
+          transition: 0.3s;
+          box-shadow: 0 10px 25px rgba(213, 5, 5, 0.2);
         }
 
-        .discount-code-row input {
-          flex: 1;
-          padding: 12px 15px;
-          border-radius: 8px;
-          border: 1.5px solid #eee;
-        }
-
-        .discount-code-row button {
-          background: #eee;
-          border: none;
-          padding: 12px 20px;
-          border-radius: 8px;
-          font-weight: 700;
-          cursor: pointer;
-        }
-
-        .summary-details {
-          display: grid;
-          gap: 15px;
-        }
-
-        .line-item {
-          display: flex;
-          justify-content: space-between;
-          color: #666;
-          font-weight: 600;
-        }
-
-        .line-item.total {
-          border-top: 1px solid #eee;
-          padding-top: 20px;
-          margin-top: 5px;
-          font-size: 1.5rem;
-          color: #111;
-          font-weight: 900;
-        }
-
-        .text-green { color: #2e7d32; }
-
-        .trust-footer-checkout {
-          margin-top: 30px;
-          display: grid;
-          gap: 15px;
-        }
-
-        .trust-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          color: #888;
-        }
-
-        .trust-item p { margin: 0; font-size: 0.85rem; font-weight: 600; }
+        .mobile-only-price-row { display: none; }
 
         @media (max-width: 1000px) {
           .checkout-grid { grid-template-columns: 1fr; }
-          .summary-sticky { position: static; }
+          .summary-sticky { position: static; order: -1; margin-bottom: 30px; }
+          .order-page { padding-top: 100px; }
         }
 
-        @media (max-width: 600px) {
-          .input-group, .input-grid { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+          .checkout-header { margin-bottom: 20px; }
+          .btn-back span { display: none; }
+          .form-section { padding: 25px; border-radius: 18px; }
+          .input-grid { grid-template-columns: 1fr; }
           .input-field.full-width { grid-column: span 1; }
-          .checkout-header h1 { font-size: 1.5rem; }
-          .security-badge { display: none; }
-          .form-section { padding: 25px; }
+          
+          .mobile-only-price-row {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
+            z-index: 1000;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+          }
+          .m-price-col { display: flex; flex-direction: column; }
+          .m-price-col span { font-size: 0.75rem; color: #888; font-weight: 700; text-transform: uppercase; }
+          .m-price-col strong { font-size: 1.5rem; color: #111; font-weight: 900; }
+          .btn-place-order-v2 { width: auto; flex: 1; padding: 15px; font-size: 1rem; border-radius: 12px; }
+          
+          .mobile-trust-badges-bottom { display: flex; }
+          .order-page { padding-bottom: 80px; }
+          .hide-mobile { display: none; }
         }
       `}} />
     </div>

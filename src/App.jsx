@@ -10,7 +10,9 @@ import AmarkanthPremiumCTC from './pages/AmarkanthPremiumCTC';
 import TapovanPremiumTea from './pages/TapovanPremiumTea';
 import OrderPage from './pages/OrderPage';
 import DistributorPage from './pages/DistributorPage';
-import { PrivacyPolicy, TermsConditions, RefundPolicy, ShippingPolicy } from './pages/LegalPages';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import RefundPolicy from './pages/RefundPolicy';
+import { TermsConditions, ShippingPolicy } from './pages/LegalPages';
 import ScrollToTop from './components/ScrollToTop';
 
 // Intersection Observer for reveals
