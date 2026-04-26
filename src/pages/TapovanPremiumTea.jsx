@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check, ShieldCheck, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Mountain, Wind, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
 import amarkanthImg from '../assets/amarkanth.webp';
-import tapovanImg from '../assets/tapovan.webp';
-import tapovanPackImg from '../assets/tapovan_pack.webp';
+import tapovan from '../assets/tapovan.webp';
+import tapovan1 from '../assets/tapovan_pack.webp';
 import logoImg from '../assets/logo.webp';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -44,14 +44,14 @@ const TapovanPremiumTea = () => {
         variant: variants[variant].label,
         price: variants[variant].price,
         quantity: quantity,
-        image: tapovanImg
+        image: tapovan
       }
     });
   };
   
   const productImages = [
-    tapovanImg,
-    tapovanPackImg,
+    tapovan,
+    tapovan1,
     "https://images.unsplash.com/photo-1544787210-2211d44b565a?auto=format&fit=crop&q=60&w=800",
     "https://images.unsplash.com/photo-1515442261904-68d009088658?auto=format&fit=crop&q=60&w=800"
   ];
@@ -68,37 +68,29 @@ const TapovanPremiumTea = () => {
   const features = [
     {
       icon: <Mountain className="text-tapovan-orange" />,
-      title: "High-Grown",
-      desc: "Finest blend from India's best high-grown tea gardens."
-    },
-    {
-      icon: <Wind className="text-tapovan-orange" />,
-      title: "Mountain Fresh",
-      desc: "Unique highland flavour — refreshing and full of goodness."
+      title: "100% Assam Origin (No Blending Tricks)",
+      desc: "Finest two-leaf and bud CTC sourced directly from trusted Assam estates."
     },
     {
       icon: <Coffee className="text-tapovan-orange" />,
-      title: "Strong Taste",
-      desc: "Rich, strong, refreshing — kadak | taazgibhara | anokha swad."
+      title: "Kadak Chai Tested With Milk",
+      desc: "Specially crafted for Indian taste — strong color, bold flavor after milk."
     },
     {
-      icon: <Package className="text-tapovan-orange" />,
-      title: "Slider Pack",
-      desc: "Resealable slider pack retains taste, freshness and flavour."
+      icon: <Check className="text-tapovan-orange" />,
+      title: "Quality Checked in Every Batch",
+      desc: "Each lot goes through strict tasting and quality checks before packing."
+    },
+    {
+      icon: <Clock className="text-tapovan-orange" />,
+      title: "Sealed Freshness, No Aroma Loss",
+      desc: "Advanced packaging locks in flavor — so every cup tastes fresh."
     }
   ];
 
   const galleryImages = [
     "https://images.unsplash.com/photo-1544787210-2211d44b565a?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1576091160550-2173bdd99602?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=60&w=500&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=60&w=500&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1515442261904-68d009088658?q=60&w=500&auto=format&fit=crop"
   ];
 
   const faqs = [
@@ -193,16 +185,16 @@ const TapovanPremiumTea = () => {
               className="product-info"
             >
               <h1 className="product-main-name">Tapovan Premium Tea</h1>
+              <p className="product-info-tagline">Mountain Fresh Quality Tea</p>
               <div className="rating-row">
                 <Star size={16} fill="#FFD700" color="#FFD700" />
                 <span>4.5 (182 reviews)</span>
               </div>
-              <p className="product-info-tagline">Mountain Fresh Quality Tea</p>
 
               <div className="price-main-row-v3">
                 <div className="price-box-v3">
-                   <span className="current-price-v3">₹{variants[variant].price}</span>
-                   <span className="old-price-v3">₹{variants[variant].oldPrice}</span>
+                   <span className="current-price-v3">₹{variants[variant].price * quantity}</span>
+                   <span className="old-price-v3">₹{variants[variant].oldPrice * quantity}</span>
                    <span className="discount-pill-v3">{variants[variant].discount} OFF</span>
                 </div>
                 <p className="mrp-subtext-v3">MRP Inclusive of all taxes</p>
@@ -273,10 +265,10 @@ const TapovanPremiumTea = () => {
               </div>
 
               <div className="trust-icons-v2">
-                 <div className="trust-v2-item"><Truck size={40} /><p>Free Shipping on Orders Above ₹499</p></div>
-                 <div className="trust-v2-item"><Headphones size={40} /><p>360° Customer Support</p></div>
-                 <div className="trust-v2-item"><RotateCcw size={40} /><p>Up to 30 Days Return</p></div>
-                 <div className="trust-v2-item"><Search size={40} /><p>70+ Quality Checks</p></div>
+                 <div className="trust-v2-item"><Truck size={40} /><p>Free Shipping</p></div>
+                 <div className="trust-v2-item"><Zap size={40} /><p>Fast Delivery</p></div>
+                 <div className="trust-v2-item"><RotateCcw size={40} /><p>Easy Return</p></div>
+                 <div className="trust-v2-item"><ShieldCheck size={40} /><p>Lab-Tested & Quality Assured</p></div>
               </div>
             </motion.div>
           </div>
@@ -403,13 +395,6 @@ const TapovanPremiumTea = () => {
                       <label>Your Review</label>
                       <textarea placeholder="Tell us about your experience with Tapovan Tea..."></textarea>
                     </div>
-                    <div className="form-group">
-                      <label className="file-upload-label tapovan-dashed">
-                        <Camera size={20} />
-                        <span>Add Photo</span>
-                        <input type="file" hidden />
-                      </label>
-                    </div>
                     <div className="form-actions">
                       <button type="submit" className="btn-submit-review tapovan-btn">
                         SUBMIT REVIEW <Send size={18} />
@@ -440,11 +425,6 @@ const TapovanPremiumTea = () => {
                   </div>
                 </div>
                 <p className="rev-comment">"{rev.comment}"</p>
-                {rev.image && (
-                  <div className="rev-image-box">
-                    <img src={rev.image} alt="Review" />
-                  </div>
-                )}
                 <div className="rev-footer">
                   <span className="rev-date">{rev.date}</span>
                   <div className="rev-helpful">Helpful? <span className="tapovan-link">Yes</span></div>
@@ -479,7 +459,7 @@ const TapovanPremiumTea = () => {
         .italic { font-style: italic; }
 
         .product-page {
-          padding-top: 140px;
+          padding-top: 100px;
           background: #fff;
           color: #333;
           font-family: 'Inter', sans-serif;
@@ -488,44 +468,49 @@ const TapovanPremiumTea = () => {
           overflow-x: hidden; /* Critical for preventing horizontal slide */
         }
 
-        .product-hero { padding: 40px 0; }
+        .product-hero { padding: 0 0 20px; }
 
         .hero-grid {
           display: grid;
           grid-template-columns: 1fr 1.2fr;
-          gap: 60px;
+          gap: 30px;
           align-items: flex-start;
         }
 
         .product-visual-area { position: sticky; top: 120px; }
 
         .main-image-wrapper {
-          background: #fdfdfd;
+          background: #fff;
           border-radius: 20px;
-          padding: 40px;
-          display: flex;
-          justify-content: center;
-          border: 1px solid #f0f0f0;
-          margin-bottom: 20px;
+          padding: 0;
+          margin-bottom: 8px;
           position: relative;
+          overflow: hidden;
+          aspect-ratio: 1 / 1;
+          width: 100%;
+          border: none;
         }
 
         .product-main-img {
-          max-width: 100%;
-          height: 450px;
-          object-fit: contain;
-          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
           display: block;
-          margin: 0 auto;
+          border-radius: 20px;
         }
 
-        .thumbnail-gallery { display: flex; gap: 15px; justify-content: center; }
+        .thumbnail-gallery { display: flex; gap: 8px; justify-content: space-between; width: 100%; }
 
         .thumb-item {
-          width: 80px;
-          height: 80px;
+          flex: 1;
+          aspect-ratio: 1 / 1;
           border-radius: 10px;
-          border: 2px solid #eee;
+          border: 2.5px solid #f0f0f0;
           overflow: hidden;
           cursor: pointer;
           transition: 0.3s;
@@ -537,23 +522,26 @@ const TapovanPremiumTea = () => {
 
         .rating-row { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #666; margin-bottom: 5px; }
         .product-main-name { font-size: 2.2rem; font-weight: 900; color: #111; margin-bottom: 5px; font-family: 'Outfit', sans-serif; text-transform: uppercase; letter-spacing: 1px; overflow-wrap: break-word; }
-        .product-info-tagline { font-size: 1.2rem; font-weight: 600; color: var(--tapovan-orange); margin-bottom: 25px; font-family: 'Inter', sans-serif; overflow-wrap: break-word; }
+        .product-info-tagline { font-size: 1.1rem; font-weight: 600; color: var(--tapovan-orange); margin-bottom: 5px; font-family: 'Inter', sans-serif; overflow-wrap: break-word; }
 
-        .price-main-row { margin-bottom: 25px; }
-        .current-price { font-size: 3.5rem; font-weight: 900; color: #111; margin-right: 15px; }
-        .old-price-strikethrough { font-size: 1.8rem; color: #bbb; text-decoration: line-through; }
-        .mrp-subtext { display: block; font-size: 0.85rem; color: #888; margin-top: 5px; }
+        .price-main-row-v3 { margin-bottom: 30px; }
+        .price-box-v3 { display: flex; align-items: center; gap: 20px; }
+        .current-price-v3 { font-size: 3.5rem; font-weight: 900; color: #111; }
+        .old-price-v3 { font-size: 1.8rem; color: #bbb; text-decoration: line-through; }
+        .discount-pill-v3 { background: #e8f5e9; color: #2e7d32; padding: 6px 15px; border-radius: 6px; font-size: 1rem; font-weight: 800; }
+        .mrp-subtext-v3 { display: block; font-size: 0.9rem; color: #888; margin-top: 8px; font-weight: 500; }
 
         .promo-bar-v2 {
           background: #fff3e0;
-          padding: 15px 20px;
-          border-radius: 12px;
+          padding: 10px 15px;
+          border-radius: 10px;
           display: flex;
           align-items: center;
-          gap: 15px;
-          margin-bottom: 30px;
+          gap: 12px;
+          margin-bottom: 20px;
           border: 1px dashed var(--tapovan-orange);
         }
+        .offers-stack-mobile { margin-top: 15px; }
         .promo-bar-v2 p { margin: 0; font-size: 1.05rem; color: #e65100; }
         .promo-bar-v2 strong { color: #bf360c; }
 
@@ -576,7 +564,7 @@ const TapovanPremiumTea = () => {
 
         .variant-selector-v2 { margin-bottom: 40px; }
         .variant-title { font-weight: 800; margin-bottom: 15px; color: #222; }
-        .variant-grid-v2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .variant-grid-v2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
 
         .variant-card-v2 {
           border: 1.5px solid #e0e0e0;
@@ -589,20 +577,20 @@ const TapovanPremiumTea = () => {
         
         .v-header-v2 {
           background: #f5f7f9;
-          padding: 8px 15px;
-          font-size: 0.85rem;
+          padding: 4px 10px;
+          font-size: 0.75rem;
           font-weight: 700;
           color: #444;
           text-align: left;
           transition: 0.3s;
         }
         
-        .v-body-v2 { padding: 15px; text-align: left; }
+        .v-body-v2 { padding: 8px 10px; text-align: left; }
         
-        .v-price-row-v2 { display: flex; align-items: baseline; gap: 8px; margin-bottom: 5px; }
-        .v-price-v2 { font-size: 1.4rem; font-weight: 900; color: #111; }
-        .v-old-v2 { font-size: 0.9rem; color: #999; text-decoration: line-through; }
-        .v-off-v2 { font-size: 0.85rem; color: #d50505; font-weight: 700; }
+        .v-price-row-v2 { display: flex; align-items: baseline; gap: 6px; margin-bottom: 2px; }
+        .v-price-v2 { font-size: 1.2rem; font-weight: 900; color: #111; }
+        .v-old-v2 { font-size: 0.8rem; color: #999; text-decoration: line-through; }
+        .v-off-v2 { font-size: 0.75rem; color: #d50505; font-weight: 700; }
         
         .v-per-unit-v2 { font-size: 0.8rem; color: var(--trust-green); font-weight: 600; }
         
@@ -633,33 +621,32 @@ const TapovanPremiumTea = () => {
 
         .trust-icons-v2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; }
         .trust-v2-item { text-align: center; }
-        .trust-v2-item svg { color: var(--tapovan-orange); margin-bottom: 15px; opacity: 0.8; }
+        .trust-v2-item svg { color: var(--brand-red); margin-bottom: 15px; opacity: 0.9; }
         .trust-v2-item p { font-size: 0.9rem; font-weight: 700; color: #555; line-height: 1.3; }
 
-        .product-features.tapovan-bg { background: var(--tapovan-light); padding: 100px 0; }
+        .product-features.tapovan-bg { background: var(--tapovan-light); padding: 40px 0 80px; }
         .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         .feature-card { background: white; padding: 40px 30px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; border: 1px solid #f5f5f5; }
         .feature-card:hover { transform: translateY(-10px); }
         .f-icon { width: 60px; height: 60px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: var(--tapovan-orange); }
 
-        .product-faq-section { padding: 100px 0; background: #fff; }
+        .product-faq-section { padding: 40px 0; background: #fff; }
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid #eee; }
-        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 0; background: none; border: none; font-size: 1.2rem; font-weight: 700; text-align: left; cursor: pointer; color: #111; }
+        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 15px 0; background: none; border: none; font-size: 1.1rem; font-weight: 700; text-align: left; cursor: pointer; color: #111; }
         .faq-icon { transition: 0.3s; color: var(--tapovan-orange); }
         .faq-item.open .faq-icon { transform: rotate(180deg); }
-        .faq-answer { overflow: hidden; color: #666; line-height: 1.7; padding-bottom: 25px; }
+        .faq-answer { overflow: hidden; color: #666; line-height: 1.7; padding-bottom: 15px; }
 
-        .loved-by-section { padding: 100px 0; background: #fdf8f0; text-align: center; overflow: hidden; }
-        .millions-title { font-size: 6rem; font-weight: 900; color: #1a1a1a; letter-spacing: -3px; line-height: 1; overflow-wrap: break-word; }
-        .loved-by-script { font-family: 'Dancing Script', cursive; font-size: 3.5rem; color: var(--tapovan-orange); overflow-wrap: break-word; }
-        .loved-gallery { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; padding: 40px 20px 0; }
-        .gallery-item { aspect-ratio: 1; border-radius: 20px; overflow: hidden; }
-        .gallery-item:nth-child(even) { transform: translateY(30px); }
+        .loved-by-section { padding: 40px 0; background: #fdf8f0; text-align: center; overflow: hidden; }
+        .millions-title { font-size: 4rem; font-weight: 900; color: #1a1a1a; letter-spacing: -2px; line-height: 1; overflow-wrap: break-word; }
+        .loved-by-script { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--tapovan-orange); overflow-wrap: break-word; }
+        .loved-gallery { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; padding-top: 30px; max-width: 1200px; margin: 0 auto; }
+        .gallery-item { width: 150px; height: 150px; border-radius: 15px; overflow: hidden; flex-shrink: 0; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
         /* Customer Reviews Section */
-        .customer-reviews-section { padding: 100px 0; background: #fff; border-top: 1px solid #eee; }
+        .customer-reviews-section { padding: 40px 0; background: #fff; border-top: 1px solid #eee; }
         .reviews-header-main { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
         .main-rating-summary { display: flex; align-items: center; gap: 20px; margin-top: 20px; }
         .big-rating { font-size: 4rem; font-weight: 900; color: #111; }
@@ -776,6 +763,26 @@ const TapovanPremiumTea = () => {
            .millions-title { font-size: 3.2rem; }
            .loved-by-script { font-size: 2.2rem; }
            .product-main-img { height: 280px; }
+           .offers-stack-mobile {
+             display: flex;
+             flex-direction: column;
+             gap: 20px;
+             margin-bottom: 30px;
+           }
+           .promo-bar-v2, .upsell-card { 
+             width: 100%;
+             margin-bottom: 0; 
+             height: auto;
+             padding: 15px;
+             display: flex;
+             align-items: center;
+             border-radius: 12px;
+           }
+           .promo-bar-v2 { border: 1.5px dashed #4caf50; }
+           .upsell-card { border: 2.5px solid var(--tapovan-orange); background: #fff9f0; }
+           .kit-thumb { width: 50px; height: 50px; }
+           .kit-info h4 { font-size: 0.9rem; }
+           .btn-add-upsell { padding: 6px 12px; font-size: 0.75rem; }
            .action-footer-row { flex-direction: column; gap: 15px; }
            .loved-gallery { grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 20px 10px 0; }
            .gallery-item { border-radius: 12px; }
