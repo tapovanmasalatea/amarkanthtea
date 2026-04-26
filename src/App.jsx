@@ -16,6 +16,7 @@ const OrderPage = lazy(() => import('./pages/OrderPage'));
 const DistributorPage = lazy(() => import('./pages/DistributorPage'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
 
 // Named exports from LegalPages
 const TermsConditions = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.TermsConditions })));
@@ -66,6 +67,7 @@ function AppContent() {
           <Route path="/product/amarkanth-premium-ctc" element={<AmarkanthPremiumCTC />} />
           <Route path="/product/tapovan-premium-tea" element={<TapovanPremiumTea />} />
           <Route path="/checkout" element={<OrderPage />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/distributor" element={<DistributorPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />

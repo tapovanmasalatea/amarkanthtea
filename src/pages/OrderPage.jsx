@@ -15,16 +15,41 @@ const OrderPage = () => {
   };
 
   const [formData, setFormData] = useState({
-    email: '',
     phone: '',
     firstName: '',
     lastName: '',
     address: '',
+    area: '',
     city: '',
     state: '',
     pincode: '',
     paymentMethod: 'cod'
   });
+
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    let newErrors = {};
+    if (!formData.phone) newErrors.phone = true;
+    if (!formData.firstName) newErrors.firstName = true;
+    if (!formData.lastName) newErrors.lastName = true;
+    if (!formData.address) newErrors.address = true;
+    if (!formData.city) newErrors.city = true;
+    if (!formData.state) newErrors.state = true;
+    if (!formData.pincode) newErrors.pincode = true;
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handlePlaceOrder = () => {
+    if (validate()) {
+      const orderId = "AMK-" + Math.random().toString(36).substr(2, 9).toUpperCase();
+      navigate('/thank-you', { state: { productData, total, orderId } });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   const subtotal = productData.price * productData.quantity;
   const shipping = subtotal > 499 ? 0 : 50;
@@ -55,10 +80,15 @@ const OrderPage = () => {
                 <h2>Contact Information</h2>
               </div>
               <div className="input-group single-col">
-                <div className="input-field">
-                  <Phone size={18} className="input-icon" />
-                  <input type="tel" placeholder="Mobile Number for delivery updates" />
-                </div>
+                 <div className={`input-field ${errors.phone ? 'error' : ''}`}>
+                   <Phone size={18} className="input-icon" />
+                   <input 
+                    type="tel" 
+                    placeholder="Mobile Number for delivery updates *" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                   />
+                 </div>
               </div>
             </section>
 
@@ -68,30 +98,65 @@ const OrderPage = () => {
                 <h2>Shipping Address</h2>
               </div>
               <div className="input-grid">
-                <div className="input-field">
-                  <User size={18} className="input-icon" />
-                  <input type="text" placeholder="First Name" />
-                </div>
-                <div className="input-field">
-                  <User size={18} className="input-icon" />
-                  <input type="text" placeholder="Last Name" />
-                </div>
-                <div className="input-field full-width">
-                  <MapPin size={18} className="input-icon" />
-                  <input type="text" placeholder="Flat, House no., Building" />
-                </div>
-                <div className="input-field full-width">
-                  <input type="text" placeholder="Area, Street, Sector, Village" />
-                </div>
-                <div className="input-field">
-                  <input type="text" placeholder="City" />
-                </div>
-                <div className="input-field">
-                  <input type="text" placeholder="State" />
-                </div>
-                <div className="input-field">
-                  <input type="text" placeholder="Pincode" />
-                </div>
+                 <div className={`input-field ${errors.firstName ? 'error' : ''}`}>
+                   <User size={18} className="input-icon" />
+                   <input 
+                    type="text" 
+                    placeholder="First Name *" 
+                    value={formData.firstName}
+                    onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                   />
+                 </div>
+                 <div className={`input-field ${errors.lastName ? 'error' : ''}`}>
+                   <User size={18} className="input-icon" />
+                   <input 
+                    type="text" 
+                    placeholder="Last Name *" 
+                    value={formData.lastName}
+                    onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                   />
+                 </div>
+                 <div className={`input-field full-width ${errors.address ? 'error' : ''}`}>
+                   <MapPin size={18} className="input-icon" />
+                   <input 
+                    type="text" 
+                    placeholder="Flat, House no., Building *" 
+                    value={formData.address}
+                    onChange={(e) => setFormData({...formData, address: e.target.value})}
+                   />
+                 </div>
+                 <div className="input-field full-width">
+                   <input 
+                    type="text" 
+                    placeholder="Area, Street, Sector, Village (Optional)" 
+                    value={formData.area}
+                    onChange={(e) => setFormData({...formData, area: e.target.value})}
+                   />
+                 </div>
+                 <div className={`input-field ${errors.city ? 'error' : ''}`}>
+                   <input 
+                    type="text" 
+                    placeholder="City *" 
+                    value={formData.city}
+                    onChange={(e) => setFormData({...formData, city: e.target.value})}
+                   />
+                 </div>
+                 <div className={`input-field ${errors.state ? 'error' : ''}`}>
+                   <input 
+                    type="text" 
+                    placeholder="State *" 
+                    value={formData.state}
+                    onChange={(e) => setFormData({...formData, state: e.target.value})}
+                   />
+                 </div>
+                 <div className={`input-field ${errors.pincode ? 'error' : ''}`}>
+                   <input 
+                    type="text" 
+                    placeholder="Pincode *" 
+                    value={formData.pincode}
+                    onChange={(e) => setFormData({...formData, pincode: e.target.value})}
+                   />
+                 </div>
               </div>
             </section>
 
@@ -144,9 +209,9 @@ const OrderPage = () => {
                   <span>Grand Total</span>
                   <strong>₹{total}</strong>
                </div>
-               <button className="btn-place-order-v2" onClick={() => alert('Order Placed!')}>
-                 PLACE ORDER <ChevronRight size={20} />
-               </button>
+                <button className="btn-place-order-v2" onClick={handlePlaceOrder}>
+                  PLACE ORDER <ChevronRight size={20} />
+                </button>
             </div>
 
             <div className="mobile-trust-badges-bottom hide-desktop">
@@ -226,7 +291,13 @@ const OrderPage = () => {
                   </div>
                 </div>
 
-                <div className="checkout-trust-badges">
+                 <div className="summary-footer-v2 hide-mobile">
+                   <button className="btn-place-order-v2" onClick={handlePlaceOrder}>
+                     PLACE ORDER <ChevronRight size={20} />
+                   </button>
+                 </div>
+
+                 <div className="checkout-trust-badges">
                    <div className="t-badge"><ShieldCheck size={16} /> Secure Payment</div>
                    <div className="t-badge"><Truck size={16} /> Fast Delivery</div>
                 </div>
@@ -357,6 +428,25 @@ const OrderPage = () => {
           outline: none;
           box-shadow: 0 0 0 4px rgba(213, 5, 5, 0.05);
         }
+
+         .input-field.error input {
+           border-color: #ff5252;
+           background: #fff8f8;
+         }
+
+         .input-field.error::after {
+           content: 'Required';
+           position: absolute;
+           right: 15px;
+           top: 50%;
+           transform: translateY(-50%);
+           font-size: 0.7rem;
+           font-weight: 800;
+           color: #ff5252;
+           text-transform: uppercase;
+         }
+
+         .summary-footer-v2 { margin-top: 25px; margin-bottom: 20px; }
 
         .payment-options { display: grid; gap: 12px; }
         

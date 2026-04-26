@@ -124,7 +124,33 @@ const Shop = () => {
         .shop-page {
           background: var(--cream);
           min-height: 100vh;
+          padding-top: 160px;
         }
+
+        .page-header {
+          text-align: center;
+          margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+          font-size: 3.5rem;
+          font-weight: 900;
+          font-family: 'Outfit', sans-serif;
+          margin: 10px 0;
+          color: #111;
+        }
+
+        .page-header .subtitle {
+          font-family: 'Inter', sans-serif;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 4px;
+          font-size: 0.9rem;
+          color: var(--primary-red);
+          margin: 0;
+        }
+
+        .text-red { color: var(--primary-red); }
 
         .shop-filters {
           display: flex;
@@ -306,6 +332,9 @@ const Shop = () => {
         }
 
         @media (max-width: 768px) {
+          .shop-page { padding-top: 120px; }
+          .page-header h1 { font-size: 2.2rem; }
+          .page-header .subtitle { font-size: 0.75rem; letter-spacing: 2px; }
           .modern-product-name { font-size: 1.4rem; }
           .card-top { height: 320px; }
           .image-wrapper { height: 200px; }
@@ -316,6 +345,7 @@ const Shop = () => {
           .shop-filters {
             gap: 15px;
             flex-wrap: wrap;
+            margin-top: 40px;
           }
         }
       `}} />
