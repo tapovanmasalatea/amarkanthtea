@@ -28,7 +28,7 @@ const Shop = () => {
       name: "Tapovan Premium Tea",
       category: "ctc",
       description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing mountain-fresh taste.",
-      price: 740,
+      price: 632,
       image: tapovanImg,
       badge: "Special Edition",
       color: "#f15800",

@@ -67,8 +67,7 @@ const AmarkanthPremiumCTC = () => {
   const variants = {
     '250g': { label: '250g Pouch', price: 195, oldPrice: 210, discount: '7%', perUnit: '₹780/kg' },
     '500g': { label: '500g Pouch', price: 380, oldPrice: 420, discount: '9%', perUnit: '₹760/kg' },
-    '1kg': { label: '1kg Box', price: 740, oldPrice: 850, discount: '12%', perUnit: '₹740/kg' },
-    '5kg': { label: '5kg Bulk', price: 3500, oldPrice: 4200, discount: '16%', perUnit: '₹700/kg' }
+    '1kg': { label: '1kg Box', price: 740, oldPrice: 850, discount: '12%', perUnit: '₹740/kg' }
   };
 
   const features = [
@@ -208,26 +207,7 @@ const AmarkanthPremiumCTC = () => {
                    <span className="discount-pill-v3">{variants[variant].discount} OFF</span>
                 </div>
                 <p className="mrp-subtext-v3">MRP Inclusive of all taxes</p>
-                      {/* Offers Mobile - Stacked */}
-              <div className="offers-stack-mobile">
-                {/* Offer Bar */}
-                <div className="promo-bar-v2">
-                  <Ticket size={20} className="text-brand-red" />
-                  <p>Buy now and Get a <strong>Scratch Card</strong> & win a <strong>Thailand Trip!</strong></p>
-                </div>
 
-                {/* Upsell Card - Free Tester */}
-                <div className="upsell-card">
-                  <div className="test-badge">EXCLUSIVE OFFER</div>
-                  <div className="upsell-content">
-                    <img src={tapovanImg} alt="Tapovan Tester" className="kit-thumb" />
-                    <div className="kit-info">
-                      <h4>Get FREE Tapovan Tea Tester</h4>
-                      <p className="worth-text">Worth ₹50</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
          </div>
 
               <div className="variant-selector-v2">

@@ -166,41 +166,16 @@ const OrderPage = () => {
                 <h2>Payment Method</h2>
               </div>
               <div className="payment-options">
-                <label className={`payment-card-v2 ${formData.paymentMethod === 'cod' ? 'active' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="payment" 
-                    value="cod" 
-                    checked={formData.paymentMethod === 'cod'}
-                    onChange={() => setFormData({...formData, paymentMethod: 'cod'})}
-                  />
+                <div className="payment-card-v2 active" style={{ cursor: 'default' }}>
                   <div className="payment-info">
                     <div className="icon-box"><Truck size={24} /></div>
                     <div className="text">
-                      <strong>Cash on Delivery</strong>
-                      <span>Pay when you receive the package</span>
+                      <strong>Cash on Delivery (COD)</strong>
+                      <span>Pay in cash or digital UPI when you receive the package.</span>
                     </div>
                   </div>
                   <div className="radio-check"></div>
-                </label>
-                
-                <label className={`payment-card-v2 ${formData.paymentMethod === 'online' ? 'active' : ''}`}>
-                  <input 
-                    type="radio" 
-                    name="payment" 
-                    value="online"
-                    checked={formData.paymentMethod === 'online'}
-                    onChange={() => setFormData({...formData, paymentMethod: 'online'})}
-                  />
-                  <div className="payment-info">
-                    <div className="icon-box"><CreditCard size={24} /></div>
-                    <div className="text">
-                      <strong>Online Payment</strong>
-                      <span>UPI, Credit Card, Debit Card</span>
-                    </div>
-                  </div>
-                  <div className="radio-check"></div>
-                </label>
+                </div>
               </div>
             </section>
 
@@ -226,7 +201,7 @@ const OrderPage = () => {
               <div className="summary-card-v2">
                 <div className="summary-header">
                    <h3>Order Summary</h3>
-                   <span className="item-count">{productData.quantity + 2} Items</span>
+                   <span className="item-count">{productData.quantity} {productData.quantity === 1 ? 'Item' : 'Items'}</span>
                 </div>
                 
                 <div className="checkout-items-list">
@@ -241,36 +216,6 @@ const OrderPage = () => {
                       <p>{productData.variant}</p>
                     </div>
                     <div className="p-price-v2">₹{subtotal}</div>
-                  </div>
-
-                  {/* Default Gift 1: Tester */}
-                  <div className="product-item-checkout-v2 gift-item">
-                    <div className="p-img-v2">
-                      <div className="gift-placeholder">
-                        <Sparkles size={24} color="#d50505" />
-                      </div>
-                      <span className="p-qty-badge-v2">1</span>
-                    </div>
-                    <div className="p-info-v2">
-                      <h4>Free Tea Tester Pack</h4>
-                      <p className="gift-tag">Complimentary Gift</p>
-                    </div>
-                    <div className="p-price-v2 text-free">FREE</div>
-                  </div>
-
-                  {/* Default Gift 2: Scratch Card */}
-                  <div className="product-item-checkout-v2 gift-item">
-                    <div className="p-img-v2">
-                      <div className="gift-placeholder">
-                        <Ticket size={24} color="#d50505" />
-                      </div>
-                      <span className="p-qty-badge-v2">1</span>
-                    </div>
-                    <div className="p-info-v2">
-                      <h4>Thailand Trip Scratch Card</h4>
-                      <p className="gift-tag">Limited Time Offer</p>
-                    </div>
-                    <div className="p-price-v2 text-free">FREE</div>
                   </div>
                 </div>
 

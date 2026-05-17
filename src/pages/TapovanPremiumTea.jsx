@@ -65,10 +65,9 @@ const TapovanPremiumTea = () => {
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
 
   const variants = {
-    '250g': { label: '250g Pouch', price: 195, oldPrice: 210, discount: '7%', perUnit: '₹780/kg' },
-    '500g': { label: '500g Pouch', price: 380, oldPrice: 420, discount: '9%', perUnit: '₹760/kg' },
-    '1kg': { label: '1kg Box', price: 740, oldPrice: 850, discount: '12%', perUnit: '₹740/kg' },
-    '5kg': { label: '5kg Bulk', price: 3500, oldPrice: 4200, discount: '16%', perUnit: '₹700/kg' }
+    '250g': { label: '250g Pouch', price: 158, oldPrice: 170, discount: '7%', perUnit: '₹632/kg' },
+    '500g': { label: '500g Pouch', price: 316, oldPrice: 340, discount: '7%', perUnit: '₹632/kg' },
+    '1kg': { label: '1kg Box', price: 632, oldPrice: 680, discount: '7%', perUnit: '₹632/kg' }
   };
 
   const features = [
@@ -208,26 +207,6 @@ const TapovanPremiumTea = () => {
                 <p className="mrp-subtext-v3">MRP Inclusive of all taxes</p>
               </div>
 
-              {/* Offers Mobile - Stacked */}
-              <div className="offers-stack-mobile">
-                {/* Offer Bar */}
-                <div className="promo-bar-v2 tapovan-promo">
-                  <Ticket size={20} className="text-tapovan-orange" />
-                  <p>Buy now and Get a <strong>Scratch Card</strong> & win a <strong>Thailand Trip!</strong></p>
-                </div>
-
-                {/* Upsell Card - Free Amarkanth Tester */}
-                <div className="upsell-card amarkanth-upsell">
-                  <div className="test-badge amarkanth-badge">LIMITED OFFER</div>
-                  <div className="upsell-content">
-                    <img src={amarkanthImg} alt="Amarkanth Tester" className="kit-thumb" />
-                    <div className="kit-info">
-                      <h4>Get FREE Amarkanth Tea Tester</h4>
-                      <p>Worth ₹50</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               <div className="variant-selector-v2">
                 <p className="variant-title">Select Variant</p>

@@ -24,7 +24,7 @@ const products = [
     subtitle: "Premium Chai",
     description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing mountain-fresh taste.",
     image: tapovanImg,
-    price: 740, // Updated to match product page default
+    price: 632, // Updated to match product page default
     badge: "Special Edition",
     color: "#f15800", // Tapovan Orange
     lightBg: "#fff8f0", // Very light shade of Tapovan orange
