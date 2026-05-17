@@ -167,15 +167,23 @@ const TapovanPremiumTea = () => {
               transition={{ duration: 0.8 }}
               className="product-visual-area"
             >
-              <div className="main-image-wrapper" onClick={() => setIsZoomed(true)}>
+              <div 
+                className={`main-image-wrapper ${isZoomed ? 'zoomed-in-box' : ''}`} 
+                onClick={() => setIsZoomed(!isZoomed)}
+              >
                 <motion.img 
                   key={selectedImage}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   src={selectedImage} 
                   alt="Tapovan Premium Tea" 
-                  className="product-main-img"
+                  className={`product-main-img ${isZoomed ? 'zoomed-img' : ''}`}
+                  loading="eager"
+                  fetchpriority="high"
                 />
+                <div className="zoom-badge-indicator">
+                  {isZoomed ? "❌ Zoomed (Scroll to Pan)" : "🔍 Click to Zoom In"}
+                </div>
               </div>
               
               <div className="thumbnail-gallery">
@@ -442,144 +450,89 @@ const TapovanPremiumTea = () => {
         </div>
       </section>
 
-      <AnimatePresence>
-        {isZoomed && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="zoom-lightbox-modal"
-            onClick={() => { setIsZoomed(false); setZoomScale(1); }}
-          >
-            <div className="lightbox-close-btn">
-              <X size={30} />
-            </div>
-            
-            <motion.div 
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              className="lightbox-content-box"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="lightbox-image-container" style={{ cursor: zoomScale > 1 ? 'zoom-out' : 'zoom-in' }}>
-                <img 
-                  src={selectedImage} 
-                  alt="Zoomed Product View" 
-                  style={{ transform: `scale(${zoomScale})` }}
-                  onClick={() => setZoomScale(zoomScale === 1 ? 2 : 1)}
-                />
-              </div>
-              <div className="lightbox-hint">
-                {zoomScale > 1 ? "Click image to zoom out" : "Click image to zoom in (2x) | Scroll to close"}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
-        /* Image Zoom Lightbox Modal Styles */
-        .zoom-lightbox-modal {
-          position: fixed;
+        /* Premium In-Box Scrollable Magnifier Styles */
+        .main-image-wrapper {
+          position: relative;
+          background: #fff;
+          border-radius: 20px;
+          margin-bottom: 8px;
+          overflow: hidden;
+          aspect-ratio: 1 / 1;
+          width: 100%;
+          border: none;
+          cursor: zoom-in;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          user-select: none;
+        }
+
+        .main-image-wrapper.zoomed-in-box {
+          overflow: auto !important;
+          cursor: zoom-out;
+          border: 2px solid var(--tapovan-orange);
+        }
+
+        .product-main-img {
+          position: absolute;
           top: 0;
           left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(0, 0, 0, 0.85);
-          backdrop-filter: blur(15px);
-          -webkit-backdrop-filter: blur(15px);
-          z-index: 10000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: 20px;
+          transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .lightbox-close-btn {
-          position: absolute;
-          top: 30px;
-          right: 30px;
-          color: white;
-          background: rgba(255, 255, 255, 0.1);
-          padding: 12px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: 0.3s;
-        }
-
-        .lightbox-close-btn:hover {
-          background: rgba(255, 255, 255, 0.2);
-          transform: rotate(90deg);
-        }
-
-        .lightbox-content-box {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-          max-width: 90%;
-          max-height: 90%;
-        }
-
-        .lightbox-image-container {
-          overflow: hidden;
-          border-radius: 16px;
-          background: white;
-          padding: 20px;
-          box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
-          max-width: 600px;
-          max-height: 600px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .lightbox-image-container img {
-          max-width: 100%;
-          max-height: 100%;
+        .product-main-img.zoomed-img {
+          position: relative;
+          width: 250% !important;
+          height: 250% !important;
+          max-width: none !important;
           object-fit: contain;
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          border-radius: 0;
         }
 
-        .lightbox-hint {
-          color: rgba(255, 255, 255, 0.6);
-          font-size: 0.85rem;
-          font-weight: 600;
+        .zoom-badge-indicator {
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          color: #111;
+          padding: 8px 16px;
+          border-radius: 50px;
+          font-size: 0.75rem;
+          font-weight: 800;
+          box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+          opacity: 0.9;
+          transition: all 0.3s ease;
+          pointer-events: none;
+          z-index: 10;
           letter-spacing: 0.5px;
           text-transform: uppercase;
         }
 
-        .main-image-wrapper {
-          position: relative;
-          cursor: zoom-in;
-        }
-
-        .main-image-wrapper::after {
-          content: '🔍 Click to Zoom';
-          position: absolute;
-          bottom: 15px;
-          right: 15px;
-          background: rgba(255, 255, 255, 0.9);
-          backdrop-filter: blur(5px);
-          color: #111;
-          padding: 6px 12px;
-          border-radius: 50px;
-          font-size: 0.75rem;
-          font-weight: 800;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-          opacity: 0.8;
-          transition: 0.3s;
-          pointer-events: none;
-        }
-
-        .main-image-wrapper:hover::after {
+        .main-image-wrapper:hover .zoom-badge-indicator {
           opacity: 1;
-          transform: scale(1.05);
+          transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar for Zoom Box */
+        .main-image-wrapper::-webkit-scrollbar {
+          width: 6px;
+          height: 6px;
+        }
+        .main-image-wrapper::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 10px;
+        }
+        .main-image-wrapper::-webkit-scrollbar-thumb {
+          background: var(--tapovan-orange);
+          border-radius: 10px;
         }
 
         .btn-buy-now-v2.processing {
@@ -646,30 +599,7 @@ const TapovanPremiumTea = () => {
 
         .product-visual-area { position: sticky; top: 120px; }
 
-        .main-image-wrapper {
-          background: #fff;
-          border-radius: 20px;
-          padding: 0;
-          margin-bottom: 8px;
-          position: relative;
-          overflow: hidden;
-          aspect-ratio: 1 / 1;
-          width: 100%;
-          border: none;
-        }
-
-        .product-main-img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          border-radius: 20px;
-        }
+        /* Main image container inherited from top styles */
 
         .thumbnail-gallery { display: flex; gap: 8px; justify-content: space-between; width: 100%; }
 
