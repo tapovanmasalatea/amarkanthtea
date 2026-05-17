@@ -54,6 +54,26 @@ const useReveal = () => {
 
 function AppContent() {
   useReveal();
+
+  useEffect(() => {
+    const preloadPageChunks = () => {
+      // Preload product, shop, and checkout pages in the background to ensure instant page load
+      import('./pages/Home').catch(() => {});
+      import('./pages/Shop').catch(() => {});
+      import('./pages/AmarkanthPremiumCTC').catch(() => {});
+      import('./pages/TapovanPremiumTea').catch(() => {});
+      import('./pages/OrderPage').catch(() => {});
+      import('./pages/ThankYou').catch(() => {});
+    };
+    
+    if (document.readyState === 'complete') {
+      preloadPageChunks();
+    } else {
+      window.addEventListener('load', preloadPageChunks);
+      return () => window.removeEventListener('load', preloadPageChunks);
+    }
+  }, []);
+
   return (
     <div className="app">
       <Navbar />

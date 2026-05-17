@@ -42,17 +42,23 @@ const AmarkanthPremiumCTC = () => {
   const [quantity, setQuantity] = useState(1);
   const [variant, setVariant] = useState('1kg');
   const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomScale, setZoomScale] = useState(1);
+  const [isPurchasing, setIsPurchasing] = useState(false);
 
   const handleBuyNow = () => {
-    navigate('/checkout', {
-      state: {
-        name: "Amarkanth Premium CTC",
-        variant: variants[variant].label,
-        price: variants[variant].price,
-        quantity: quantity,
-        image: amarkanth
-      }
-    });
+    setIsPurchasing(true);
+    setTimeout(() => {
+      navigate('/checkout', {
+        state: {
+          name: "Amarkanth Premium CTC",
+          variant: variants[variant].label,
+          price: variants[variant].price,
+          quantity: quantity,
+          image: amarkanth
+        }
+      });
+    }, 450);
   };
   
   const productImages = [
@@ -161,7 +167,7 @@ const AmarkanthPremiumCTC = () => {
               transition={{ duration: 0.8 }}
               className="product-visual-area"
             >
-              <div className="main-image-wrapper">
+              <div className="main-image-wrapper" onClick={() => setIsZoomed(true)}>
                 <motion.img 
                   key={selectedImage}
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -239,7 +245,18 @@ const AmarkanthPremiumCTC = () => {
                   <span>{quantity}</span>
                   <button onClick={() => setQuantity(quantity + 1)}><Plus size={18} /></button>
                 </div>
-                <button className="btn-buy-now-v2" onClick={handleBuyNow}>Buy Now</button>
+                <button 
+                  className={`btn-buy-now-v2 ${isPurchasing ? 'processing' : ''}`} 
+                  onClick={handleBuyNow} 
+                  disabled={isPurchasing}
+                >
+                  {isPurchasing ? (
+                    <span className="buy-now-spinner-container">
+                      <span className="buy-now-spinner"></span>
+                      PROCESSING...
+                    </span>
+                  ) : 'Buy Now'}
+                </button>
               </div>
 
               <div className="product-description-v2">
@@ -427,8 +444,172 @@ const AmarkanthPremiumCTC = () => {
         </div>
       </section>
 
+      <AnimatePresence>
+        {isZoomed && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="zoom-lightbox-modal"
+            onClick={() => { setIsZoomed(false); setZoomScale(1); }}
+          >
+            <div className="lightbox-close-btn">
+              <X size={30} />
+            </div>
+            
+            <motion.div 
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="lightbox-content-box"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="lightbox-image-container" style={{ cursor: zoomScale > 1 ? 'zoom-out' : 'zoom-in' }}>
+                <img 
+                  src={selectedImage} 
+                  alt="Zoomed Product View" 
+                  style={{ transform: `scale(${zoomScale})` }}
+                  onClick={() => setZoomScale(zoomScale === 1 ? 2 : 1)}
+                />
+              </div>
+              <div className="lightbox-hint">
+                {zoomScale > 1 ? "Click image to zoom out" : "Click image to zoom in (2x) | Scroll to close"}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        /* Image Zoom Lightbox Modal Styles */
+        .zoom-lightbox-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          z-index: 10000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        .lightbox-close-btn {
+          position: absolute;
+          top: 30px;
+          right: 30px;
+          color: white;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 12px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.3s;
+        }
+
+        .lightbox-close-btn:hover {
+          background: rgba(255, 255, 255, 0.2);
+          transform: rotate(90deg);
+        }
+
+        .lightbox-content-box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          max-width: 90%;
+          max-height: 90%;
+        }
+
+        .lightbox-image-container {
+          overflow: hidden;
+          border-radius: 16px;
+          background: white;
+          padding: 20px;
+          box-shadow: 0 30px 70px rgba(0, 0, 0, 0.3);
+          max-width: 600px;
+          max-height: 600px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .lightbox-image-container img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .lightbox-hint {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+
+        .main-image-wrapper {
+          position: relative;
+          cursor: zoom-in;
+        }
+
+        .main-image-wrapper::after {
+          content: '🔍 Click to Zoom';
+          position: absolute;
+          bottom: 15px;
+          right: 15px;
+          background: rgba(255, 255, 255, 0.9);
+          backdrop-filter: blur(5px);
+          color: #111;
+          padding: 6px 12px;
+          border-radius: 50px;
+          font-size: 0.75rem;
+          font-weight: 800;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          opacity: 0.8;
+          transition: 0.3s;
+          pointer-events: none;
+        }
+
+        .main-image-wrapper:hover::after {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+
+        .btn-buy-now-v2.processing {
+          background: #333 !important;
+          cursor: not-allowed;
+          opacity: 0.9;
+        }
+
+        .buy-now-spinner-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        .buy-now-spinner {
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.8s infinite linear;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
 
         :root {
           --brand-red: #d50505;
