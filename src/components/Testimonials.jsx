@@ -31,7 +31,7 @@ const Testimonials = () => {
       <div className="container">
         <div className="testimonials-grid">
           {reviews.map((r, i) => (
-            <div key={i} className="test-card reveal">
+            <div key={i} className="test-card">
               <div className="brand-tag">{r.brand}</div>
               <div className="stars">
                 {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
@@ -67,6 +67,22 @@ const Testimonials = () => {
           border-radius: 4px;
           display: flex;
           flex-direction: column;
+          animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .test-card:nth-child(1) { animation-delay: 0.05s; }
+        .test-card:nth-child(2) { animation-delay: 0.15s; }
+        .test-card:nth-child(3) { animation-delay: 0.25s; }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         .brand-tag {
