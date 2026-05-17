@@ -260,49 +260,49 @@ const Navbar = () => {
         .menu-content {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 15px;
         }
 
         .menu-content a {
-          font-weight: 700;
-          font-size: 2.2rem;
+          font-weight: 600;
+          font-size: 1.6rem;
           color: var(--text-main);
           text-decoration: none;
           transition: var(--transition-smooth);
-          opacity: 0.5;
-          line-height: 1.2;
-          letter-spacing: -0.03em;
+          opacity: 0.6;
+          line-height: 1.3;
+          letter-spacing: -0.02em;
           font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Inter", "Segoe UI", Roboto, sans-serif;
         }
 
         .menu-content a:hover, .menu-content a.active {
           opacity: 1;
-          transform: translateX(10px);
+          transform: translateX(6px);
           color: var(--primary-red);
         }
 
         .sub-links {
           display: flex;
           flex-direction: column;
-          gap: 10px;
-          margin-top: 10px;
-          margin-left: 20px;
-          padding-left: 20px;
-          border-left: 1px solid rgba(0,0,0,0.1);
+          gap: 8px;
+          margin-top: 8px;
+          margin-left: 15px;
+          padding-left: 15px;
+          border-left: 1.5px solid rgba(213, 5, 5, 0.15);
         }
 
         .sub-link {
-          font-size: 1.1rem !important; /* Smaller size for sub-links */
+          font-size: 1.05rem !important;
           font-weight: 500 !important;
           opacity: 0.6 !important;
           transform: none !important;
-          letter-spacing: 0 !important;
+          letter-spacing: -0.01em !important;
         }
 
         .sub-link:hover {
           opacity: 1 !important;
           color: var(--primary-red) !important;
-          transform: translateX(5px) !important;
+          transform: translateX(4px) !important;
         }
 
         .menu-footer {
