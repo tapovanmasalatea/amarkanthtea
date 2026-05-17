@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--cream);
   color: var(--text-main);
   line-height: 1.47059;
@@ -28,8 +28,9 @@ body {
 }
 
 h1, h2, h3, h4 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.03em;
 }
 
 a {

@@ -265,14 +265,14 @@ const Navbar = () => {
 
         .menu-content a {
           font-weight: 700;
-          font-size: 2.2rem; /* Reduced from 3.5rem */
+          font-size: 2.2rem;
           color: var(--text-main);
           text-decoration: none;
-          transition: all 0.4s ease;
+          transition: var(--transition-smooth);
           opacity: 0.5;
           line-height: 1.2;
-          letter-spacing: -0.02em;
-          font-family: 'Inter', sans-serif;
+          letter-spacing: -0.03em;
+          font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", "Inter", "Segoe UI", Roboto, sans-serif;
         }
 
         .menu-content a:hover, .menu-content a.active {
