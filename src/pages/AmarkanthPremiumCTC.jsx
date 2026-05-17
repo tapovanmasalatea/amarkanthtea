@@ -49,7 +49,7 @@ const AmarkanthPremiumCTC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 600) {
+      if (window.scrollY > 400) {
         setShowStickyBar(true);
       } else {
         setShowStickyBar(false);
@@ -465,23 +465,25 @@ const AmarkanthPremiumCTC = () => {
       {/* Sticky Bottom Order Pill Bar */}
       <AnimatePresence>
         {showStickyBar && (
-          <motion.div 
-            initial={{ y: 100, x: '-50%', opacity: 0 }}
-            animate={{ y: 0, x: '-50%', opacity: 1 }}
-            exit={{ y: 100, x: '-50%', opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            className="sticky-order-pill-bar"
-            onClick={handleBuyNow}
-          >
-            <div className="sticky-pill-left">
-              <span className="sticky-pill-title">ORDER NOW</span>
-              <span className="sticky-pill-brand">AMARKANTH</span>
-            </div>
-            <button className="sticky-pill-btn">
-              <span>₹{variants[variant].price}</span>
-              <ArrowRight size={18} />
-            </button>
-          </motion.div>
+          <div className="sticky-order-wrapper">
+            <motion.div 
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 100, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+              className="sticky-order-pill-bar"
+              onClick={handleBuyNow}
+            >
+              <div className="sticky-pill-left">
+                <span className="sticky-pill-title">ORDER NOW</span>
+                <span className="sticky-pill-brand">AMARKANTH</span>
+              </div>
+              <button className="sticky-pill-btn">
+                <span>₹{variants[variant].price}</span>
+                <ArrowRight size={18} />
+              </button>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
 

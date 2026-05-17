@@ -49,7 +49,7 @@ const TapovanPremiumTea = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 600) {
+      if (window.scrollY > 400) {
         setShowStickyBar(true);
       } else {
         setShowStickyBar(false);
@@ -467,12 +467,20 @@ const TapovanPremiumTea = () => {
 
         /* Premium In-Box Scrollable Magnifier Styles */
         
-        /* Sticky Floating Order Pill Bar */
-        .sticky-order-pill-bar {
+        /* Sticky Floating Order Pill Wrapper & Bar */
+        .sticky-order-wrapper {
           position: fixed;
           bottom: 25px;
-          left: 50%;
-          transform: translateX(-50%);
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+          pointer-events: none;
+        }
+
+        .sticky-order-pill-bar {
           width: 90%;
           max-width: 400px;
           background: rgba(17, 17, 17, 0.95);
@@ -482,16 +490,16 @@ const TapovanPremiumTea = () => {
           justify-content: space-between;
           padding: 8px 8px 8px 24px;
           box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-          z-index: 9999;
           cursor: pointer;
           border: 1.5px solid rgba(255, 255, 255, 0.08);
           backdrop-filter: blur(15px);
           -webkit-backdrop-filter: blur(15px);
+          pointer-events: auto;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .sticky-order-pill-bar:hover {
-          transform: translate(-50%, -2px);
+          transform: translateY(-2px);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
