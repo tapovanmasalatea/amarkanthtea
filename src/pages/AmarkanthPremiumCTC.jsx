@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ShieldCheck, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
+import { Check, ShieldCheck, ArrowRight, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
 import amarkanth from '../assets/amarkanth.webp';
 import amarkanth1 from '../assets/amarkanth1.webp';
 import amarkanth2 from '../assets/amarkanth2.webp';
@@ -45,6 +45,19 @@ const AmarkanthPremiumCTC = () => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomScale, setZoomScale] = useState(1);
   const [isPurchasing, setIsPurchasing] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 600) {
+        setShowStickyBar(true);
+      } else {
+        setShowStickyBar(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleBuyNow = () => {
     setIsPurchasing(true);
@@ -449,7 +462,28 @@ const AmarkanthPremiumCTC = () => {
         </div>
       </section>
 
-      {/* Premium In-Box Scrollable Magnifier Styles */}
+      {/* Sticky Bottom Order Pill Bar */}
+      <AnimatePresence>
+        {showStickyBar && (
+          <motion.div 
+            initial={{ y: 100, x: '-50%', opacity: 0 }}
+            animate={{ y: 0, x: '-50%', opacity: 1 }}
+            exit={{ y: 100, x: '-50%', opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+            className="sticky-order-pill-bar"
+            onClick={handleBuyNow}
+          >
+            <div className="sticky-pill-left">
+              <span className="sticky-pill-title">ORDER NOW</span>
+              <span className="sticky-pill-brand">AMARKANTH</span>
+            </div>
+            <button className="sticky-pill-btn">
+              <span>₹{variants[variant].price}</span>
+              <ArrowRight size={18} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <style dangerouslySetInnerHTML={{ __html: `
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');

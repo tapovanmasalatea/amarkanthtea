@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ShieldCheck, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Mountain, Wind, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
+import { Check, ShieldCheck, ArrowRight, Coffee, Package, Clock, Leaf, Star, Minus, Plus, Ticket, ChevronDown, Zap, Heart, Sparkles, Mountain, Wind, Truck, Headphones, RotateCcw, Search, Camera, Send, X } from 'lucide-react';
 import amarkanthImg from '../assets/amarkanth.webp';
 import tapovan from '../assets/tapovan.webp';
 import tapovan1 from '../assets/tapovan1.webp';
@@ -45,6 +45,19 @@ const TapovanPremiumTea = () => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomScale, setZoomScale] = useState(1);
   const [isPurchasing, setIsPurchasing] = useState(false);
+  const [showStickyBar, setShowStickyBar] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 600) {
+        setShowStickyBar(true);
+      } else {
+        setShowStickyBar(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleBuyNow = () => {
     setIsPurchasing(true);
@@ -453,6 +466,78 @@ const TapovanPremiumTea = () => {
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
         /* Premium In-Box Scrollable Magnifier Styles */
+        
+        /* Sticky Floating Order Pill Bar */
+        .sticky-order-pill-bar {
+          position: fixed;
+          bottom: 25px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%;
+          max-width: 400px;
+          background: rgba(17, 17, 17, 0.95);
+          border-radius: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 8px 8px 8px 24px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+          z-index: 9999;
+          cursor: pointer;
+          border: 1.5px solid rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sticky-order-pill-bar:hover {
+          transform: translate(-50%, -2px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .sticky-pill-left {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          line-height: 1.25;
+        }
+
+        .sticky-pill-title {
+          color: #ffffff;
+          font-size: 1.1rem;
+          font-weight: 900;
+          letter-spacing: 0.5px;
+          font-family: 'Outfit', sans-serif;
+        }
+
+        .sticky-pill-brand.text-tapovan-orange {
+          color: var(--tapovan-orange) !important; /* Tapovan color accent */
+          font-size: 0.65rem;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+          text-transform: uppercase;
+          margin-top: 1px;
+        }
+
+        .sticky-pill-btn.tapovan-btn-orange {
+          background: var(--tapovan-orange) !important; /* brand orange button */
+          color: #ffffff;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 100px;
+          font-weight: 900;
+          font-size: 1.05rem;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          transition: 0.2s;
+          box-shadow: 0 4px 15px rgba(255, 152, 0, 0.2);
+        }
+
+        .sticky-order-pill-bar:hover .sticky-pill-btn.tapovan-btn-orange {
+          filter: brightness(1.15);
+        }
         .main-image-wrapper {
           position: relative;
           background: #fff;
