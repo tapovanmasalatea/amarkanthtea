@@ -12,6 +12,25 @@ const ThankYou = () => {
     orderId: "AMK-" + Math.random().toString(36).substr(2, 9).toUpperCase()
   };
 
+  React.useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'purchase', {
+        transaction_id: orderId,
+        value: Number(total),
+        currency: 'INR',
+        items: [
+          {
+            item_id: productData.name.replace(/\s+/g, '_').toLowerCase(),
+            item_name: productData.name,
+            item_variant: productData.variant,
+            price: Number(productData.price),
+            quantity: Number(productData.quantity)
+          }
+        ]
+      });
+    }
+  }, [orderId, total, productData]);
+
   return (
     <div className="thank-you-page">
       <div className="container narrow">
@@ -50,28 +69,6 @@ const ThankYou = () => {
                   <div className="ty-p-price">₹{productData.price * productData.quantity}</div>
                 </div>
 
-                {/* Gifts */}
-                <div className="ty-item gift">
-                  <div className="ty-p-img gift-box">
-                    <Sparkles size={20} color="#d50505" />
-                  </div>
-                  <div className="ty-p-info">
-                    <strong>Free Tea Tester Pack</strong>
-                    <span className="gift-label">Complimentary Gift</span>
-                  </div>
-                  <div className="ty-p-price free">FREE</div>
-                </div>
-
-                <div className="ty-item gift">
-                  <div className="ty-p-img gift-box">
-                    <Ticket size={20} color="#d50505" />
-                  </div>
-                  <div className="ty-p-info">
-                    <strong>Thailand Trip Scratch Card</strong>
-                    <span className="gift-label">Limited Time Offer</span>
-                  </div>
-                  <div className="ty-p-price free">FREE</div>
-                </div>
               </div>
 
               <div className="ty-total-row">
