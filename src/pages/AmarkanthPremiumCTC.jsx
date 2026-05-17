@@ -429,7 +429,6 @@ const AmarkanthPremiumCTC = () => {
                   <img src={`https://ui-avatars.com/api/?name=${rev.name}&background=random`} alt={rev.name} className="user-avatar" />
                   <div className="user-meta">
                     <h4>{rev.name}</h4>
-                    <span className="tagline">{rev.tagline}</span>
                   </div>
                   <div className="rev-stars">
                     {[...Array(5)].map((_, i) => ( rev.rating > i && <Star key={i} size={14} fill="#FFD700" color="#FFD700" /> ))}
@@ -882,7 +881,7 @@ const AmarkanthPremiumCTC = () => {
            .big-rating { font-size: 3.5rem; }
            .millions-title { font-size: 3.2rem; }
            .loved-by-script { font-size: 2.2rem; }
-           .product-main-img { height: 280px; }
+           /* mobile image height auto-aligned */
            .loved-gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 20px 10px 0; }
            .gallery-item { border-radius: 12px; aspect-ratio: 1/1; }
 

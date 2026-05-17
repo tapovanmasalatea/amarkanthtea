@@ -428,7 +428,7 @@ const TapovanPremiumTea = () => {
                   <img src={`https://ui-avatars.com/api/?name=${rev.name}&background=random`} alt={rev.name} className="user-avatar" />
                   <div className="user-meta">
                     <h4>{rev.name}</h4>
-                    <span className="tagline tapovan-tag">{rev.tagline}</span>
+                    
                   </div>
                   <div className="rev-stars">
                     {[...Array(5)].map((_, i) => ( rev.rating > i && <Star key={i} size={14} fill="#FFD700" color="#FFD700" /> ))}
@@ -856,7 +856,7 @@ const TapovanPremiumTea = () => {
            .big-rating { font-size: 3.5rem; }
            .millions-title { font-size: 3.2rem; }
            .loved-by-script { font-size: 2.2rem; }
-           .product-main-img { height: 280px; }
+           /* mobile image height auto-aligned */
            .offers-stack-mobile {
              display: flex;
              flex-direction: column;
