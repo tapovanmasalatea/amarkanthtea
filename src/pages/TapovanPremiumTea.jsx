@@ -871,9 +871,9 @@ const TapovanPremiumTea = () => {
 
         @media (max-width: 1100px) {
           .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-          .product-visual-area { position: relative; top: 0; }
-          .main-image-wrapper { padding: 20px; }
-          .product-main-img { height: 350px; }
+          .product-visual-area { position: relative; top: 0; width: 100%; display: flex; flex-direction: column; align-items: center; }
+          .main-image-wrapper { width: 100%; max-width: 480px; margin: 0 auto 15px; aspect-ratio: 1/1; }
+          .product-main-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
           .trust-icons-v2 { grid-template-columns: repeat(2, 1fr); }
           .features-grid { grid-template-columns: repeat(2, 1fr); }
           .millions-title { font-size: 4rem; }
@@ -884,11 +884,14 @@ const TapovanPremiumTea = () => {
         @media (max-width: 768px) {
            .product-page { padding-top: 100px; }
            .thumbnail-gallery { 
-             justify-content: flex-start; 
-             overflow-x: auto; 
-             padding: 10px 0;
-             scrollbar-width: none;
-           }
+              justify-content: center; 
+              width: 100%;
+              max-width: 480px;
+              margin: 0 auto;
+              overflow-x: auto; 
+              padding: 10px 0;
+              scrollbar-width: none;
+            }
            .thumbnail-gallery::-webkit-scrollbar { display: none; }
            .thumb-item { flex: 0 0 70px; height: 70px; }
 
