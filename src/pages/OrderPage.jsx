@@ -644,12 +644,62 @@ const OrderPage = () => {
         }
 
         @media (max-width: 768px) {
-          .checkout-header { margin-bottom: 20px; }
-          .btn-back span { display: none; }
-          .form-section { padding: 25px; border-radius: 18px; }
-          .input-grid { grid-template-columns: 1fr; }
+          .order-page { padding-top: 80px; }
+          .container { padding: 0 12px; }
+          .checkout-header { 
+            margin-bottom: 20px; 
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .header-center h1 { font-size: 1.5rem; }
+          .btn-back { padding: 8px 14px; font-size: 0.9rem; }
+          .security-badge-v2 { padding: 6px 10px; font-size: 0.75rem; }
+
+          /* Tighten Form Sections */
+          .form-section { 
+            padding: 20px 15px; 
+            border-radius: 16px; 
+            margin-bottom: 15px; 
+          }
+          .section-title-row { margin-bottom: 18px; gap: 10px; }
+          .section-title-row h2 { font-size: 1.1rem; }
+          .section-number { width: 24px; height: 24px; border-radius: 6px; font-size: 0.8rem; }
+
+          /* Compact Form Fields */
+          .input-grid { gap: 12px; grid-template-columns: 1fr; }
           .input-field.full-width { grid-column: span 1; }
+          .input-field input { 
+            padding: 12px 12px 12px 42px; 
+            font-size: 0.95rem; 
+            border-radius: 10px; 
+          }
+          .input-icon { left: 14px; }
           
+          /* Tighten Payment Options */
+          .payment-card-v2 { padding: 15px; border-radius: 14px; }
+          .icon-box { width: 38px; height: 38px; border-radius: 10px; }
+          .payment-info { gap: 10px; }
+          .payment-info .text strong { font-size: 0.9rem; }
+          .payment-info .text span { font-size: 0.75rem; }
+          .radio-check { width: 18px; height: 18px; border-width: 2px; }
+          .active .radio-check::after { width: 8px; height: 8px; }
+
+          /* Tighten Order Summary Card */
+          .summary-card-v2 { padding: 20px 15px; border-radius: 18px; }
+          .summary-header { margin-bottom: 18px; padding-bottom: 10px; }
+          .checkout-items-list { gap: 15px; margin-bottom: 18px; }
+          .product-item-checkout-v2 { gap: 12px; }
+          .p-img-v2 { width: 55px; height: 55px; border-radius: 10px; }
+          .p-info-v2 h4 { font-size: 0.9rem; }
+          .p-price-v2 { font-size: 0.9rem; min-width: 60px; }
+          
+          .summary-details-v2 { padding: 12px; border-radius: 12px; gap: 8px; margin-bottom: 18px; }
+          .line-item-v2 { font-size: 0.85rem; }
+          .total-v2 { font-size: 1.15rem; padding-top: 10px; margin-top: 2px; }
+
+          /* Fixed Footer Price Row */
           .mobile-only-price-row {
             display: flex;
             position: fixed;
@@ -657,20 +707,27 @@ const OrderPage = () => {
             left: 0;
             width: 100%;
             background: white;
-            padding: 20px;
+            padding: 16px 20px;
             box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
             z-index: 1000;
             align-items: center;
             justify-content: space-between;
-            gap: 20px;
+            gap: 15px;
           }
           .m-price-col { display: flex; flex-direction: column; }
-          .m-price-col span { font-size: 0.75rem; color: #888; font-weight: 700; text-transform: uppercase; }
-          .m-price-col strong { font-size: 1.5rem; color: #111; font-weight: 900; }
-          .btn-place-order-v2 { width: auto; flex: 1; padding: 15px; font-size: 1rem; border-radius: 12px; }
+          .m-price-col span { font-size: 0.7rem; color: #888; font-weight: 700; text-transform: uppercase; }
+          .m-price-col strong { font-size: 1.4rem; color: #111; font-weight: 900; }
+          .btn-place-order-v2 { 
+            flex: 1; 
+            padding: 14px; 
+            font-size: 0.95rem; 
+            border-radius: 10px; 
+            box-shadow: 0 6px 15px rgba(213, 5, 5, 0.15);
+            width: auto;
+          }
           
-          .mobile-trust-badges-bottom { display: flex; }
-          .order-page { padding-bottom: 80px; }
+          .mobile-trust-badges-bottom { display: flex; padding: 15px 0 30px; gap: 20px; border: none; background: transparent; }
+          .order-page { padding-bottom: 100px; }
           .hide-mobile { display: none; }
         }
       `}} />
