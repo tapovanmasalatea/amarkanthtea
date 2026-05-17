@@ -67,8 +67,8 @@ const OrderPage = () => {
       };
 
       // 1. Submit to Google Sheets Web App (which appends sheet and sends email)
-      // This is configured with a default script handler URL which is easily updatable
-      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz_dE1w2BpxoU4t8n0Pj08tW5s_z7O8gXfH_fK7p/exec";
+      // This is configured with your active script handler URL
+      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxUASRd8GHisN2Wkutpi6ucOU8i0i0v3YAgnODdzYDAdOGQ7PfO8oy26jNc4nnGZ7RE/exec";
       
       try {
         await fetch(GOOGLE_SHEET_URL, {
