@@ -42,9 +42,57 @@ const OrderPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handlePlaceOrder = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handlePlaceOrder = async () => {
     if (validate()) {
+      setIsSubmitting(true);
       const orderId = "AMK-" + Math.random().toString(36).substr(2, 9).toUpperCase();
+      
+      const orderData = {
+        orderId,
+        date: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
+        customerName: `${formData.firstName} ${formData.lastName}`,
+        phone: formData.phone,
+        address: `${formData.address}${formData.area ? ', ' + formData.area : ''}`,
+        city: formData.city,
+        state: formData.state,
+        pincode: formData.pincode,
+        productName: productData.name,
+        variant: productData.variant,
+        price: productData.price,
+        quantity: productData.quantity,
+        total: total,
+        paymentMethod: 'Cash on Delivery (COD)'
+      };
+
+      // 1. Submit to Google Sheets Web App (which appends sheet and sends email)
+      // This is configured with a default script handler URL which is easily updatable
+      const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbz_dE1w2BpxoU4t8n0Pj08tW5s_z7O8gXfH_fK7p/exec";
+      
+      try {
+        await fetch(GOOGLE_SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(orderData)
+        });
+      } catch (error) {
+        console.error("Order submission failed:", error);
+      }
+
+      // 2. Backup to browser local storage
+      try {
+        const localOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+        localOrders.push(orderData);
+        localStorage.setItem('orders', JSON.stringify(localOrders));
+      } catch (e) {
+        console.error("Failed to write order backup:", e);
+      }
+
+      setIsSubmitting(false);
       navigate('/thank-you', { state: { productData, total, orderId } });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -179,13 +227,24 @@ const OrderPage = () => {
               </div>
             </section>
 
-            <div className="mobile-only-price-row">
+             <div className="mobile-only-price-row">
                <div className="m-price-col">
                   <span>Grand Total</span>
                   <strong>₹{total}</strong>
                </div>
-                <button className="btn-place-order-v2" onClick={handlePlaceOrder}>
-                  PLACE ORDER <ChevronRight size={20} />
+                <button 
+                  className="btn-place-order-v2" 
+                  onClick={handlePlaceOrder}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <span className="buy-now-spinner-container">
+                      <span className="buy-now-spinner"></span>
+                      PLACING ORDER...
+                    </span>
+                  ) : (
+                    <>PLACE ORDER <ChevronRight size={20} /></>
+                  )}
                 </button>
             </div>
 
@@ -236,11 +295,22 @@ const OrderPage = () => {
                   </div>
                 </div>
 
-                 <div className="summary-footer-v2 hide-mobile">
-                   <button className="btn-place-order-v2" onClick={handlePlaceOrder}>
-                     PLACE ORDER <ChevronRight size={20} />
-                   </button>
-                 </div>
+                  <div className="summary-footer-v2 hide-mobile">
+                    <button 
+                      className="btn-place-order-v2" 
+                      onClick={handlePlaceOrder}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <span className="buy-now-spinner-container">
+                          <span className="buy-now-spinner"></span>
+                          PLACING ORDER...
+                        </span>
+                      ) : (
+                        <>PLACE ORDER <ChevronRight size={20} /></>
+                      )}
+                    </button>
+                  </div>
 
                  <div className="checkout-trust-badges">
                    <div className="t-badge"><ShieldCheck size={16} /> Secure Payment</div>
@@ -519,6 +589,33 @@ const OrderPage = () => {
           opacity: 0.6;
         }
         .t-badge { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+
+        .btn-place-order-v2:disabled {
+          background: #333 !important;
+          cursor: not-allowed;
+          box-shadow: none;
+        }
+
+        .buy-now-spinner-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        .buy-now-spinner {
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(255, 255, 255, 0.3);
+          border-top-color: white;
+          border-radius: 50%;
+          animation: spin 0.8s infinite linear;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
 
         .btn-place-order-v2 {
           background: var(--brand-red);
