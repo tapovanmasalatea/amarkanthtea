@@ -64,8 +64,7 @@ const TapovanPremiumTea = () => {
   const productImages = [
     tapovan,
     tapovan1,
-    tapovan2,
-    tapovan3
+    tapovan2
   ];
   
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
