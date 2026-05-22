@@ -1,9 +1,82 @@
+import React, { useRef, useState } from 'react';
+import { Play } from 'lucide-react';
 import reel1 from '../assets/reel1.mp4';
 import reel2 from '../assets/reel2.mp4';
 import reel3 from '../assets/reel3.mp4';
 
+const ReelCard = ({ video, id }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => console.log("Video play interrupted:", err));
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleTogglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play()
+          .then(() => setIsPlaying(true))
+          .catch((err) => console.log("Video play interrupted:", err));
+      }
+    }
+  };
+
+  const posters = [
+    "https://images.unsplash.com/photo-1544787210-2211d44b5657?auto=format&fit=crop&q=60&w=800",
+    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=800",
+    "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=60&w=800"
+  ];
+
+  return (
+    <div 
+      className="reel-card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleTogglePlay}
+    >
+      <div className="video-wrapper">
+        <video 
+          ref={videoRef}
+          src={video} 
+          muted 
+          loop 
+          playsInline
+          preload="metadata"
+          poster={posters[id - 1]}
+          className="reel-video"
+          onError={(e) => {
+            e.target.style.backgroundColor = '#2c3e50';
+          }}
+        />
+        
+        {/* Play Overlay */}
+        <div className={`reel-play-overlay ${isPlaying ? 'hide' : ''}`}>
+          <div className="play-button-circle">
+            <Play size={24} fill="currentColor" color="white" />
+          </div>
+          <span className="reel-hint-text">Hover or Tap to Play</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const BrandReels = () => {
-  // Path for your reels: /src/assets/reel1.mp4, /src/assets/reel2.mp4, etc.
   const reels = [
     { id: 1, video: reel1 },
     { id: 2, video: reel2 },
@@ -15,30 +88,12 @@ const BrandReels = () => {
       <div className="container">
         <div className="reels-header">
           <h2 className="reels-title">Experience the Purity</h2>
-          <p className="reels-subtitle">Go behind the scenes of every cup.</p>
+          <p className="reels-subtitle">Hover or tap on a reel to go behind the scenes of every cup.</p>
         </div>
 
         <div className="reels-container">
           {reels.map((reel) => (
-            <div key={reel.id} className="reel-card">
-              <div className="video-wrapper">
-                <video 
-                  src={reel.video} 
-                  autoPlay 
-                  muted 
-                  loop 
-                  playsInline
-                  preload="none"
-                  poster="https://images.unsplash.com/photo-1544787210-2211d44b5657?auto=format&fit=crop&q=60&w=800"
-                  className="reel-video"
-                  onError={(e) => {
-                    // Placeholder if video is not yet added
-                    e.target.style.backgroundColor = '#2c3e50';
-                    e.target.poster = "https://images.unsplash.com/photo-1544787210-2211d44b5057?auto=format&fit=crop&q=60&w=800";
-                  }}
-                />
-              </div>
-            </div>
+            <ReelCard key={reel.id} video={reel.video} id={reel.id} />
           ))}
         </div>
       </div>
@@ -74,22 +129,23 @@ const BrandReels = () => {
           overflow-x: auto;
           gap: 20px;
           padding: 10px 20px 30px 20px;
-          scrollbar-width: none; /* Hide scrollbar Firefox */
-          -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+          scrollbar-width: none;
+          -ms-overflow-style: none;
         }
 
         .reels-container::-webkit-scrollbar {
-          display: none; /* Hide scrollbar Chrome/Safari */
+          display: none;
         }
 
         .reel-card {
-          flex: 0 0 280px; /* Fixed width for reel feel */
+          flex: 0 0 280px;
           aspect-ratio: 9/16;
           border-radius: 24px;
           overflow: hidden;
           position: relative;
           background: #f0f0f0;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          cursor: pointer;
           transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -109,23 +165,51 @@ const BrandReels = () => {
           object-fit: cover;
         }
 
-        .reel-overlay {
+        /* Play Overlay style */
+        .reel-play-overlay {
           position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 30px 20px;
-          background: linear-gradient(transparent, rgba(0,0,0,0.7));
+          inset: 0;
+          background: rgba(0, 0, 0, 0.25);
           display: flex;
-          align-items: flex-end;
-          pointer-events: none;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 15px;
+          transition: all 0.3s ease;
+          z-index: 5;
         }
 
-        .reel-label {
+        .reel-play-overlay.hide {
+          opacity: 0;
+          visibility: hidden;
+          background: rgba(0, 0, 0, 0);
+        }
+
+        .play-button-circle {
+          width: 60px;
+          height: 60px;
+          background: rgba(213, 5, 5, 0.9);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-left: 4px;
+          box-shadow: 0 8px 25px rgba(213, 5, 5, 0.4);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .reel-card:hover .play-button-circle {
+          transform: scale(1.1);
+          background: var(--primary-red);
+        }
+
+        .reel-hint-text {
           color: white;
           font-weight: 700;
-          font-size: 1rem;
-          letter-spacing: 0.5px;
+          font-size: 0.85rem;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         @media (max-width: 768px) {

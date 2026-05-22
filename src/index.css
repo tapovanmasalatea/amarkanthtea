@@ -130,3 +130,32 @@ section {
 .text-red { color: var(--primary-red); }
 .bg-red { background-color: var(--primary-red); color: var(--white); }
 .accent-bold { font-weight: 800; color: var(--primary-red); }
+
+/* Global Snappy Tactile Click feedback */
+button,
+a,
+.btn-primary,
+.btn-outline,
+.variant-card-v2,
+.thumb-item,
+.sticky-order-pill-bar,
+.qty-picker-v2 button,
+.faq-question,
+.close-menu,
+.menu-toggle {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+button:active,
+a:active,
+.btn-primary:active,
+.btn-outline:active,
+.variant-card-v2:active,
+.thumb-item:active,
+.sticky-order-pill-bar:active,
+.qty-picker-v2 button:active,
+.faq-question:active,
+.close-menu:active,
+.menu-toggle:active {
+  transform: scale(0.96) !important;
+}
