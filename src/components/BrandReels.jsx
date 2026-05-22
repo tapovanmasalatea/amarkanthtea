@@ -36,12 +36,6 @@ const ReelCard = ({ video, id }) => {
     }
   };
 
-  const posters = [
-    "https://images.unsplash.com/photo-1544787210-2211d44b5657?auto=format&fit=crop&q=60&w=800",
-    "https://images.unsplash.com/photo-1594631252845-29fc458631b6?auto=format&fit=crop&q=60&w=800",
-    "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&q=60&w=800"
-  ];
-
   return (
     <div 
       className="reel-card"
@@ -57,20 +51,11 @@ const ReelCard = ({ video, id }) => {
           loop 
           playsInline
           preload="metadata"
-          poster={posters[id - 1]}
           className="reel-video"
           onError={(e) => {
             e.target.style.backgroundColor = '#2c3e50';
           }}
         />
-        
-        {/* Play Overlay */}
-        <div className={`reel-play-overlay ${isPlaying ? 'hide' : ''}`}>
-          <div className="play-button-circle">
-            <Play size={24} fill="currentColor" color="white" />
-          </div>
-          <span className="reel-hint-text">Hover or Tap to Play</span>
-        </div>
       </div>
     </div>
   );
@@ -88,7 +73,7 @@ const BrandReels = () => {
       <div className="container">
         <div className="reels-header">
           <h2 className="reels-title">Experience the Purity</h2>
-          <p className="reels-subtitle">Hover or tap on a reel to go behind the scenes of every cup.</p>
+          <p className="reels-subtitle">Go behind the scenes of every cup.</p>
         </div>
 
         <div className="reels-container">
