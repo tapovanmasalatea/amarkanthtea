@@ -8,7 +8,7 @@ const SourcePromise = () => {
       num: "01",
       icon: <Leaf size={32} />,
       title: "Estate Direct Sourcing",
-      desc: "We work directly with tea gardens in Assam and the Nilgiri Hills, cutting out the auction floor and preserving freshness that no middleman can match."
+      desc: "We work directly with tea gardens in Assam and Dooars, cutting out the auction floor and preserving freshness that no middleman can match."
     },
     {
       num: "02",
@@ -30,7 +30,7 @@ const SourcePromise = () => {
         <div className="promise-header">
           <h2 className="promise-title">Why Choose Amarkanth?</h2>
           <p className="promise-intro">
-            From the high-altitude gardens of Assam and the Nilgiris, we source only first and second flush — when the leaf carries the most life.
+            From the high-altitude gardens of Assam and Dooars, we source only first and second flush — when the leaf carries the most life.
           </p>
           <p className="promise-subtext">
             Every batch is tested, every blend is balanced by hand. We are small enough to care about every kilogram.

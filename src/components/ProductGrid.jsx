@@ -11,7 +11,7 @@ const products = [
     subtitle: "Premium CTC Tea",
     description: "Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience.",
     image: amarkanthImg,
-    price: 740, // Updated to match product page default
+    price: 450, // Updated to match product page default
     badge: "Bestseller",
     color: "#d50505", // Brand Red
     lightBg: "#fff0f0", // Very light shade of Amarkanth red
@@ -22,7 +22,7 @@ const products = [
     id: 2,
     name: "Tapovan Premium Tea",
     subtitle: "Premium Chai",
-    description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing mountain-fresh taste.",
+    description: "Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing garden-fresh taste.",
     image: tapovanImg,
     price: 632, // Updated to match product page default
     badge: "Special Edition",

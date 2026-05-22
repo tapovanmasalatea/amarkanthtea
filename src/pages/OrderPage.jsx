@@ -9,7 +9,7 @@ const OrderPage = () => {
   const productData = location.state || {
     name: "Amarkanth Premium CTC",
     variant: "1kg Box",
-    price: 740,
+    price: 450,
     quantity: 1,
     image: "/amarkanth.webp" // Fallback
   };

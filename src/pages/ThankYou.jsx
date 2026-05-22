@@ -7,8 +7,8 @@ import logoImg from '../assets/logo.webp';
 const ThankYou = () => {
   const location = useLocation();
   const { productData, total, orderId } = location.state || {
-    productData: { name: "Amarkanth Premium CTC", variant: "1kg Box", price: 740, quantity: 1, image: "/assets/amarkanth.webp" },
-    total: 740,
+    productData: { name: "Amarkanth Premium CTC", variant: "1kg Box", price: 450, quantity: 1, image: "/assets/amarkanth.webp" },
+    total: 500,
     orderId: "AMK-" + Math.random().toString(36).substr(2, 9).toUpperCase()
   };
 

@@ -76,7 +76,7 @@ const About = () => {
                 <div className="time-label">Next</div>
                 <div className="time-content">
                   <h3>Tapovan — A New Range</h3>
-                  <p>Tapovan Premium Tea introduced — bringing high-grown mountain freshness with a resealable slider pack.</p>
+                  <p>Tapovan Premium Tea introduced — bringing high-grown garden freshness with a resealable slider pack.</p>
                 </div>
               </div>
               <div className="timeline-item">

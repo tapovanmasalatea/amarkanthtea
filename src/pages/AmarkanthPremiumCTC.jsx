@@ -84,9 +84,9 @@ const AmarkanthPremiumCTC = () => {
   const [selectedImage, setSelectedImage] = useState(productImages[0]);
 
   const variants = {
-    '250g': { label: '250g Pouch', price: 195, oldPrice: 210, discount: '7%', perUnit: '₹780/kg' },
-    '500g': { label: '500g Pouch', price: 380, oldPrice: 420, discount: '9%', perUnit: '₹760/kg' },
-    '1kg': { label: '1kg Box', price: 740, oldPrice: 850, discount: '12%', perUnit: '₹740/kg' }
+    '250g': { label: '250g Pouch', price: 115, oldPrice: 130, discount: '11%', perUnit: '₹460/kg' },
+    '500g': { label: '500g Pouch', price: 225, oldPrice: 250, discount: '10%', perUnit: '₹450/kg' },
+    '1kg': { label: '1kg Box', price: 450, oldPrice: 500, discount: '10%', perUnit: '₹450/kg' }
   };
 
   const features = [

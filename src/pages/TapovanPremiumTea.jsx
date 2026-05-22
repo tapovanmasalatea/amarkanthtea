@@ -129,11 +129,11 @@ const TapovanPremiumTea = () => {
     },
     {
       question: "Is Tapovan Tea stronger than Amarkanth?",
-      answer: "While both are strong, Tapovan offers a 'Mountain Fresh' strength which is more refreshing and crisp, whereas Amarkanth is 'Bold & Heavy'. It depends on whether you prefer a malty kick or a refreshing mountain aroma."
+      answer: "While both are strong, Tapovan offers a 'Garden Fresh' strength which is more refreshing and crisp, whereas Amarkanth is 'Bold & Heavy'. It depends on whether you prefer a malty kick or a refreshing garden aroma."
     },
     {
       question: "Is it suitable for Masala Chai?",
-      answer: "Absolutely. Tapovan's highland character stands up well to spices while maintaining its unique mountain-fresh flavor."
+      answer: "Absolutely. Tapovan's highland character stands up well to spices while maintaining its unique garden-fresh flavor."
     }
   ];
 
@@ -143,7 +143,7 @@ const TapovanPremiumTea = () => {
       name: "Priya Das",
       tagline: "Highland Enthusiast",
       rating: 5,
-      comment: "This tea is incredibly refreshing. I love the crisp mountain flavor that Tapovan brings. The slider pack is a genius addition!",
+      comment: "This tea is incredibly refreshing. I love the crisp garden flavor that Tapovan brings. The slider pack is a genius addition!",
       image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=60&w=300&auto=format&fit=crop",
       date: "3 days ago"
     },
@@ -218,7 +218,7 @@ const TapovanPremiumTea = () => {
               className="product-info"
             >
               <h1 className="product-main-name">Tapovan Premium Tea</h1>
-              <p className="product-info-tagline">Mountain Fresh Quality Tea</p>
+              <p className="product-info-tagline">Garden Fresh Quality Tea</p>
               <div className="rating-row">
                 <Star size={16} fill="#FFD700" color="#FFD700" />
                 <span>4.5 (182 reviews)</span>
@@ -280,10 +280,10 @@ const TapovanPremiumTea = () => {
               <div className="product-description-v2">
                 <h3 className="section-title-v2">PRODUCT DESCRIPTION</h3>
                 <p>
-                  Tapovan Premium Chai is the quintessential mountain-fresh tea. Sourced from the highest tea gardens 
+                  Tapovan Premium Chai is the quintessential garden-fresh tea. Sourced from the highest tea gardens 
                   of Assam, it offers a crisp, refreshing, and invigorating taste that stands apart. The unique 
                   highland character delivers a rich reddish brew that is both kadak and smooth. Packed in our 
-                  innovative resealable slider pack to ensure the mountain freshness stays locked in.
+                  innovative resealable slider pack to ensure the garden freshness stays locked in.
                 </p>
               </div>
 
