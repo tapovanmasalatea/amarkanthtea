@@ -35,19 +35,8 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isMenuOpen ? 'menu-active' : ''}`}>
       <div className="nav-container">
-        {/* Left: Logo */}
-        <div className="nav-left">
-          <Link to="/" className="nav-logo">
-            <img src={logo} alt="AMARKANTH GROUP" className="logo-img" onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextSibling.style.display = 'block';
-            }} />
-            <span className="logo-text-fallback" style={{ display: 'none' }}>AMARKANTH GROUP</span>
-          </Link>
-        </div>
-
-        {/* Center: Desktop Navigation Links */}
-        <div className="nav-center-links">
+        {/* Left: Desktop Navigation Links (Home, Collection, About) */}
+        <div className="nav-left-links">
           <Link to="/" className={`nav-link-item ${location.pathname === '/' ? 'active' : ''}`}>Home</Link>
           
           <div 
@@ -66,12 +55,23 @@ const Navbar = () => {
           </div>
 
           <Link to="/about" className={`nav-link-item ${location.pathname === '/about' ? 'active' : ''}`}>About Us</Link>
-          <Link to="/distributor" className={`nav-link-item ${location.pathname === '/distributor' ? 'active' : ''}`}>Distributorship</Link>
-          <Link to="/contact" className={`nav-link-item ${location.pathname === '/contact' ? 'active' : ''}`}>Contact Us</Link>
         </div>
 
-        {/* Right: CTA / Hamburger Menu */}
-        <div className="nav-right">
+        {/* Center: Absolutely Centered Logo */}
+        <div className="nav-center-logo">
+          <Link to="/" className="nav-logo">
+            <img src={logo} alt="AMARKANTH GROUP" className="logo-img" onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }} />
+            <span className="logo-text-fallback" style={{ display: 'none' }}>AMARKANTH GROUP</span>
+          </Link>
+        </div>
+
+        {/* Right: Actions (Distributorship, Contact Us, Shop Now / Toggle) */}
+        <div className="nav-right-actions">
+          <Link to="/distributor" className={`nav-link-item ${location.pathname === '/distributor' ? 'active' : ''}`}>Distributorship</Link>
+          <Link to="/contact" className={`nav-link-item ${location.pathname === '/contact' ? 'active' : ''}`}>Contact Us</Link>
           <Link to="/shop" className="nav-cta-btn">Shop Now</Link>
           <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle Menu">
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -118,7 +118,7 @@ const Navbar = () => {
           left: 0;
           width: 100%;
           z-index: 1000;
-          padding: 10px 0;
+          padding: 0;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           background: rgba(253, 251, 247, 0.95);
           backdrop-filter: blur(10px);
@@ -127,7 +127,6 @@ const Navbar = () => {
         }
 
         .navbar.scrolled {
-          padding: 5px 0;
           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
           background: rgba(253, 251, 247, 0.98);
         }
@@ -139,11 +138,25 @@ const Navbar = () => {
           align-items: center;
           justify-content: space-between;
           padding: 0 30px;
+          position: relative;
+          height: 90px;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .nav-left {
+        .navbar.scrolled .nav-container {
+          height: 75px;
+        }
+
+        /* Center Centering Logo */
+        .nav-center-logo {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
           display: flex;
           align-items: center;
+          justify-content: center;
+          z-index: 1005;
         }
 
         .logo-img {
@@ -153,15 +166,33 @@ const Navbar = () => {
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .scrolled .logo-img {
+        .navbar.scrolled .logo-img {
           height: 55px;
         }
 
-        /* Desktop Navigation Links */
-        .nav-center-links {
+        .logo-text-fallback {
+          font-weight: 800;
+          font-size: 1.4rem;
+          letter-spacing: -0.02em;
+          color: var(--primary-red);
+          text-transform: uppercase;
+        }
+
+        /* Left Split Links */
+        .nav-left-links {
           display: flex;
           align-items: center;
-          gap: 30px;
+          gap: 25px;
+          flex: 1;
+        }
+
+        /* Right Split Links */
+        .nav-right-actions {
+          display: flex;
+          align-items: center;
+          gap: 25px;
+          justify-content: flex-end;
+          flex: 1;
         }
 
         .nav-link-item {
@@ -244,12 +275,6 @@ const Navbar = () => {
           background: rgba(213, 5, 5, 0.05) !important;
           color: var(--primary-red) !important;
           transform: translateX(3px);
-        }
-
-        .nav-right {
-          display: flex;
-          align-items: center;
-          gap: 20px;
         }
 
         .nav-cta-btn {
@@ -405,14 +430,27 @@ const Navbar = () => {
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-          .nav-center-links {
+          .nav-left-links {
             display: none;
           }
-          .nav-cta-btn {
+          .nav-right-actions .nav-link-item,
+          .nav-right-actions .nav-cta-btn {
             display: none;
           }
           .menu-toggle {
             display: flex;
+          }
+          .nav-container {
+            height: 75px;
+          }
+          .navbar.scrolled .nav-container {
+            height: 65px;
+          }
+          .logo-img {
+            height: 55px;
+          }
+          .navbar.scrolled .logo-img {
+            height: 48px;
           }
         }
 
@@ -424,11 +462,12 @@ const Navbar = () => {
           .logo-img {
             height: 50px;
           }
-          .scrolled .logo-img {
-            height: 45px;
+          .navbar.scrolled .logo-img {
+            height: 44px;
           }
           .nav-container {
             padding: 0 15px;
+            height: 70px;
           }
         }
       `}} />

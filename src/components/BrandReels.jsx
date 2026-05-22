@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Play } from 'lucide-react';
+import { Play, Pause } from 'lucide-react';
 import reel1 from '../assets/reel1.mp4';
 import reel2 from '../assets/reel2.mp4';
 import reel3 from '../assets/reel3.mp4';
@@ -7,16 +7,25 @@ import reel3 from '../assets/reel3.mp4';
 const ReelCard = ({ video, id }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showIndicator, setShowIndicator] = useState(true);
 
   const handleTogglePlay = () => {
     if (videoRef.current) {
       if (videoRef.current.paused) {
         videoRef.current.play()
-          .then(() => setIsPlaying(true))
+          .then(() => {
+            setIsPlaying(true);
+            setShowIndicator(true);
+            // Hide the indicator after 1 second of playing
+            setTimeout(() => {
+              setShowIndicator(false);
+            }, 1000);
+          })
           .catch((err) => console.log("Video play interrupted:", err));
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
+        setShowIndicator(true);
       }
     }
   };
@@ -31,7 +40,6 @@ const ReelCard = ({ video, id }) => {
           ref={videoRef}
           src={video} 
           controls
-          muted 
           loop 
           playsInline
           preload="metadata"
@@ -40,6 +48,17 @@ const ReelCard = ({ video, id }) => {
             e.target.style.backgroundColor = '#2c3e50';
           }}
         />
+        
+        {/* Center Play/Pause Button Overlay */}
+        <div className={`reel-center-btn-overlay ${!isPlaying || showIndicator ? 'visible' : ''}`}>
+          <div className="center-play-pause-btn">
+            {isPlaying ? (
+              <Pause size={24} fill="currentColor" color="white" />
+            ) : (
+              <Play size={24} fill="currentColor" color="white" style={{ marginLeft: '4px' }} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -134,51 +153,47 @@ const BrandReels = () => {
           object-fit: cover;
         }
 
-        /* Play Overlay style */
-        .reel-play-overlay {
+        /* Center Play/Pause Overlay styles */
+        .reel-center-btn-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0.25);
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 15px;
-          transition: all 0.3s ease;
-          z-index: 5;
-        }
-
-        .reel-play-overlay.hide {
+          background: rgba(0, 0, 0, 0.15);
           opacity: 0;
           visibility: hidden;
-          background: rgba(0, 0, 0, 0);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          pointer-events: none;
+          z-index: 10;
         }
 
-        .play-button-circle {
+        .reel-center-btn-overlay.visible {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        /* Show overlay also on card hover when playing */
+        .reel-card:hover .reel-center-btn-overlay {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .center-play-pause-btn {
           width: 60px;
           height: 60px;
-          background: rgba(213, 5, 5, 0.9);
+          background: rgba(213, 5, 5, 0.95);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-left: 4px;
-          box-shadow: 0 8px 25px rgba(213, 5, 5, 0.4);
-          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .reel-card:hover .play-button-circle {
-          transform: scale(1.1);
-          background: var(--primary-red);
-        }
-
-        .reel-hint-text {
+          box-shadow: 0 10px 25px rgba(213, 5, 5, 0.4);
+          transition: transform 0.2s ease;
           color: white;
-          font-weight: 700;
-          font-size: 0.85rem;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .reel-card:hover .center-play-pause-btn {
+          transform: scale(1.08);
         }
 
         @media (max-width: 768px) {

@@ -110,7 +110,7 @@ const Hero = () => {
 
         @media (max-width: 768px) {
           .hero-container {
-            padding: 60px 0 0 0 !important;
+            padding: 95px 0 10px 0 !important;
           }
           .hero-carousel {
             width: 95%;
