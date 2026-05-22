@@ -53,7 +53,7 @@ const Hero = () => {
 
       <style dangerouslySetInnerHTML={{ __html: `
         .hero-container {
-          padding: 115px 0 20px 0 !important;
+          padding: 95px 0 20px 0 !important;
           background: var(--cream);
           width: 100%;
         }
@@ -110,7 +110,7 @@ const Hero = () => {
 
         @media (max-width: 768px) {
           .hero-container {
-            padding: 95px 0 10px 0 !important;
+            padding: 78px 0 10px 0 !important;
           }
           .hero-carousel {
             width: 95%;
