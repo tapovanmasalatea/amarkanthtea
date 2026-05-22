@@ -5,22 +5,42 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import logoImg from './assets/logo.webp';
 
-// Lazy Load Pages
-const Home = lazy(() => import('./pages/Home'));
-const Shop = lazy(() => import('./pages/Shop'));
-const About = lazy(() => import('./pages/About'));
-const Contact = lazy(() => import('./pages/Contact'));
-const AmarkanthPremiumCTC = lazy(() => import('./pages/AmarkanthPremiumCTC'));
-const TapovanPremiumTea = lazy(() => import('./pages/TapovanPremiumTea'));
-const OrderPage = lazy(() => import('./pages/OrderPage'));
-const DistributorPage = lazy(() => import('./pages/DistributorPage'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const RefundPolicy = lazy(() => import('./pages/RefundPolicy'));
-const ThankYou = lazy(() => import('./pages/ThankYou'));
+// Helper for lazy loading with automatic connection-retry
+const lazyWithRetry = (componentImport) => {
+  return lazy(() => {
+    return componentImport().catch((error) => {
+      console.warn("Chunk loading failed, retrying page build...", error);
+      return new Promise((resolve, reject) => {
+        // Retry after 1.5 seconds if connection failed
+        setTimeout(() => {
+          componentImport()
+            .then(resolve)
+            .catch(() => {
+              // If second attempt fails, force reload the page to clear the cache and try again!
+              window.location.reload();
+            });
+        }, 1500);
+      });
+    });
+  });
+};
 
-// Named exports from LegalPages
-const TermsConditions = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.TermsConditions })));
-const ShippingPolicy = lazy(() => import('./pages/LegalPages').then(module => ({ default: module.ShippingPolicy })));
+// Lazy Load Pages with network resilience
+const Home = lazyWithRetry(() => import('./pages/Home'));
+const Shop = lazyWithRetry(() => import('./pages/Shop'));
+const About = lazyWithRetry(() => import('./pages/About'));
+const Contact = lazyWithRetry(() => import('./pages/Contact'));
+const AmarkanthPremiumCTC = lazyWithRetry(() => import('./pages/AmarkanthPremiumCTC'));
+const TapovanPremiumTea = lazyWithRetry(() => import('./pages/TapovanPremiumTea'));
+const OrderPage = lazyWithRetry(() => import('./pages/OrderPage'));
+const DistributorPage = lazyWithRetry(() => import('./pages/DistributorPage'));
+const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy'));
+const RefundPolicy = lazyWithRetry(() => import('./pages/RefundPolicy'));
+const ThankYou = lazyWithRetry(() => import('./pages/ThankYou'));
+
+// Named exports from LegalPages with network resilience
+const TermsConditions = lazyWithRetry(() => import('./pages/LegalPages').then(module => ({ default: module.TermsConditions })));
+const ShippingPolicy = lazyWithRetry(() => import('./pages/LegalPages').then(module => ({ default: module.ShippingPolicy })));
 
 const PageLoader = () => (
   <div className="page-loader">
@@ -28,6 +48,7 @@ const PageLoader = () => (
       <div className="logo-loader-container">
         <img src={logoImg} alt="Amarkanth Group" className="pulsing-logo" />
         <div className="loader-ring"></div>
+        <div className="loader-center-dot"></div>
       </div>
       <p className="loading-text">Brewing your experience...</p>
     </div>
