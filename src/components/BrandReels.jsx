@@ -8,30 +8,15 @@ const ReelCard = ({ video, id }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play()
-        .then(() => setIsPlaying(true))
-        .catch((err) => console.log("Video play interrupted:", err));
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
   const handleTogglePlay = () => {
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
+      if (videoRef.current.paused) {
         videoRef.current.play()
           .then(() => setIsPlaying(true))
           .catch((err) => console.log("Video play interrupted:", err));
+      } else {
+        videoRef.current.pause();
+        setIsPlaying(false);
       }
     }
   };
@@ -39,14 +24,13 @@ const ReelCard = ({ video, id }) => {
   return (
     <div 
       className="reel-card"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
       onClick={handleTogglePlay}
     >
       <div className="video-wrapper">
         <video 
           ref={videoRef}
           src={video} 
+          controls
           muted 
           loop 
           playsInline
