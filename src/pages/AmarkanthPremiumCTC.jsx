@@ -11,7 +11,8 @@ import amLoved1 from '../assets/am_loved1.webp';
 import amLoved2 from '../assets/am_loved2.webp';
 import amLoved3 from '../assets/am_loved3.webp';
 import amLoved4 from '../assets/am_loved4.webp';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,8 +40,15 @@ const FAQItem = ({ question, answer }) => {
 
 const AmarkanthPremiumCTC = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sizeParam = searchParams.get('size');
+  const variant = ['250g', '500g', '1kg'].includes(sizeParam) ? sizeParam : '1kg';
+
+  const setVariant = (size) => {
+    setSearchParams({ size });
+  };
+
   const [quantity, setQuantity] = useState(1);
-  const [variant, setVariant] = useState('1kg');
   const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomScale, setZoomScale] = useState(1);
@@ -170,6 +178,38 @@ const AmarkanthPremiumCTC = () => {
 
   return (
     <div className="product-page">
+      <Helmet>
+        <title>Amarkanth Premium CTC Tea with Cardamom {variants[variant].label} | Amarkanth Group</title>
+        <meta 
+          name="description" 
+          content={`Buy Amarkanth Premium CTC Tea with Cardamom (${variants[variant].label}) — a bold and strong Assam CTC blend infused with real cardamom. FSSAI certified, COD available. Shop now.`} 
+        />
+        <link rel="canonical" href={`https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": `Amarkanth Premium CTC Tea with Cardamom ${variants[variant].label}`,
+            "image": `https://www.amarkanth.com/amarkanth_bold_tea.webp`,
+            "description": `Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience. ${variants[variant].label} pack.`,
+            "sku": `AMK-CTC-${variant.toUpperCase()}`,
+            "mpn": `AMK-CTC-${variant.toUpperCase()}`,
+            "brand": {
+              "@type": "Brand",
+              "name": "Amarkanth"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`,
+              "priceCurrency": "INR",
+              "price": variants[variant].price,
+              "priceValidUntil": "2027-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="product-hero">
         <div className="container">
@@ -218,7 +258,7 @@ const AmarkanthPremiumCTC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="product-info"
             >
-              <h1 className="product-main-name">Amarkanth Premium CTC</h1>
+              <h1 className="product-main-name">Amarkanth Premium CTC Tea with Cardamom</h1>
               <p className="product-info-tagline">Premium Tea With Cardamom</p>
               <div className="rating-row">
                 <Star size={16} fill="#FFD700" color="#FFD700" />

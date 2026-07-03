@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import factoryImg from '../assets/factory.webp';
 import logoImg from '../assets/logo.webp';
 import diff1 from '../assets/diff1.webp';
@@ -12,6 +13,11 @@ import diff6 from '../assets/diff6.webp';
 const About = () => {
   return (
     <div className="about-page">
+      <Helmet>
+        <title>About Us | Amarkanth Tea Group</title>
+        <meta name="description" content="Learn about Amarkanth Tea Group (Patidar Tea Company) based in Madhya Pradesh. Serving authentic, premium Assam tea and wellness masala blends for over a decade. FSSAI Lic. No: 11423870000024." />
+        <link rel="canonical" href="https://www.amarkanth.com/about" />
+      </Helmet>
       {/* 0. Page Header (Left Side) */}
       <section className="about-header-section">
         <div className="container">
@@ -83,7 +89,7 @@ const About = () => {
                 <div className="time-label">Now</div>
                 <div className="time-content">
                   <h3>50,000+ Families Strong</h3>
-                  <p>Trusted by households across M.P. and beyond. FSSAI, FDA and BRC Food certified for quality you can rely on.</p>
+                  <p>Trusted by households across M.P. and beyond. FSSAI (Lic. No: <strong>11423870000024</strong>), FDA and BRC Food certified for quality you can rely on.</p>
                 </div>
               </div>
             </div>
@@ -101,7 +107,7 @@ const About = () => {
               { title: "Garden Fresh", subtitle: "Directly sourced from premium Assam gardens.", img: diff1 },
               { title: "Master Blending", subtitle: "Expert blenders craft each consistent batch.", img: diff2 },
               { title: "Trusted Heritage", subtitle: "Decades of trust across central India.", img: diff3 },
-              { title: "Triple Certified", subtitle: "FSSAI, FDA and BRC Food certified.", img: diff4 },
+              { title: "Triple Certified", subtitle: "FSSAI (Lic. No: 11423870000024), FDA and BRC Food certified.", img: diff4 },
               { title: "Best Value", subtitle: "More cups per gram, premium quality.", img: diff5 },
               { title: "Sealed Freshness", subtitle: "Packaging locks in aroma for 365 days.", img: diff6 }
             ].map((d, i) => (

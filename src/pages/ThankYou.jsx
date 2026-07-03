@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { CheckCircle, Package, Truck, Phone, Mail, ArrowLeft, Gift, Sparkles, Ticket } from 'lucide-react';
 import logoImg from '../assets/logo.webp';
@@ -33,6 +34,11 @@ const ThankYou = () => {
 
   return (
     <div className="thank-you-page">
+      <Helmet>
+        <title>Order Confirmed | Amarkanth Tea Group</title>
+        <meta name="description" content="Thank you for your order! We have received your order details and will dispatch it shortly. COD tracking will be sent via SMS." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="container narrow">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

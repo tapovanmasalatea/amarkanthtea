@@ -1,9 +1,15 @@
 import React from 'react';
 import { Shield, Eye, Lock, Globe, Mail } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy = () => {
   return (
     <div className="policy-page">
+      <Helmet>
+        <title>Privacy Policy | Amarkanth Tea Group</title>
+        <meta name="description" content="Amarkanth Tea Group Privacy Policy. Learn how we securely handle, collect, and protect your personal information on our website." />
+        <link rel="canonical" href="https://www.amarkanth.com/privacy-policy" />
+      </Helmet>
       <section className="policy-hero">
         <div className="container">
           <Shield size={60} className="policy-icon" />

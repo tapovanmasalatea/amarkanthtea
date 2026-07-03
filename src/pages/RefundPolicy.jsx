@@ -1,9 +1,15 @@
 import React from 'react';
 import { RotateCcw, PackageCheck, AlertCircle, CreditCard, Truck } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const RefundPolicy = () => {
   return (
     <div className="policy-page">
+      <Helmet>
+        <title>Return & Refund Policy | Amarkanth Tea Group</title>
+        <meta name="description" content="Amarkanth Tea Group Return, Cancellation and Refund Policy. Learn about our terms for tea product returns and order refunds." />
+        <link rel="canonical" href="https://www.amarkanth.com/refund-policy" />
+      </Helmet>
       <section className="policy-hero">
         <div className="container">
           <RotateCcw size={60} className="policy-icon" />

@@ -42,8 +42,11 @@ const ReelCard = ({ video, id }) => {
           controls
           loop 
           playsInline
-          preload="metadata"
+          preload="none"
           className="reel-video"
+          width="360"
+          height="640"
+          style={{ aspectRatio: '9/16' }}
           onError={(e) => {
             e.target.style.backgroundColor = '#2c3e50';
           }}

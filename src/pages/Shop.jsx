@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import amarkanthImg from '../assets/amarkanth.webp';
 import tapovanImg from '../assets/tapovan.webp';
@@ -56,6 +57,11 @@ const Shop = () => {
 
   return (
     <div className="shop-page">
+      <Helmet>
+        <title>Shop Premium Tea Blends | Amarkanth Group</title>
+        <meta name="description" content="Shop the finest tea blends from Amarkanth Group. Buy Amarkanth Premium CTC Tea with Cardamom and Tapovan Premium Masala Tea. Organic quality, FSSAI certified, COD available." />
+        <link rel="canonical" href="https://www.amarkanth.com/shop" />
+      </Helmet>
       <header className="page-header">
         <div className="container">
           <p className="subtitle">The Collection</p>

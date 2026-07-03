@@ -1,9 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
-const LegalPage = ({ title, content }) => {
+const LegalPage = ({ title, content, description, canonical }) => {
   return (
     <div className="legal-page">
+      <Helmet>
+        <title>{title} | Amarkanth Tea Group</title>
+        {description && <meta name="description" content={description} />}
+        {canonical && <link rel="canonical" href={canonical} />}
+      </Helmet>
       <div className="container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -56,6 +62,8 @@ const LegalPage = ({ title, content }) => {
 export const PrivacyPolicy = () => (
   <LegalPage 
     title="Privacy Policy"
+    description="Amarkanth Tea Group Privacy Policy. Learn how we securely handle, collect, and protect your personal information on our website."
+    canonical="https://www.amarkanth.com/privacy-policy"
     content={`
       <p>Last Updated: April 2024</p>
       <p>At Amarkanth Group, we value your privacy and are committed to protecting your personal data. This policy outlines how we collect and use your information.</p>
@@ -79,6 +87,8 @@ export const PrivacyPolicy = () => (
 export const TermsConditions = () => (
   <LegalPage 
     title="Terms & Conditions"
+    description="Amarkanth Tea Group Terms and Conditions. Review our rules, terms, and conditions for using our website and services."
+    canonical="https://www.amarkanth.com/terms-conditions"
     content={`
       <h2>1. Introduction</h2>
       <p>By accessing this website, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
@@ -95,6 +105,8 @@ export const TermsConditions = () => (
 export const RefundPolicy = () => (
   <LegalPage 
     title="Refund & Cancellation"
+    description="Amarkanth Tea Group Return, Cancellation and Refund Policy. Learn about our terms for tea product returns and order refunds."
+    canonical="https://www.amarkanth.com/refund-policy"
     content={`
       <h2>1. Return Policy</h2>
       <p>We offer a 100% Quality Guarantee. If you receive a damaged or defective product, please contact us within 48 hours of delivery.</p>
@@ -111,6 +123,8 @@ export const RefundPolicy = () => (
 export const ShippingPolicy = () => (
   <LegalPage 
     title="Shipping Policy"
+    description="Amarkanth Tea Group Shipping Policy. Learn about our dispatch timelines, delivery estimates across India, and order tracking details."
+    canonical="https://www.amarkanth.com/shipping-policy"
     content={`
       <h2>1. Dispatch Timeline</h2>
       <p>All confirmed orders are dispatched within 48 hours from our central warehouse in Indore.</p>

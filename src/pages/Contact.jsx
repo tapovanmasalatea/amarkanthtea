@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,11 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
+      <Helmet>
+        <title>Contact Us | Amarkanth Tea Group</title>
+        <meta name="description" content="Get in touch with Amarkanth Tea Group (Patidar Tea Company). Find our address in Anjad (M.P.), phone number, email, and connect directly on WhatsApp." />
+        <link rel="canonical" href="https://www.amarkanth.com/contact" />
+      </Helmet>
       <header className="page-header">
         <div className="container">
           <p className="subtitle">Get In Touch</p>

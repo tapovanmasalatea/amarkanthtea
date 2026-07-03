@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { 
   Handshake, 
   TrendingUp, 
@@ -166,6 +167,11 @@ const DistributorPage = () => {
 
   return (
     <div className="distributor-page">
+      <Helmet>
+        <title>Become a Distributor | Amarkanth Tea Group</title>
+        <meta name="description" content="Partner with Amarkanth Tea Group. Become a tea distributor or retail partner for Amarkanth Premium CTC and Tapovan Wellness Tea. High margins and marketing support." />
+        <link rel="canonical" href="https://www.amarkanth.com/distributor" />
+      </Helmet>
       {/* Hero Section */}
       <section className="dist-hero">
         <div className="dist-container">

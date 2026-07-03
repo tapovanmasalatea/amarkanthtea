@@ -1,0 +1,87 @@
+{
+  "store": {
+    "title": "Amarkanth Tea Group",
+    "description": "Premium quality CTC and wellness masala teas sourced directly from pristine gardens.",
+    "domain": "https://www.amarkanth.com"
+  },
+  "products": [
+    {
+      "id": "amarkanth_premium_ctc_250g",
+      "title": "Amarkanth Premium CTC Tea with Cardamom 250g",
+      "description": "Amarkanth Premium CTC Tea with Cardamom is a bold and strong Assam CTC blend processed under strict quality standards to ensure a perfect kadak chai experience every single time. Sourced directly from the finest tea estates of Assam (100% origin, no blending tricks), it is infused with real, high-quality cardamom to offer a rich, refreshing aroma and a smooth, full-bodied flavour that stands out even after adding milk. This FSSAI-certified tea offers more cups per gram compared to regular brands. Perfect for daily family tea rituals. Packaging is designed to seal in freshness and lock in aroma for up to 365 days. Pack contents: Premium CTC tea with natural cardamom flavor.",
+      "link": "/product/amarkanth-premium-ctc?size=250g",
+      "image_path": "/amarkanth_bold_tea.webp",
+      "price": "115.00 INR",
+      "availability": "in_stock",
+      "brand": "Amarkanth",
+      "google_product_category": "Food, Beverages & Tobacco > Beverages > Tea",
+      "item_group_id": "amarkanth-premium-ctc",
+      "mpn": "AMK-CTC-250"
+    },
+    {
+      "id": "amarkanth_premium_ctc_500g",
+      "title": "Amarkanth Premium CTC Tea with Cardamom 500g",
+      "description": "Amarkanth Premium CTC Tea with Cardamom is a bold and strong Assam CTC blend processed under strict quality standards to ensure a perfect kadak chai experience every single time. Sourced directly from the finest tea estates of Assam (100% origin, no blending tricks), it is infused with real, high-quality cardamom to offer a rich, refreshing aroma and a smooth, full-bodied flavour that stands out even after adding milk. This FSSAI-certified tea offers more cups per gram compared to regular brands. Perfect for daily family tea rituals. Packaging is designed to seal in freshness and lock in aroma for up to 365 days. Pack contents: Premium CTC tea with natural cardamom flavor.",
+      "link": "/product/amarkanth-premium-ctc?size=500g",
+      "image_path": "/amarkanth_bold_tea.webp",
+      "price": "225.00 INR",
+      "availability": "in_stock",
+      "brand": "Amarkanth",
+      "google_product_category": "Food, Beverages & Tobacco > Beverages > Tea",
+      "item_group_id": "amarkanth-premium-ctc",
+      "mpn": "AMK-CTC-500"
+    },
+    {
+      "id": "amarkanth_premium_ctc_1kg",
+      "title": "Amarkanth Premium CTC Tea with Cardamom 1kg",
+      "description": "Amarkanth Premium CTC Tea with Cardamom is a bold and strong Assam CTC blend processed under strict quality standards to ensure a perfect kadak chai experience every single time. Sourced directly from the finest tea estates of Assam (100% origin, no blending tricks), it is infused with real, high-quality cardamom to offer a rich, refreshing aroma and a smooth, full-bodied flavour that stands out even after adding milk. This FSSAI-certified tea offers more cups per gram compared to regular brands. Perfect for daily family tea rituals. Packaging is designed to seal in freshness and lock in aroma for up to 365 days. Pack contents: Premium CTC tea with natural cardamom flavor.",
+      "link": "/product/amarkanth-premium-ctc?size=1kg",
+      "image_path": "/amarkanth_bold_tea.webp",
+      "price": "450.00 INR",
+      "availability": "in_stock",
+      "brand": "Amarkanth",
+      "google_product_category": "Food, Beverages & Tobacco > Beverages > Tea",
+      "item_group_id": "amarkanth-premium-ctc",
+      "mpn": "AMK-CTC-1000"
+    },
+    {
+      "id": "tapovan_premium_tea_250g",
+      "title": "Tapovan Premium Tea 250g",
+      "description": "Tapovan Premium Tea is a finest high-grown tea blend sourced directly from the pristine gardens of Assam, offering a strong, rich, and refreshing garden-fresh taste. Handpicked with care (two leaves and a bud CTC), this special edition tea delivers an authentic Assam chai color, strong body, and a comforting finish. Each batch undergoes rigorous testing by master blenders to guarantee a consistent taste and high quality. Certified by FSSAI and packaged in a resealable slider pack that locks in the garden-fresh aroma for 365 days. Ideal for milk-based milk teas or bold black tea preparations. Pack contents: 100% high-grown Assam CTC black tea.",
+      "link": "/product/tapovan-premium-tea?size=250g",
+      "image_path": "/tapovan_wellness_tea.webp",
+      "price": "158.00 INR",
+      "availability": "in_stock",
+      "brand": "Tapovan",
+      "google_product_category": "Food, Beverages & Tobacco > Beverages > Tea",
+      "item_group_id": "tapovan-premium-tea",
+      "mpn": "TP-TEA-250"
+    },
+    {
+      "id": "tapovan_premium_tea_500g",
+      "title": "Tapovan Premium Tea 500g",
+      "description": "Tapovan Premium Tea is a finest high-grown tea blend sourced directly from the pristine gardens of Assam, offering a strong, rich, and refreshing garden-fresh taste. Handpicked with care (two leaves and a bud CTC), this special edition tea delivers an authentic Assam chai color, strong body, and a comforting finish. Each batch undergoes rigorous testing by master blenders to guarantee a consistent taste and high quality. Certified by FSSAI and packaged in a resealable slider pack that locks in the garden-fresh aroma for 365 days. Ideal for milk-based milk teas or bold black tea preparations. Pack contents: 100% high-grown Assam CTC black tea.",
+      "link": "/product/tapovan-premium-tea?size=500g",
+      "image_path": "/tapovan_wellness_tea.webp",
+      "price": "316.00 INR",
+      "availability": "in_stock",
+      "brand": "Tapovan",
+      "google_product_category": "Food, Beverages & Tobacco > Beverages > Tea",
+      "item_group_id": "tapovan-premium-tea",
+      "mpn": "TP-TEA-500"
+    },
+    {
+      "id": "tapovan_premium_tea_1kg",
+      "title": "Tapovan Premium Tea 1kg",
+      "description": "Tapovan Premium Tea is a finest high-grown tea blend sourced directly from the pristine gardens of Assam, offering a strong, rich, and refreshing garden-fresh taste. Handpicked with care (two leaves and a bud CTC), this special edition tea delivers an authentic Assam chai color, strong body, and a comforting finish. Each batch undergoes rigorous testing by master blenders to guarantee a consistent taste and high quality. Certified by FSSAI and packaged in a resealable slider pack that locks in the garden-fresh aroma for 365 days. Ideal for milk-based milk teas or bold black tea preparations. Pack contents: 100% high-grown Assam CTC black tea.",
+      "link": "/product/tapovan-premium-tea?size=1kg",
+      "image_path": "/tapovan_wellness_tea.webp",
+      "price": "632.00 INR",
+      "availability": "in_stock",
+      "brand": "Tapovan",
+      "google_product_category": "Food, Beverages & Tobacco > Beverages > Tea",
+      "item_group_id": "tapovan-premium-tea",
+      "mpn": "TP-TEA-1000"
+    }
+  ]
+}

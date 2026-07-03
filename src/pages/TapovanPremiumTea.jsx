@@ -11,7 +11,8 @@ import tpLoved2 from '../assets/tp_loved2.webp';
 import tpLoved3 from '../assets/tp_loved3.webp';
 import tpLoved4 from '../assets/tp_loved4.webp';
 import logoImg from '../assets/logo.webp';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,8 +40,15 @@ const FAQItem = ({ question, answer }) => {
 
 const TapovanPremiumTea = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const sizeParam = searchParams.get('size');
+  const variant = ['250g', '500g', '1kg'].includes(sizeParam) ? sizeParam : '1kg';
+
+  const setVariant = (size) => {
+    setSearchParams({ size });
+  };
+
   const [quantity, setQuantity] = useState(1);
-  const [variant, setVariant] = useState('1kg');
   const [isReviewOpen, setIsReviewOpen] = useState(false);
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomScale, setZoomScale] = useState(1);
@@ -169,6 +177,38 @@ const TapovanPremiumTea = () => {
 
   return (
     <div className="product-page tapovan-theme">
+      <Helmet>
+        <title>Tapovan Premium Tea {variants[variant].label} | Amarkanth Group</title>
+        <meta 
+          name="description" 
+          content={`Buy Tapovan Premium Tea (${variants[variant].label}) — finest high-grown tea blend from Assam's gardens offering a strong, rich, and refreshing taste. FSSAI certified, COD available. Shop now.`} 
+        />
+        <link rel="canonical" href={`https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": `Tapovan Premium Tea ${variants[variant].label}`,
+            "image": `https://www.amarkanth.com/tapovan_wellness_tea.webp`,
+            "description": `Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing garden-fresh taste. ${variants[variant].label} pack.`,
+            "sku": `TP-TEA-${variant.toUpperCase()}`,
+            "mpn": `TP-TEA-${variant.toUpperCase()}`,
+            "brand": {
+              "@type": "Brand",
+              "name": "Tapovan"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`,
+              "priceCurrency": "INR",
+              "price": variants[variant].price,
+              "priceValidUntil": "2027-12-31",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          })}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <section className="product-hero">
         <div className="container">

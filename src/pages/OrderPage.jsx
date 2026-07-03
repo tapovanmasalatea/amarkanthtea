@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Truck, CreditCard, ChevronRight, MapPin, Phone, Mail, User, ArrowLeft, ShoppingBag, Ticket, Sparkles } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const OrderPage = () => {
   const location = useLocation();
@@ -105,6 +106,11 @@ const OrderPage = () => {
 
   return (
     <div className="order-page">
+      <Helmet>
+        <title>Secure Checkout | Amarkanth Tea Group</title>
+        <meta name="description" content="Complete your tea order securely. Provide your delivery address and contact details. Cash on Delivery (COD) available." />
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="container">
         <header className="checkout-header">
           <button onClick={() => navigate(-1)} className="btn-back">

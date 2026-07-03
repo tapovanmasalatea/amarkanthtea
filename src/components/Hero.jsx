@@ -16,6 +16,7 @@ const Hero = () => {
 
   return (
     <section className="hero-container">
+      <h1 className="sr-only">Premium Assam CTC & Wellness Tea — Amarkanth Group</h1>
       <div className="hero-carousel">
         {images.map((img, i) => (
           <motion.div
@@ -28,7 +29,7 @@ const Hero = () => {
           >
             <img 
               src={img} 
-              alt={`Amarkanth Banner ${i + 1}`} 
+              alt={i === 0 ? "Amarkanth Premium CTC Tea leaves being poured into a cup" : "Amarkanth and Tapovan tea gift packaging on wooden table"} 
               className="carousel-img"
               loading={i === 0 ? "eager" : "lazy"}
               fetchpriority={i === 0 ? "high" : "low"}
@@ -52,6 +53,17 @@ const Hero = () => {
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
         .hero-container {
           padding: 95px 0 20px 0 !important;
           background: var(--cream);
