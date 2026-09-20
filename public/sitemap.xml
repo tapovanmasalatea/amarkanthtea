@@ -74,6 +74,16 @@
     </image:image>
   </url>
   <url>
+    <loc>https://www.amarkanth.com/products/amarkanth-assam-ctc-tea-1kg</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.amarkanth.com/amarkanth_bold_tea.webp</image:loc>
+      <image:title>Amarkanth Assam CTC Tea 1kg Pack</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.amarkanth.com/product/amarkanth-premium-ctc?size=250g</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -111,6 +121,16 @@
     <image:image>
       <image:loc>https://www.amarkanth.com/tapovan_wellness_tea.webp</image:loc>
       <image:title>Tapovan Premium Tea</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.amarkanth.com/products/tapovan-masala-tea-1kg</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.amarkanth.com/tapovan_wellness_tea.webp</image:loc>
+      <image:title>Tapovan Masala Tea 1kg Pack</image:title>
     </image:image>
   </url>
   <url>
