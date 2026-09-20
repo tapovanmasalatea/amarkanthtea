@@ -55,6 +55,7 @@ const Navbar = () => {
           </div>
 
           <Link to="/about" className={`nav-link-item ${location.pathname === '/about' ? 'active' : ''}`}>About Us</Link>
+          <Link to="/blog" className={`nav-link-item ${location.pathname.startsWith('/blog') ? 'active' : ''}`}>Blog</Link>
         </div>
 
         {/* Center: Absolutely Centered Logo */}

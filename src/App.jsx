@@ -38,6 +38,8 @@ const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy'));
 const ReturnPolicy = lazyWithRetry(() => import('./pages/ReturnPolicy'));
 const RefundPolicy = lazyWithRetry(() => import('./pages/RefundPolicy'));
 const ThankYou = lazyWithRetry(() => import('./pages/ThankYou'));
+const Blog = lazyWithRetry(() => import('./pages/Blog'));
+const BlogPost = lazyWithRetry(() => import('./pages/BlogPost'));
 
 // Named exports from LegalPages with network resilience
 const TermsConditions = lazyWithRetry(() => import('./pages/LegalPages').then(module => ({ default: module.TermsConditions })));
@@ -104,10 +106,15 @@ function AppContent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/products" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/amarkanth-premium-ctc" element={<AmarkanthPremiumCTC />} />
+          <Route path="/products/amarkanth-assam-ctc-tea-1kg" element={<AmarkanthPremiumCTC />} />
           <Route path="/product/tapovan-premium-tea" element={<TapovanPremiumTea />} />
+          <Route path="/products/tapovan-masala-tea-1kg" element={<TapovanPremiumTea />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/checkout" element={<OrderPage />} />
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/distributor" element={<DistributorPage />} />

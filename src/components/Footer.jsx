@@ -13,7 +13,8 @@ const Footer = () => {
 
         <div className="footer-nav-horizontal">
           <Link to="/about">About Us</Link>
-          <Link to="/shop">Collection</Link>
+          <Link to="/products">Collection</Link>
+          <Link to="/blog">Blog</Link>
           <Link to="/distributor">Distributorship</Link>
           <Link to="/contact">Contact Us</Link>
         </div>

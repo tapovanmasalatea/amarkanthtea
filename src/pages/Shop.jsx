@@ -100,17 +100,20 @@ const Shop = () => {
   return (
     <div className="shop-page">
       <SEO
-        title="Buy Premium Assam CTC & Wellness Masala Tea Online | Amarkanth Shop"
-        description="Shop the finest tea blends from Amarkanth Group. Buy Amarkanth Premium CTC Tea with Cardamom and Tapovan Premium Masala Tea. 100% Assam tea, FSSAI certified, COD available."
-        keywords="buy chai online, Assam CTC tea shop, Tapovan masala tea online, Amarkanth shop, kadak chai 1kg, tea pack 250g 500g"
-        canonical="https://www.amarkanth.com/shop"
+        title="Buy CTC Tea Online | Assam CTC Chai Patti & Tea Powder | Amarkanth"
+        description="Buy 100% unblended Assam CTC tea & chai patti online directly from gardens. Explore Amarkanth Cardamom CTC and Tapovan High-Grown tea. FSSAI certified, COD available."
+        keywords="CTC tea, buy CTC tea online, chai patti, tea powder, loose tea, Assam CTC tea, kadak chai patti, Amarkanth products"
+        canonical="https://www.amarkanth.com/products"
         ogImage="/amarkanth_bold_tea.webp"
         schema={shopSchemas}
       />
       <header className="page-header">
         <div className="container">
-          <p className="subtitle">The Collection</p>
-          <h1>Elevate Your <span className="text-red">Ritual</span></h1>
+          <p className="subtitle">Premium CTC Tea Hub</p>
+          <h1>Assam CTC Tea & <span className="text-red">Chai Patti Collection</span></h1>
+          <p className="products-hub-intro" style={{ maxWidth: '750px', margin: '15px auto 0', fontSize: '1.05rem', color: '#666', lineHeight: '1.7' }}>
+            Sourced 100% directly from pristine Assam tea estates (single-origin, unblended). FSSAI certified (Lic No: 11423870000024) and packed in 365-day aroma-seal pouches.
+          </p>
           
           <div className="shop-filters">
             <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>All Blends</button>

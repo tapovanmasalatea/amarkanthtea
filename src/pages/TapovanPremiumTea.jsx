@@ -266,9 +266,9 @@ const TapovanPremiumTea = () => {
   return (
     <div className="product-page tapovan-theme">
       <SEO
-        title={`Tapovan Premium Tea ${variants[variant].label} | High-Grown Assam Chai`}
-        description={`Buy Tapovan Premium Tea (${variants[variant].label}) — finest high-grown tea blend from Assam's gardens offering a strong, rich, and refreshing taste. FSSAI certified, COD available. Shop now.`}
-        keywords="Tapovan tea, Assam high grown tea, masala tea 1kg, Tapovan chai 250g 500g, buy Assam chai online"
+        title={`Tapovan Premium Tea ${variants[variant].label} – Assam Chai | Amarkanth`}
+        description={`Buy Tapovan Premium Assam Tea (${variants[variant].label}). High-grown garden fresh CTC tea for rich color and kadak chai. FSSAI certified. Order online.`}
+        keywords="Tapovan tea, Assam high grown tea, masala tea 1kg, Tapovan chai 250g 500g, buy Assam chai online, chai patti 1kg"
         canonical={`https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`}
         ogImage="/tapovan_wellness_tea.webp"
         ogType="product"

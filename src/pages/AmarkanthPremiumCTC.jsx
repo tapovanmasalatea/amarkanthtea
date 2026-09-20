@@ -267,9 +267,9 @@ const AmarkanthPremiumCTC = () => {
   return (
     <div className="product-page">
       <SEO
-        title={`Amarkanth Premium CTC Tea with Cardamom ${variants[variant].label} | Amarkanth Group`}
-        description={`Buy Amarkanth Premium CTC Tea with Cardamom (${variants[variant].label}) — a bold and strong Assam CTC blend infused with real cardamom. FSSAI certified, COD available. Shop now.`}
-        keywords="Amarkanth CTC tea, cardamom chai, Assam tea 1kg, buy kadak chai online, cardamom tea 250g 500g"
+        title={`Assam CTC Tea ${variants[variant].label} – Strong Chai Patti | Amarkanth`}
+        description={`Buy Amarkanth Assam CTC Tea with Cardamom (${variants[variant].label}). Unblended Assam granules for strong kadak chai. FSSAI certified. COD available.`}
+        keywords="Assam CTC tea, cardamom chai, Assam tea 1kg, buy kadak chai online, cardamom tea 250g 500g, chai patti 1kg"
         canonical={`https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`}
         ogImage="/amarkanth_bold_tea.webp"
         ogType="product"

@@ -52,6 +52,11 @@ try {
     xml += `      <g:price>${escapeXml(item.price)}</g:price>\n`;
     xml += `      <g:brand>${escapeXml(item.brand)}</g:brand>\n`;
     xml += `      <g:google_product_category>${escapeXml(item.google_product_category)}</g:google_product_category>\n`;
+    if (item.product_type) xml += `      <g:product_type>${escapeXml(item.product_type)}</g:product_type>\n`;
+    if (item.unit_pricing_measure) xml += `      <g:unit_pricing_measure>${escapeXml(item.unit_pricing_measure)}</g:unit_pricing_measure>\n`;
+    if (item.identifier_exists) xml += `      <g:identifier_exists>${escapeXml(item.identifier_exists)}</g:identifier_exists>\n`;
+    if (item.item_group_id) xml += `      <g:item_group_id>${escapeXml(item.item_group_id)}</g:item_group_id>\n`;
+    if (item.mpn) xml += `      <g:mpn>${escapeXml(item.mpn)}</g:mpn>\n`;
     xml += '    </item>\n';
   }
   
