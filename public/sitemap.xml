@@ -126,10 +126,16 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://www.amarkanth.com/return-policy</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.amarkanth.com/refund-policy</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.amarkanth.com/terms-conditions</loc>

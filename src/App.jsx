@@ -35,6 +35,7 @@ const TapovanPremiumTea = lazyWithRetry(() => import('./pages/TapovanPremiumTea'
 const OrderPage = lazyWithRetry(() => import('./pages/OrderPage'));
 const DistributorPage = lazyWithRetry(() => import('./pages/DistributorPage'));
 const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy'));
+const ReturnPolicy = lazyWithRetry(() => import('./pages/ReturnPolicy'));
 const RefundPolicy = lazyWithRetry(() => import('./pages/RefundPolicy'));
 const ThankYou = lazyWithRetry(() => import('./pages/ThankYou'));
 
@@ -111,6 +112,7 @@ function AppContent() {
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/distributor" element={<DistributorPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />

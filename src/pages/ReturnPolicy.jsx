@@ -1,9 +1,9 @@
 import React from 'react';
-import { CreditCard, RefreshCw, CheckCircle2, Clock, XCircle, ShieldCheck, HelpCircle } from 'lucide-react';
+import { RotateCcw, PackageCheck, Truck, RefreshCw, AlertCircle, CheckCircle2, MapPin } from 'lucide-react';
 import SEO from '../components/SEO';
 
-const RefundPolicy = () => {
-  const refundSchemas = [
+const ReturnPolicy = () => {
+  const returnSchemas = [
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -17,8 +17,8 @@ const RefundPolicy = () => {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Refund Policy",
-          "item": "https://www.amarkanth.com/refund-policy"
+          "name": "Return Policy",
+          "item": "https://www.amarkanth.com/return-policy"
         }
       ]
     },
@@ -49,16 +49,16 @@ const RefundPolicy = () => {
   return (
     <div className="policy-page">
       <SEO
-        title="Refund & Cancellation Policy | Amarkanth Tea Group"
-        description="Amarkanth Tea Group Refund & Order Cancellation Policy. Learn about 100% full refund timelines (5-7 business days), prepaid reversals, COD bank payouts, and zero fee cancellations."
-        keywords="refund policy, money back guarantee, COD refund, order cancellation, Amarkanth refund process"
-        canonical="https://www.amarkanth.com/refund-policy"
-        schema={refundSchemas}
+        title="Return & Replacement Policy | Amarkanth Tea Group"
+        description="Amarkanth Tea Group 7-Day Product Return & Replacement Policy. Enjoy 100% Free return shipping, ₹0 restocking fees, and reverse courier pickup across India."
+        keywords="return policy, product returns, Amarkanth return policy, free returns, tea return terms"
+        canonical="https://www.amarkanth.com/return-policy"
+        schema={returnSchemas}
       />
       <section className="policy-hero">
         <div className="container">
-          <CreditCard size={60} className="policy-icon" />
-          <h1>Refund & Cancellation <span className="text-brand-red">Policy</span></h1>
+          <RotateCcw size={60} className="policy-icon" />
+          <h1>Product Return <span className="text-brand-red">Policy</span></h1>
           <p className="last-updated">Last Updated: September 2026 | Google Merchant Center Compliant</p>
         </div>
       </section>
@@ -67,23 +67,23 @@ const RefundPolicy = () => {
         <div className="container narrow">
           {/* Summary Box */}
           <div className="policy-summary-card">
-            <h3>💳 Refund & Cancellation Summary</h3>
+            <h3>📦 Product Return Policy at a Glance</h3>
             <div className="summary-grid">
               <div className="summary-item">
-                <span className="label">Refund Processing Time</span>
-                <span className="value">5 - 7 Business Days</span>
+                <span className="label">Return Window</span>
+                <span className="value">7 Days from delivery</span>
               </div>
               <div className="summary-item">
-                <span className="label">Refund Amount</span>
-                <span className="value">100% Full Refund</span>
+                <span className="label">Return Shipping Fee</span>
+                <span className="value">FREE (₹0 Charge)</span>
               </div>
               <div className="summary-item">
-                <span className="label">Cancellation Fee</span>
-                <span className="value">₹0 (Free Before Dispatch)</span>
+                <span className="label">Restocking Fee</span>
+                <span className="value">₹0 (No fee)</span>
               </div>
               <div className="summary-item">
-                <span className="label">COD Refund Method</span>
-                <span className="value">Direct Bank Transfer / UPI</span>
+                <span className="label">Return Pickup</span>
+                <span className="value">Doorstep Reverse Pickup</span>
               </div>
             </div>
           </div>
@@ -91,70 +91,64 @@ const RefundPolicy = () => {
           <div className="policy-block">
             <h2>1. Overview</h2>
             <p>
-              At <strong>Amarkanth Tea Group (Patidar Tea Company)</strong>, we guarantee transparent and prompt financial refunds. 
-              Whether an order is returned due to damage or cancelled prior to dispatch, this policy details our refund timeframes, payment methods, and zero-deduction guarantee.
+              At <strong>Amarkanth Tea Group (Patidar Tea Company)</strong>, customer satisfaction and product quality are our highest priorities. 
+              We offer a hassle-free <strong>7-Day Product Return & Replacement Policy</strong> for all tea purchases made through 
+              <strong> www.amarkanth.com</strong>.
             </p>
           </div>
 
           <div className="policy-block">
             <div className="icon-title">
-              <Clock size={24} />
-              <h2>2. Refund Timeframes & Execution</h2>
+              <PackageCheck size={24} />
+              <h2>2. Return Window & Eligibility Criteria</h2>
             </div>
             <p>
-              Once a return request or order cancellation is approved, refunds are processed within <strong>5 to 7 business days</strong>:
+              You may initiate a return or replacement request within <strong>7 days</strong> of package delivery if your order satisfies any of the following:
             </p>
             <ul>
-              <li><strong>Prepaid Transactions (Credit Card, Debit Card, Net Banking, UPI):</strong> 100% of the payment amount is credited directly back to your original payment instrument.</li>
-              <li><strong>Cash on Delivery (COD) Transactions:</strong> Refunds are transferred directly to your verified Bank Account (via NEFT/IMPS) or UPI ID (Google Pay, PhonePe, Paytm) upon customer confirmation.</li>
+              <li><strong>Damaged in Transit:</strong> Outer pouch or inner foil seal was crushed, cut, or punctured during delivery.</li>
+              <li><strong>Defective Product:</strong> Compromised vacuum seal, humidity exposure, or abnormal flavor profile.</li>
+              <li><strong>Incorrect Product:</strong> Wrong blend size (250g, 500g, 1kg) or wrong tea variant delivered.</li>
+              <li><strong>Unopened / Mind Change:</strong> Unopened products with original outer seal intact returned within 7 days.</li>
             </ul>
           </div>
 
           <div className="policy-block">
             <div className="icon-title">
-              <XCircle size={24} />
-              <h2>3. Order Cancellation Policy</h2>
+              <Truck size={24} />
+              <h2>3. Return Shipping Costs & Method</h2>
             </div>
-            <p>
-              Customers may cancel an order free of charge at any time prior to item dispatch:
-            </p>
             <ul>
-              <li><strong>Before Dispatch (within 12 hours):</strong> 100% Immediate refund processed with <strong>₹0 cancellation fee</strong>.</li>
-              <li><strong>After Dispatch:</strong> If the shipment has already been handed over to courier partners, simply decline delivery upon arrival. Once courier confirms return, full refund will be processed within 5-7 business days.</li>
+              <li><strong>Return Shipping Fee:</strong> 100% <strong>FREE Return Shipping</strong>. We cover all return shipping costs.</li>
+              <li><strong>Restocking Fee:</strong> <strong>₹0 (Zero) restocking fee</strong>. We do not deduct any handling or restocking charges.</li>
+              <li><strong>Return Method:</strong> Returns are accepted via courier mail or doorstep reverse pickup arranged by our logistics team across India.</li>
             </ul>
           </div>
 
           <div className="policy-block">
             <div className="icon-title">
-              <ShieldCheck size={24} />
-              <h2>4. Zero Deduction & 100% Refund Guarantee</h2>
+              <RefreshCw size={24} />
+              <h2>4. Step-by-Step Return Process</h2>
             </div>
-            <p>
-              We charge <strong>₹0 (Zero) restocking fees, ₹0 processing fees, and ₹0 cancellation fees</strong>. 
-              If your claim is verified (damaged product, lost transit parcel, quality concern, or pre-dispatch cancellation), you receive a 100% complete refund.
-            </p>
-          </div>
-
-          <div className="policy-block">
-            <div className="icon-title">
-              <HelpCircle size={24} />
-              <h2>5. Late or Missing Refunds</h2>
-            </div>
-            <p>If you have not received your refund after 7 business days:</p>
             <ol className="steps-list">
-              <li>Check your bank statement or UPI transaction history.</li>
-              <li>Contact your card issuer or bank (it may take 2-4 business days for banks to post credit entries).</li>
-              <li>If you still have not received your refund, email us at <strong>support@amarkanth.com</strong> or WhatsApp <strong>+91-7879111227</strong> for instant payment ARN/RRN reference tracking.</li>
+              <li><strong>Submit Request:</strong> Contact us within 7 days of delivery via email at <strong>support@amarkanth.com</strong> or WhatsApp at <strong>+91-7879111227</strong> / <strong>+91-9893922659</strong>.</li>
+              <li><strong>Provide Details:</strong> Share your Order ID, phone number, and brief photo/video showing the product condition.</li>
+              <li><strong>Pickup & Inspection:</strong> Our courier partner will pick up the package from your doorstep within 24-48 hours.</li>
+              <li><strong>Resolution:</strong> Upon receipt and quality check at our warehouse, a replacement or full refund is dispatched immediately.</li>
             </ol>
           </div>
 
           <div className="policy-block">
-            <h2>6. Support Contact for Refund Inquiries</h2>
+            <div className="icon-title">
+              <MapPin size={24} />
+              <h2>5. Physical Return Warehouse Address</h2>
+            </div>
             <div className="contact-info">
-              <p><strong>Amarkanth Tea Group (Patidar Tea Company)</strong></p>
-              <p><strong>Support Email:</strong> support@amarkanth.com / patidarteacompany@gmail.com</p>
+              <p><strong>Patidar Tea Company (Amarkanth Tea Group)</strong></p>
+              <p><strong>Attn:</strong> Returns Department</p>
+              <p>Main Road, Anjad, District Barwani, Madhya Pradesh - 451556, India.</p>
+              <p><strong>Email:</strong> support@amarkanth.com / patidarteacompany@gmail.com</p>
               <p><strong>Phone / WhatsApp:</strong> +91-9893922659 / +91-7879111227</p>
-              <p><strong>Address:</strong> Main Road, Anjad, District Barwani, Madhya Pradesh - 451556, India.</p>
             </div>
           </div>
         </div>
@@ -310,4 +304,4 @@ const RefundPolicy = () => {
   );
 };
 
-export default RefundPolicy;
+export default ReturnPolicy;
