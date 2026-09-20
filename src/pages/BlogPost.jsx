@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { Calendar, Clock, User, ArrowLeft, ArrowRight, Share2, Check, ChevronDown } from 'lucide-react';
+import { Calendar, Clock, User, ArrowLeft, ArrowRight, Share2, Check, ChevronDown, ShieldCheck } from 'lucide-react';
 import SEO from '../components/SEO';
 import blogsData from '../data/blogs.json';
 

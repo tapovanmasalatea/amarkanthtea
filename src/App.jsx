@@ -114,6 +114,7 @@ function AppContent() {
           <Route path="/product/tapovan-premium-tea" element={<TapovanPremiumTea />} />
           <Route path="/products/tapovan-masala-tea-1kg" element={<TapovanPremiumTea />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blogs" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/checkout" element={<OrderPage />} />
           <Route path="/thank-you" element={<ThankYou />} />
@@ -123,6 +124,7 @@ function AppContent() {
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
           <Route path="/shipping-policy" element={<ShippingPolicy />} />
+          <Route path="*" element={<Home />} />
         </Routes>
       </Suspense>
       <Footer />
