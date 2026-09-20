@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import { 
   Handshake, 
   TrendingUp, 
@@ -165,13 +165,59 @@ const DistributorPage = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  const distributorSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Become a Distributor",
+          "item": "https://www.amarkanth.com/distributor"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the minimum requirements to become an Amarkanth Tea distributor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Distributors require valid business registration / GST (or local trade license), basic storage capability, and initial stock investment starting from 50 kg to 500 kg depending on territory size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What margins and support does Amarkanth Tea offer to distributors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We offer attractive profit margins, exclusive territorial rights, marketing collateral, POS banners, sample packs, and dedicated sales support."
+          }
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="distributor-page">
-      <Helmet>
-        <title>Become a Distributor | Amarkanth Tea Group</title>
-        <meta name="description" content="Partner with Amarkanth Tea Group. Become a tea distributor or retail partner for Amarkanth Premium CTC and Tapovan Wellness Tea. High margins and marketing support." />
-        <link rel="canonical" href="https://www.amarkanth.com/distributor" />
-      </Helmet>
+      <SEO
+        title="Become a Tea Distributor & Wholesale Dealership | Amarkanth Group"
+        description="Partner with Amarkanth Tea Group. Become an authorized tea distributor or retail partner for Amarkanth Premium CTC and Tapovan Wellness Tea. High margins, exclusive territory, and promotional support."
+        keywords="tea distributorship, tea wholesale India, chai dealership, Amarkanth distributor, tea business opportunity, FMCG distributorship"
+        canonical="https://www.amarkanth.com/distributor"
+        ogImage="/amarkanth_bold_tea.webp"
+        schema={distributorSchemas}
+      />
       {/* Hero Section */}
       <section className="dist-hero">
         <div className="dist-container">

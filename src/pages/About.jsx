@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import factoryImg from '../assets/factory.webp';
 import logoImg from '../assets/logo.webp';
 import diff1 from '../assets/diff1.webp';
@@ -11,13 +11,44 @@ import diff5 from '../assets/diff5.webp';
 import diff6 from '../assets/diff6.webp';
 
 const About = () => {
+  const aboutSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About Amarkanth Tea Group",
+      "url": "https://www.amarkanth.com/about",
+      "description": "Learn about Amarkanth Tea Group (Patidar Tea Company). Delivering authentic, unblended Assam CTC tea and Tapovan wellness tea."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": "https://www.amarkanth.com/about"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="about-page">
-      <Helmet>
-        <title>About Us | Amarkanth Tea Group</title>
-        <meta name="description" content="Learn about Amarkanth Tea Group (Patidar Tea Company) based in Madhya Pradesh. Serving authentic, premium Assam tea and wellness masala blends for over a decade. FSSAI Lic. No: 11423870000024." />
-        <link rel="canonical" href="https://www.amarkanth.com/about" />
-      </Helmet>
+      <SEO
+        title="About Amarkanth Group | Heritage & Passion for Premium Assam Tea"
+        description="Learn about Amarkanth Tea Group (Patidar Tea Company). Delivering authentic, premium Assam CTC tea and Tapovan wellness blends directly from pristine Assam estates. FSSAI License: 11423870000024."
+        keywords="about Amarkanth tea, Patidar Tea Company, Assam tea company India, tea manufacturer, CTC tea story"
+        canonical="https://www.amarkanth.com/about"
+        ogImage="/amarkanth_bold_tea.webp"
+        schema={aboutSchemas}
+      />
       {/* 0. Page Header (Left Side) */}
       <section className="about-header-section">
         <div className="container">

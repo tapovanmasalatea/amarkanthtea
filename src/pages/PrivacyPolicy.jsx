@@ -1,15 +1,38 @@
 import React from 'react';
 import { Shield, Eye, Lock, Globe, Mail } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const PrivacyPolicy = () => {
+  const privacySchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": "https://www.amarkanth.com/privacy-policy"
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="policy-page">
-      <Helmet>
-        <title>Privacy Policy | Amarkanth Tea Group</title>
-        <meta name="description" content="Amarkanth Tea Group Privacy Policy. Learn how we securely handle, collect, and protect your personal information on our website." />
-        <link rel="canonical" href="https://www.amarkanth.com/privacy-policy" />
-      </Helmet>
+      <SEO
+        title="Privacy Policy | Amarkanth Tea Group"
+        description="Amarkanth Tea Group Privacy Policy. Learn how we securely handle, collect, and protect your personal information on our website."
+        keywords="privacy policy, data protection, Amarkanth privacy"
+        canonical="https://www.amarkanth.com/privacy-policy"
+        schema={privacySchemas}
+      />
       <section className="policy-hero">
         <div className="container">
           <Shield size={60} className="policy-icon" />

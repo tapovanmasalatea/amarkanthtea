@@ -12,7 +12,7 @@ import tpLoved3 from '../assets/tp_loved3.webp';
 import tpLoved4 from '../assets/tp_loved4.webp';
 import logoImg from '../assets/logo.webp';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -175,40 +175,105 @@ const TapovanPremiumTea = () => {
     }
   ];
 
+  const tapovanSchemas = [
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": `Tapovan Premium Tea ${variants[variant].label}`,
+      "image": `https://www.amarkanth.com/tapovan_wellness_tea.webp`,
+      "description": `Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing garden-fresh taste. ${variants[variant].label} pack.`,
+      "sku": `TP-TEA-${variant.toUpperCase()}`,
+      "mpn": `TP-TEA-${variant.toUpperCase()}`,
+      "brand": {
+        "@type": "Brand",
+        "name": "Tapovan"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "96"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": `https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`,
+        "priceCurrency": "INR",
+        "price": variants[variant].price,
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "Amarkanth Tea Group"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "IN",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Shop",
+          "item": "https://www.amarkanth.com/shop"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": `Tapovan Premium Tea ${variants[variant].label}`,
+          "item": `https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes Tapovan Premium Tea unique?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tapovan Premium Tea is crafted from handpicked high-grown Assam leaves (two leaves and a bud), providing an authentic deep liquor color and rich garden-fresh aroma."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Tapovan Tea suitable for milk tea and black tea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Tapovan Premium Tea delivers a robust body that pairs perfectly with milk while also offering a smooth, refreshing finish for black tea lovers."
+          }
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="product-page tapovan-theme">
-      <Helmet>
-        <title>Tapovan Premium Tea {variants[variant].label} | Amarkanth Group</title>
-        <meta 
-          name="description" 
-          content={`Buy Tapovan Premium Tea (${variants[variant].label}) — finest high-grown tea blend from Assam's gardens offering a strong, rich, and refreshing taste. FSSAI certified, COD available. Shop now.`} 
-        />
-        <link rel="canonical" href={`https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            "name": `Tapovan Premium Tea ${variants[variant].label}`,
-            "image": `https://www.amarkanth.com/tapovan_wellness_tea.webp`,
-            "description": `Finest high-grown tea blend from Assam's gardens, offering a rich, strong, and refreshing garden-fresh taste. ${variants[variant].label} pack.`,
-            "sku": `TP-TEA-${variant.toUpperCase()}`,
-            "mpn": `TP-TEA-${variant.toUpperCase()}`,
-            "brand": {
-              "@type": "Brand",
-              "name": "Tapovan"
-            },
-            "offers": {
-              "@type": "Offer",
-              "url": `https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`,
-              "priceCurrency": "INR",
-              "price": variants[variant].price,
-              "priceValidUntil": "2027-12-31",
-              "availability": "https://schema.org/InStock",
-              "itemCondition": "https://schema.org/NewCondition"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEO
+        title={`Tapovan Premium Tea ${variants[variant].label} | High-Grown Assam Chai`}
+        description={`Buy Tapovan Premium Tea (${variants[variant].label}) — finest high-grown tea blend from Assam's gardens offering a strong, rich, and refreshing taste. FSSAI certified, COD available. Shop now.`}
+        keywords="Tapovan tea, Assam high grown tea, masala tea 1kg, Tapovan chai 250g 500g, buy Assam chai online"
+        canonical={`https://www.amarkanth.com/product/tapovan-premium-tea?size=${variant}`}
+        ogImage="/tapovan_wellness_tea.webp"
+        ogType="product"
+        schema={tapovanSchemas}
+      />
       {/* Hero Section */}
       <section className="product-hero">
         <div className="container">

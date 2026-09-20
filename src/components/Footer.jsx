@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="footer-nav-horizontal">
           <Link to="/about">About Us</Link>
           <Link to="/shop">Collection</Link>
-          <Link to="/distributor">Distributiorship</Link>
+          <Link to="/distributor">Distributorship</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
 
@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom-bar">
-          <div className="copyright">© 2024 Amarkanth Group. All rights reserved.</div>
+          <div className="copyright">© 2026 Amarkanth Group. All rights reserved.</div>
           <div className="social-links">
             <a href="https://www.instagram.com/amarkanth_tea/" target="_blank" rel="noreferrer">Instagram</a>
             <a href="https://www.facebook.com/Amarkanthpremiumtea/" target="_blank" rel="noreferrer">Facebook</a>

@@ -12,7 +12,7 @@ import amLoved2 from '../assets/am_loved2.webp';
 import amLoved3 from '../assets/am_loved3.webp';
 import amLoved4 from '../assets/am_loved4.webp';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -176,40 +176,105 @@ const AmarkanthPremiumCTC = () => {
     }
   ];
 
+  const amarkanthSchemas = [
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": `Amarkanth Premium CTC Tea with Cardamom ${variants[variant].label}`,
+      "image": `https://www.amarkanth.com/amarkanth_bold_tea.webp`,
+      "description": `Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience. ${variants[variant].label} pack.`,
+      "sku": `AMK-CTC-${variant.toUpperCase()}`,
+      "mpn": `AMK-CTC-${variant.toUpperCase()}`,
+      "brand": {
+        "@type": "Brand",
+        "name": "Amarkanth"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "128"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": `https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`,
+        "priceCurrency": "INR",
+        "price": variants[variant].price,
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "seller": {
+          "@type": "Organization",
+          "name": "Amarkanth Tea Group"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "IN",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 7,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Shop",
+          "item": "https://www.amarkanth.com/shop"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": `Amarkanth Premium CTC Tea with Cardamom ${variants[variant].label}`,
+          "item": `https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What ingredients are in Amarkanth Premium CTC Tea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "100% pure high-grown Assam CTC black tea infused with natural cardamom extract for a rich aroma and kadak flavor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the shelf life of Amarkanth Tea?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Amarkanth Tea is packaged in an aroma-locking seal pack that maintains garden freshness for 365 days from packaging date."
+          }
+        }
+      ]
+    }
+  ];
+
   return (
     <div className="product-page">
-      <Helmet>
-        <title>Amarkanth Premium CTC Tea with Cardamom {variants[variant].label} | Amarkanth Group</title>
-        <meta 
-          name="description" 
-          content={`Buy Amarkanth Premium CTC Tea with Cardamom (${variants[variant].label}) — a bold and strong Assam CTC blend infused with real cardamom. FSSAI certified, COD available. Shop now.`} 
-        />
-        <link rel="canonical" href={`https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org/",
-            "@type": "Product",
-            "name": `Amarkanth Premium CTC Tea with Cardamom ${variants[variant].label}`,
-            "image": `https://www.amarkanth.com/amarkanth_bold_tea.webp`,
-            "description": `Premium CTC blend with natural cardamom for a bold, aromatic, and perfect kadak chai experience. ${variants[variant].label} pack.`,
-            "sku": `AMK-CTC-${variant.toUpperCase()}`,
-            "mpn": `AMK-CTC-${variant.toUpperCase()}`,
-            "brand": {
-              "@type": "Brand",
-              "name": "Amarkanth"
-            },
-            "offers": {
-              "@type": "Offer",
-              "url": `https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`,
-              "priceCurrency": "INR",
-              "price": variants[variant].price,
-              "priceValidUntil": "2027-12-31",
-              "availability": "https://schema.org/InStock",
-              "itemCondition": "https://schema.org/NewCondition"
-            }
-          })}
-        </script>
-      </Helmet>
+      <SEO
+        title={`Amarkanth Premium CTC Tea with Cardamom ${variants[variant].label} | Amarkanth Group`}
+        description={`Buy Amarkanth Premium CTC Tea with Cardamom (${variants[variant].label}) — a bold and strong Assam CTC blend infused with real cardamom. FSSAI certified, COD available. Shop now.`}
+        keywords="Amarkanth CTC tea, cardamom chai, Assam tea 1kg, buy kadak chai online, cardamom tea 250g 500g"
+        canonical={`https://www.amarkanth.com/product/amarkanth-premium-ctc?size=${variant}`}
+        ogImage="/amarkanth_bold_tea.webp"
+        ogType="product"
+        schema={amarkanthSchemas}
+      />
       {/* Hero Section */}
       <section className="product-hero">
         <div className="container">

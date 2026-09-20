@@ -1,8 +1,35 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const Contact = () => {
+  const contactSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Amarkanth Tea Group",
+      "url": "https://www.amarkanth.com/contact",
+      "description": "Get in touch with Amarkanth Tea Group (Patidar Tea Company) for customer support, trade orders, and wholesale inquiries."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact Us",
+          "item": "https://www.amarkanth.com/contact"
+        }
+      ]
+    }
+  ];
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -33,11 +60,14 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      <Helmet>
-        <title>Contact Us | Amarkanth Tea Group</title>
-        <meta name="description" content="Get in touch with Amarkanth Tea Group (Patidar Tea Company). Find our address in Anjad (M.P.), phone number, email, and connect directly on WhatsApp." />
-        <link rel="canonical" href="https://www.amarkanth.com/contact" />
-      </Helmet>
+      <SEO
+        title="Contact Amarkanth Tea Group | Customer Support & Wholesale Enquiries"
+        description="Get in touch with Amarkanth Tea Group (Patidar Tea Company). Reach our customer support in Anjad (M.P.), phone +91-9893922659, email, or connect via WhatsApp for wholesale inquiries."
+        keywords="contact Amarkanth tea, Patidar Tea Company contact, tea phone number, tea wholesale contact, Anjad tea company"
+        canonical="https://www.amarkanth.com/contact"
+        ogImage="/amarkanth_bold_tea.webp"
+        schema={contactSchemas}
+      />
       <header className="page-header">
         <div className="container">
           <p className="subtitle">Get In Touch</p>

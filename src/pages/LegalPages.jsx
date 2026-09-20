@@ -1,15 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 
 const LegalPage = ({ title, content, description, canonical }) => {
+  const legalSchemas = canonical ? [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": title,
+          "item": canonical
+        }
+      ]
+    }
+  ] : null;
+
   return (
     <div className="legal-page">
-      <Helmet>
-        <title>{title} | Amarkanth Tea Group</title>
-        {description && <meta name="description" content={description} />}
-        {canonical && <link rel="canonical" href={canonical} />}
-      </Helmet>
+      <SEO
+        title={`${title} | Amarkanth Tea Group`}
+        description={description}
+        canonical={canonical}
+        schema={legalSchemas}
+      />
       <div className="container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import amarkanthImg from '../assets/amarkanth.webp';
 import tapovanImg from '../assets/tapovan.webp';
@@ -9,6 +9,48 @@ import tapovanImg from '../assets/tapovan.webp';
 const Shop = () => {
   const [filter, setFilter] = useState('all');
   const navigate = useNavigate();
+
+  const shopSchemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.amarkanth.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Shop",
+          "item": "https://www.amarkanth.com/shop"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Amarkanth Tea Blends Collection",
+      "url": "https://www.amarkanth.com/shop",
+      "numberOfItems": 2,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://www.amarkanth.com/product/amarkanth-premium-ctc",
+          "name": "Amarkanth Premium CTC Tea With Cardamom"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://www.amarkanth.com/product/tapovan-premium-tea",
+          "name": "Tapovan Premium Tea"
+        }
+      ]
+    }
+  ];
 
   const products = [
     {
@@ -57,11 +99,14 @@ const Shop = () => {
 
   return (
     <div className="shop-page">
-      <Helmet>
-        <title>Shop Premium Tea Blends | Amarkanth Group</title>
-        <meta name="description" content="Shop the finest tea blends from Amarkanth Group. Buy Amarkanth Premium CTC Tea with Cardamom and Tapovan Premium Masala Tea. Organic quality, FSSAI certified, COD available." />
-        <link rel="canonical" href="https://www.amarkanth.com/shop" />
-      </Helmet>
+      <SEO
+        title="Buy Premium Assam CTC & Wellness Masala Tea Online | Amarkanth Shop"
+        description="Shop the finest tea blends from Amarkanth Group. Buy Amarkanth Premium CTC Tea with Cardamom and Tapovan Premium Masala Tea. 100% Assam tea, FSSAI certified, COD available."
+        keywords="buy chai online, Assam CTC tea shop, Tapovan masala tea online, Amarkanth shop, kadak chai 1kg, tea pack 250g 500g"
+        canonical="https://www.amarkanth.com/shop"
+        ogImage="/amarkanth_bold_tea.webp"
+        schema={shopSchemas}
+      />
       <header className="page-header">
         <div className="container">
           <p className="subtitle">The Collection</p>
